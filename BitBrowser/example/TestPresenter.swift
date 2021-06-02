@@ -5,16 +5,22 @@
 //  Created by ws on 2021/6/4.
 //
 
-import Foundation
+import SwiftUI
+import Combine
 
-class TestPresenter{
-    //let view = xxxViewController
+class TestPresenter: ObservableObject{
+    @Published var news:TestNews?
+    
+    func clear(){
+        news = nil
+    }
     
     func fetchData(){
         TestNewsService.getNews(){ (success: Bool, News:TestNews?, error: Error?) in
             if success{
                 if let news = News, !news.list!.isEmpty{
                     print(news)
+                    self.news = news
                 }else{
                     print("empty")
                 }

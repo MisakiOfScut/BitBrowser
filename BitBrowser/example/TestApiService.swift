@@ -9,6 +9,10 @@ import Foundation
 import Moya
 
 let TestApiProvider = MoyaProvider<TestApiService>()
+struct TestApiConstant{
+    static let baseURL = "https://www.fastmock.site"
+}
+
 
 enum TestApiService {
     case getNews
