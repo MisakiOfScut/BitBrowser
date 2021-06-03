@@ -9,5 +9,7 @@ import Foundation
 import Moya
 
 enum TestApiService {
-    case getUser(username : string)
+    case getNews
 }
+
+
