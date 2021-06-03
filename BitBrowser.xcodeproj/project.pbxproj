@@ -1,0 +1,669 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		542D088C2668841E000CE6EE /* TestApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542D088B2668841E000CE6EE /* TestApiService.swift */; };
+		54935A702667A69500608FCA /* BitBrowserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54935A6F2667A69500608FCA /* BitBrowserApp.swift */; };
+		54935A722667A69500608FCA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54935A712667A69500608FCA /* ContentView.swift */; };
+		54935A742667A6C900608FCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54935A732667A6C900608FCA /* Assets.xcassets */; };
+		54935A772667A6C900608FCA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54935A762667A6C900608FCA /* Preview Assets.xcassets */; };
+		54935A822667A6CC00608FCA /* BitBrowserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54935A812667A6CC00608FCA /* BitBrowserTests.swift */; };
+		54935A8D2667A6CC00608FCA /* BitBrowserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54935A8C2667A6CC00608FCA /* BitBrowserUITests.swift */; };
+		D96B7DC28232DF2C6B2FE10F /* Pods_BitBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058BEF841A90D0412931DEB /* Pods_BitBrowser.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		54935A7E2667A6CC00608FCA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54935A642667A69100608FCA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 54935A6B2667A69300608FCA;
+			remoteInfo = BitBrowser;
+		};
+		54935A892667A6CC00608FCA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54935A642667A69100608FCA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 54935A6B2667A69300608FCA;
+			remoteInfo = BitBrowser;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1058BEF841A90D0412931DEB /* Pods_BitBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		542D088B2668841E000CE6EE /* TestApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestApiService.swift; sourceTree = "<group>"; };
+		54935A6C2667A69400608FCA /* BitBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		54935A6F2667A69500608FCA /* BitBrowserApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitBrowserApp.swift; sourceTree = "<group>"; };
+		54935A712667A69500608FCA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		54935A732667A6C900608FCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		54935A762667A6C900608FCA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		54935A782667A6CA00608FCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54935A7D2667A6CC00608FCA /* BitBrowserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitBrowserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		54935A812667A6CC00608FCA /* BitBrowserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitBrowserTests.swift; sourceTree = "<group>"; };
+		54935A832667A6CC00608FCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54935A882667A6CC00608FCA /* BitBrowserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitBrowserUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		54935A8C2667A6CC00608FCA /* BitBrowserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitBrowserUITests.swift; sourceTree = "<group>"; };
+		54935A8E2667A6CC00608FCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54DAA2EE2667C04000D032D7 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		598583E2C8F41B32C1F69AA5 /* Pods-BitBrowser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBrowser.release.xcconfig"; path = "Target Support Files/Pods-BitBrowser/Pods-BitBrowser.release.xcconfig"; sourceTree = "<group>"; };
+		B6CD55F1BB0816DA7774AA4C /* Pods-BitBrowser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBrowser.debug.xcconfig"; path = "Target Support Files/Pods-BitBrowser/Pods-BitBrowser.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		54935A692667A69300608FCA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D96B7DC28232DF2C6B2FE10F /* Pods_BitBrowser.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54935A7A2667A6CC00608FCA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54935A852667A6CC00608FCA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		542D088A266882D2000CE6EE /* example */ = {
+			isa = PBXGroup;
+			children = (
+				542D088B2668841E000CE6EE /* TestApiService.swift */,
+			);
+			path = example;
+			sourceTree = "<group>";
+		};
+		54935A632667A69100608FCA = {
+			isa = PBXGroup;
+			children = (
+				54DAA2EE2667C04000D032D7 /* Podfile */,
+				54935A6E2667A69400608FCA /* BitBrowser */,
+				54935A802667A6CC00608FCA /* BitBrowserTests */,
+				54935A8B2667A6CC00608FCA /* BitBrowserUITests */,
+				54935A6D2667A69400608FCA /* Products */,
+				977F5492185373810A0FEDDC /* Pods */,
+				C02AF35393E5D679FD89AAE8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		54935A6D2667A69400608FCA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				54935A6C2667A69400608FCA /* BitBrowser.app */,
+				54935A7D2667A6CC00608FCA /* BitBrowserTests.xctest */,
+				54935A882667A6CC00608FCA /* BitBrowserUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		54935A6E2667A69400608FCA /* BitBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				542D088A266882D2000CE6EE /* example */,
+				54935A6F2667A69500608FCA /* BitBrowserApp.swift */,
+				54935A712667A69500608FCA /* ContentView.swift */,
+				54935A732667A6C900608FCA /* Assets.xcassets */,
+				54935A782667A6CA00608FCA /* Info.plist */,
+				54935A752667A6C900608FCA /* Preview Content */,
+			);
+			path = BitBrowser;
+			sourceTree = "<group>";
+		};
+		54935A752667A6C900608FCA /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				54935A762667A6C900608FCA /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		54935A802667A6CC00608FCA /* BitBrowserTests */ = {
+			isa = PBXGroup;
+			children = (
+				54935A812667A6CC00608FCA /* BitBrowserTests.swift */,
+				54935A832667A6CC00608FCA /* Info.plist */,
+			);
+			path = BitBrowserTests;
+			sourceTree = "<group>";
+		};
+		54935A8B2667A6CC00608FCA /* BitBrowserUITests */ = {
+			isa = PBXGroup;
+			children = (
+				54935A8C2667A6CC00608FCA /* BitBrowserUITests.swift */,
+				54935A8E2667A6CC00608FCA /* Info.plist */,
+			);
+			path = BitBrowserUITests;
+			sourceTree = "<group>";
+		};
+		977F5492185373810A0FEDDC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B6CD55F1BB0816DA7774AA4C /* Pods-BitBrowser.debug.xcconfig */,
+				598583E2C8F41B32C1F69AA5 /* Pods-BitBrowser.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C02AF35393E5D679FD89AAE8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058BEF841A90D0412931DEB /* Pods_BitBrowser.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		54935A6B2667A69300608FCA /* BitBrowser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54935A912667A6CD00608FCA /* Build configuration list for PBXNativeTarget "BitBrowser" */;
+			buildPhases = (
+				E4BB0D33EB59A34AF34EC7C4 /* [CP] Check Pods Manifest.lock */,
+				54935A682667A69300608FCA /* Sources */,
+				54935A692667A69300608FCA /* Frameworks */,
+				54935A6A2667A69300608FCA /* Resources */,
+				362B1E7DCBA96D611B2FA31E /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BitBrowser;
+			productName = BitBrowser;
+			productReference = 54935A6C2667A69400608FCA /* BitBrowser.app */;
+			productType = "com.apple.product-type.application";
+		};
+		54935A7C2667A6CC00608FCA /* BitBrowserTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54935A942667A6CD00608FCA /* Build configuration list for PBXNativeTarget "BitBrowserTests" */;
+			buildPhases = (
+				54935A792667A6CC00608FCA /* Sources */,
+				54935A7A2667A6CC00608FCA /* Frameworks */,
+				54935A7B2667A6CC00608FCA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				54935A7F2667A6CC00608FCA /* PBXTargetDependency */,
+			);
+			name = BitBrowserTests;
+			productName = BitBrowserTests;
+			productReference = 54935A7D2667A6CC00608FCA /* BitBrowserTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		54935A872667A6CC00608FCA /* BitBrowserUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54935A972667A6CD00608FCA /* Build configuration list for PBXNativeTarget "BitBrowserUITests" */;
+			buildPhases = (
+				54935A842667A6CC00608FCA /* Sources */,
+				54935A852667A6CC00608FCA /* Frameworks */,
+				54935A862667A6CC00608FCA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				54935A8A2667A6CC00608FCA /* PBXTargetDependency */,
+			);
+			name = BitBrowserUITests;
+			productName = BitBrowserUITests;
+			productReference = 54935A882667A6CC00608FCA /* BitBrowserUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		54935A642667A69100608FCA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					54935A6B2667A69300608FCA = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					54935A7C2667A6CC00608FCA = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 54935A6B2667A69300608FCA;
+					};
+					54935A872667A6CC00608FCA = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 54935A6B2667A69300608FCA;
+					};
+				};
+			};
+			buildConfigurationList = 54935A672667A69100608FCA /* Build configuration list for PBXProject "BitBrowser" */;
+			compatibilityVersion = "Xcode 10.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 54935A632667A69100608FCA;
+			productRefGroup = 54935A6D2667A69400608FCA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				54935A6B2667A69300608FCA /* BitBrowser */,
+				54935A7C2667A6CC00608FCA /* BitBrowserTests */,
+				54935A872667A6CC00608FCA /* BitBrowserUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		54935A6A2667A69300608FCA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54935A772667A6C900608FCA /* Preview Assets.xcassets in Resources */,
+				54935A742667A6C900608FCA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54935A7B2667A6CC00608FCA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54935A862667A6CC00608FCA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		362B1E7DCBA96D611B2FA31E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BitBrowser/Pods-BitBrowser-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BitBrowser/Pods-BitBrowser-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BitBrowser/Pods-BitBrowser-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4BB0D33EB59A34AF34EC7C4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BitBrowser-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		54935A682667A69300608FCA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54935A722667A69500608FCA /* ContentView.swift in Sources */,
+				542D088C2668841E000CE6EE /* TestApiService.swift in Sources */,
+				54935A702667A69500608FCA /* BitBrowserApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54935A792667A6CC00608FCA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54935A822667A6CC00608FCA /* BitBrowserTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54935A842667A6CC00608FCA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54935A8D2667A6CC00608FCA /* BitBrowserUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		54935A7F2667A6CC00608FCA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 54935A6B2667A69300608FCA /* BitBrowser */;
+			targetProxy = 54935A7E2667A6CC00608FCA /* PBXContainerItemProxy */;
+		};
+		54935A8A2667A6CC00608FCA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 54935A6B2667A69300608FCA /* BitBrowser */;
+			targetProxy = 54935A892667A6CC00608FCA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		54935A8F2667A6CC00608FCA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		54935A902667A6CD00608FCA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		54935A922667A6CD00608FCA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6CD55F1BB0816DA7774AA4C /* Pods-BitBrowser.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"BitBrowser/Preview Content\"";
+				DEVELOPMENT_TEAM = SDZ7RVCJRA;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = BitBrowser/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = BitDance.BitBrowser;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		54935A932667A6CD00608FCA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 598583E2C8F41B32C1F69AA5 /* Pods-BitBrowser.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"BitBrowser/Preview Content\"";
+				DEVELOPMENT_TEAM = SDZ7RVCJRA;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = BitBrowser/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = BitDance.BitBrowser;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		54935A952667A6CD00608FCA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SDZ7RVCJRA;
+				INFOPLIST_FILE = BitBrowserTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = BitDance.BitBrowserTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BitBrowser.app/BitBrowser";
+			};
+			name = Debug;
+		};
+		54935A962667A6CD00608FCA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SDZ7RVCJRA;
+				INFOPLIST_FILE = BitBrowserTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = BitDance.BitBrowserTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BitBrowser.app/BitBrowser";
+			};
+			name = Release;
+		};
+		54935A982667A6CD00608FCA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SDZ7RVCJRA;
+				INFOPLIST_FILE = BitBrowserUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = BitDance.BitBrowserUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BitBrowser;
+			};
+			name = Debug;
+		};
+		54935A992667A6CD00608FCA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SDZ7RVCJRA;
+				INFOPLIST_FILE = BitBrowserUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = BitDance.BitBrowserUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BitBrowser;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		54935A672667A69100608FCA /* Build configuration list for PBXProject "BitBrowser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54935A8F2667A6CC00608FCA /* Debug */,
+				54935A902667A6CD00608FCA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54935A912667A6CD00608FCA /* Build configuration list for PBXNativeTarget "BitBrowser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54935A922667A6CD00608FCA /* Debug */,
+				54935A932667A6CD00608FCA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54935A942667A6CD00608FCA /* Build configuration list for PBXNativeTarget "BitBrowserTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54935A952667A6CD00608FCA /* Debug */,
+				54935A962667A6CD00608FCA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54935A972667A6CD00608FCA /* Build configuration list for PBXNativeTarget "BitBrowserUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54935A982667A6CD00608FCA /* Debug */,
+				54935A992667A6CD00608FCA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 54935A642667A69100608FCA /* Project object */;
+}
