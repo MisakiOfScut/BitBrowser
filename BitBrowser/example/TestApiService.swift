@@ -16,10 +16,11 @@ enum TestApiService {
 }
 
 extension TestApiService : TargetType{
+    //请求基本路径
     var baseURL: URL {
         return URL(string: TestApiConstant.baseURL)!
     }
-    
+    //请求路径
     var path: String {
         switch self {
         case .getNews:
@@ -29,7 +30,7 @@ extension TestApiService : TargetType{
             return ""
         }
     }
-    
+    //请求属于GET OR POST
     var method: Moya.Method {
         switch self {
         case .getNews:
@@ -38,7 +39,7 @@ extension TestApiService : TargetType{
             return .get
         }
     }
-    
+    //设置请求参数（body中的key-value对）
     var parameters : [String:Any]? {
         switch self {
             case .getNews:
@@ -47,7 +48,7 @@ extension TestApiService : TargetType{
             return nil
         }
     }
-    
+    //请求参数编码
     var parametersEncoding : Moya.ParameterEncoding{
         switch self {
         case .getNews:
@@ -57,7 +58,7 @@ extension TestApiService : TargetType{
             return URLEncoding.default
         }
     }
-    
+    //设置request body
     var task: Task {
         if let reqParameters = parameters{
             //A requests body set with encoded parameters.
@@ -65,7 +66,7 @@ extension TestApiService : TargetType{
         }
         return .requestPlain //A request with no additional data.
     }
-    
+    //设置请求头
     var headers: [String : String]? {
         switch self {
             case .getNews:
@@ -77,7 +78,7 @@ extension TestApiService : TargetType{
             return nil
         }
     }
-    
+    //测试用
     var sampleData: Data {
         switch self {
         case .getNews:

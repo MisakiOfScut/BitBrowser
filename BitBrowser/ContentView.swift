@@ -18,7 +18,13 @@ struct ContentView: View {
                 }
             }
         }.onAppear {
-            tp.fetchData()
+//tp.fetchData()
+//            let db = SQLiteManager.sqliteManager.getDB()
+//            do{
+//                try db?.prepare("select * from null")
+//            }catch{
+//                print(error)
+//            }
         }.onDisappear {
             print("ContentView disappeared!")
         }

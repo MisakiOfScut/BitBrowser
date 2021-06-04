@@ -18,6 +18,8 @@
 		54FA7D472669CB67002AE850 /* TestPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA7D462669CB67002AE850 /* TestPresenter.swift */; };
 		54FA7D492669CC33002AE850 /* TestNewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA7D482669CC33002AE850 /* TestNewsService.swift */; };
 		54FA7D4B2669CFD8002AE850 /* TestNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA7D4A2669CFD8002AE850 /* TestNews.swift */; };
+		54FA7D4E266A4432002AE850 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA7D4D266A4432002AE850 /* Response.swift */; };
+		54FA7D50266A4F1C002AE850 /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA7D4F266A4F1C002AE850 /* SQLiteManager.swift */; };
 		D96B7DC28232DF2C6B2FE10F /* Pods_BitBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058BEF841A90D0412931DEB /* Pods_BitBrowser.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +60,8 @@
 		54FA7D462669CB67002AE850 /* TestPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPresenter.swift; sourceTree = "<group>"; };
 		54FA7D482669CC33002AE850 /* TestNewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNewsService.swift; sourceTree = "<group>"; };
 		54FA7D4A2669CFD8002AE850 /* TestNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNews.swift; sourceTree = "<group>"; };
+		54FA7D4D266A4432002AE850 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		54FA7D4F266A4F1C002AE850 /* SQLiteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
 		598583E2C8F41B32C1F69AA5 /* Pods-BitBrowser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBrowser.release.xcconfig"; path = "Target Support Files/Pods-BitBrowser/Pods-BitBrowser.release.xcconfig"; sourceTree = "<group>"; };
 		B6CD55F1BB0816DA7774AA4C /* Pods-BitBrowser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBrowser.debug.xcconfig"; path = "Target Support Files/Pods-BitBrowser/Pods-BitBrowser.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,6 +130,7 @@
 		54935A6E2667A69400608FCA /* BitBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				54FA7D4C266A432F002AE850 /* utils */,
 				542D088A266882D2000CE6EE /* example */,
 				54935A6F2667A69500608FCA /* BitBrowserApp.swift */,
 				54935A712667A69500608FCA /* ContentView.swift */,
@@ -160,6 +165,15 @@
 				54935A8E2667A6CC00608FCA /* Info.plist */,
 			);
 			path = BitBrowserUITests;
+			sourceTree = "<group>";
+		};
+		54FA7D4C266A432F002AE850 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				54FA7D4D266A4432002AE850 /* Response.swift */,
+				54FA7D4F266A4F1C002AE850 /* SQLiteManager.swift */,
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 		977F5492185373810A0FEDDC /* Pods */ = {
@@ -352,11 +366,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54FA7D4E266A4432002AE850 /* Response.swift in Sources */,
 				54FA7D4B2669CFD8002AE850 /* TestNews.swift in Sources */,
 				54FA7D492669CC33002AE850 /* TestNewsService.swift in Sources */,
 				54935A722667A69500608FCA /* ContentView.swift in Sources */,
 				542D088C2668841E000CE6EE /* TestApiService.swift in Sources */,
 				54FA7D472669CB67002AE850 /* TestPresenter.swift in Sources */,
+				54FA7D50266A4F1C002AE850 /* SQLiteManager.swift in Sources */,
 				54935A702667A69500608FCA /* BitBrowserApp.swift in Sources */,
 				54FA7D452669BF63002AE850 /* Constant.swift in Sources */,
 			);

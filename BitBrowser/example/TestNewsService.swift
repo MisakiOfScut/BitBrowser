@@ -4,35 +4,24 @@
 //
 //  Created by ws on 2021/6/4.
 //
-import RxSwift
 import ObjectMapper
 
 class TestNewsService {
-    static let bag = DisposeBag()
-    static func getNews(){
-        TestApiProvider.rx.request(TestApiService.getNews).subscribe{ event in
-            switch event{
+    static func getNews(callback: @escaping(Bool, TestNews?, Error?)->Void){
+        TestApiProvider.request(TestApiService.getNews){ result in
+            switch result{
             case let .success(response):
-                if response.statusCode == 200{
-                    var json : Any?
-                    do{
-                        json = try JSONSerialization.jsonObject(with: response.data, options: [])
-                    }catch let error as NSError{
-                        print(error)
-                    }
-                    
-                    let data = Mapper<TestNews>().map(JSONObject: json)
-                    print(data ?? "null")
-                    
-                    //callback(true, data)
+                if response.success{
+                    let data = Mapper<TestNews>().map(JSONObject: response.json)
+                    callback(true, data, nil)
                 }else{
-                    print("false",response.statusCode, response.description)
+                    print(response.statusCode, response.description)
                 }
             
-            case let .error(error):
+            case let .failure(error):
                 print(error)
+                callback(false, nil, error)
             }
         }
-        .disposed(by: bag)
     }
 }
