@@ -14,6 +14,10 @@
 		54935A772667A6C900608FCA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54935A762667A6C900608FCA /* Preview Assets.xcassets */; };
 		54935A822667A6CC00608FCA /* BitBrowserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54935A812667A6CC00608FCA /* BitBrowserTests.swift */; };
 		54935A8D2667A6CC00608FCA /* BitBrowserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54935A8C2667A6CC00608FCA /* BitBrowserUITests.swift */; };
+		54FA7D452669BF63002AE850 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA7D442669BF63002AE850 /* Constant.swift */; };
+		54FA7D472669CB67002AE850 /* TestPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA7D462669CB67002AE850 /* TestPresenter.swift */; };
+		54FA7D492669CC33002AE850 /* TestNewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA7D482669CC33002AE850 /* TestNewsService.swift */; };
+		54FA7D4B2669CFD8002AE850 /* TestNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA7D4A2669CFD8002AE850 /* TestNews.swift */; };
 		D96B7DC28232DF2C6B2FE10F /* Pods_BitBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058BEF841A90D0412931DEB /* Pods_BitBrowser.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +54,10 @@
 		54935A8C2667A6CC00608FCA /* BitBrowserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitBrowserUITests.swift; sourceTree = "<group>"; };
 		54935A8E2667A6CC00608FCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54DAA2EE2667C04000D032D7 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		54FA7D442669BF63002AE850 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		54FA7D462669CB67002AE850 /* TestPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPresenter.swift; sourceTree = "<group>"; };
+		54FA7D482669CC33002AE850 /* TestNewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNewsService.swift; sourceTree = "<group>"; };
+		54FA7D4A2669CFD8002AE850 /* TestNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNews.swift; sourceTree = "<group>"; };
 		598583E2C8F41B32C1F69AA5 /* Pods-BitBrowser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBrowser.release.xcconfig"; path = "Target Support Files/Pods-BitBrowser/Pods-BitBrowser.release.xcconfig"; sourceTree = "<group>"; };
 		B6CD55F1BB0816DA7774AA4C /* Pods-BitBrowser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBrowser.debug.xcconfig"; path = "Target Support Files/Pods-BitBrowser/Pods-BitBrowser.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +92,10 @@
 			isa = PBXGroup;
 			children = (
 				542D088B2668841E000CE6EE /* TestApiService.swift */,
+				54FA7D442669BF63002AE850 /* Constant.swift */,
+				54FA7D462669CB67002AE850 /* TestPresenter.swift */,
+				54FA7D482669CC33002AE850 /* TestNewsService.swift */,
+				54FA7D4A2669CFD8002AE850 /* TestNews.swift */,
 			);
 			path = example;
 			sourceTree = "<group>";
@@ -340,9 +352,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54FA7D4B2669CFD8002AE850 /* TestNews.swift in Sources */,
+				54FA7D492669CC33002AE850 /* TestNewsService.swift in Sources */,
 				54935A722667A69500608FCA /* ContentView.swift in Sources */,
 				542D088C2668841E000CE6EE /* TestApiService.swift in Sources */,
+				54FA7D472669CB67002AE850 /* TestPresenter.swift in Sources */,
 				54935A702667A69500608FCA /* BitBrowserApp.swift in Sources */,
+				54FA7D452669BF63002AE850 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

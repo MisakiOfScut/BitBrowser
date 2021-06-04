@@ -1,17 +1,19 @@
 PODS:
   - Alamofire (5.4.3)
-  - Moya (14.0.0):
-    - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
+  - Moya/RxSwift (14.0.0):
+    - Moya/Core
+    - RxSwift (~> 5.0)
   - ObjectMapper (3.5.3)
+  - RxSwift (5.1.2)
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
 
 DEPENDENCIES:
   - Alamofire
-  - Moya (~> 14.0)
+  - Moya/RxSwift (~> 14.0)
   - ObjectMapper (~> 3.5)
   - SQLite.swift (~> 0.12.0)
 
@@ -20,14 +22,16 @@ SPEC REPOS:
     - Alamofire
     - Moya
     - ObjectMapper
+    - RxSwift
     - SQLite.swift
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
+  RxSwift: 1e2e1f9570186967f617e49128ed26ccf1bafc8e
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
 
-PODFILE CHECKSUM: 6de15e1a875fe0fd32446c85024242c289df8e02
+PODFILE CHECKSUM: 713ca2f51aa0e45cf66eb8cdce91956d49d96b0b
 
 COCOAPODS: 1.10.1

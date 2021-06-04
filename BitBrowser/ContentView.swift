@@ -7,10 +7,22 @@
 
 import SwiftUI
 
+let tp = TestPresenter()
+
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            VStack {
+                NavigationLink(destination: ContentView()) {
+                    Text("Hello, world!").padding()
+                }
+            }
+        }.onAppear {
+            tp.fetchData()
+        }.onDisappear {
+            print("ContentView disappeared!")
+        }
+
     }
 }
 
