@@ -13,16 +13,12 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                NavigationLink(destination: ContentView()) {
-                    Text("Hello, world!").padding()
-                }
-            }
-        }.onAppear {
-            
-        }.onDisappear {
-            print("ContentView disappeared!")
+                WebView(url: URL(string: "https://www.baidu.com")!)
+                    .frame(minHeight: 0, maxHeight: .infinity)
+                BottomTabView()
+            }.navigationBarHidden(true)
         }
-
+        .edgesIgnoringSafeArea(.top)
     }
 }
 
