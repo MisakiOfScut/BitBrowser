@@ -1,0 +1,40 @@
+//
+//  UserService.swift
+//  BitBrowser
+//
+//  Created by ws on 2021/6/7.
+//
+
+import Foundation
+import Moya
+import ObjectMapper
+
+class UserService{
+    static func login(username: String, password: String, callback: @escaping(Bool, GeneralResp?, Error?)->Void){
+        UserApiProvider.request(UserApiService.login(username: username, password: password)){ result in
+            switch result{
+            case let .success(response):
+                print(response.json)
+                let data = Mapper<GeneralResp>().map(JSONObject: response.json)
+                callback(response.success, data, nil)
+            case let .failure(error):
+                print(error)
+                callback(false, nil, error)
+            }
+        }
+    }
+    
+    static func register(username: String, password: String, callback: @escaping(Bool, GeneralResp?, Error?)->Void){
+        UserApiProvider.request(UserApiService.register(username: username, password: password)){ result in
+            switch result{
+            case let .success(response):
+                print(response.json)
+                let data = Mapper<GeneralResp>().map(JSONObject: response.json)
+                callback(response.success, data, nil)
+            case let .failure(error):
+                print(error)
+                callback(false, nil, error)
+            }
+        }
+    }
+}
