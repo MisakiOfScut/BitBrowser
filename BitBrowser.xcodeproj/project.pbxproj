@@ -19,6 +19,9 @@
 		54FA7D4B2669CFD8002AE850 /* TestNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA7D4A2669CFD8002AE850 /* TestNews.swift */; };
 		54FA7D4E266A4432002AE850 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA7D4D266A4432002AE850 /* Response.swift */; };
 		54FA7D50266A4F1C002AE850 /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA7D4F266A4F1C002AE850 /* SQLiteManager.swift */; };
+		938F1FE4266E4F8B008D8874 /* BottomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938F1FE3266E4F8B008D8874 /* BottomTabView.swift */; };
+		938F1FEE266F0F4E008D8874 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938F1FED266F0F4E008D8874 /* WebView.swift */; };
+		938F1FF7266F135F008D8874 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938F1FF6266F135F008D8874 /* BookmarkView.swift */; };
 		9C8C80E6266E0F6500BC2481 /* TestUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C80E5266E0F6500BC2481 /* TestUIView.swift */; };
 		D96B7DC28232DF2C6B2FE10F /* Pods_BitBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058BEF841A90D0412931DEB /* Pods_BitBrowser.framework */; };
 /* End PBXBuildFile section */
@@ -62,6 +65,9 @@
 		54FA7D4D266A4432002AE850 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		54FA7D4F266A4F1C002AE850 /* SQLiteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
 		598583E2C8F41B32C1F69AA5 /* Pods-BitBrowser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBrowser.release.xcconfig"; path = "Target Support Files/Pods-BitBrowser/Pods-BitBrowser.release.xcconfig"; sourceTree = "<group>"; };
+		938F1FE3266E4F8B008D8874 /* BottomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabView.swift; sourceTree = "<group>"; };
+		938F1FED266F0F4E008D8874 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		938F1FF6266F135F008D8874 /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
 		9C8C80E5266E0F6500BC2481 /* TestUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUIView.swift; sourceTree = "<group>"; };
 		B6CD55F1BB0816DA7774AA4C /* Pods-BitBrowser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBrowser.debug.xcconfig"; path = "Target Support Files/Pods-BitBrowser/Pods-BitBrowser.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +136,8 @@
 		54935A6E2667A69400608FCA /* BitBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				938F1FF5266F1348008D8874 /* BookMark */,
+				938F1FE1266E4EFB008D8874 /* common */,
 				54FA7D4C266A432F002AE850 /* utils */,
 				542D088A266882D2000CE6EE /* example */,
 				54935A6F2667A69500608FCA /* BitBrowserApp.swift */,
@@ -174,6 +182,39 @@
 				54FA7D4F266A4F1C002AE850 /* SQLiteManager.swift */,
 			);
 			path = utils;
+			sourceTree = "<group>";
+		};
+		938F1FE1266E4EFB008D8874 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				938F1FEC266F0F37008D8874 /* WebView */,
+				938F1FE2266E4F30008D8874 /* BottomTab */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		938F1FE2266E4F30008D8874 /* BottomTab */ = {
+			isa = PBXGroup;
+			children = (
+				938F1FE3266E4F8B008D8874 /* BottomTabView.swift */,
+			);
+			path = BottomTab;
+			sourceTree = "<group>";
+		};
+		938F1FEC266F0F37008D8874 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				938F1FED266F0F4E008D8874 /* WebView.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
+		938F1FF5266F1348008D8874 /* BookMark */ = {
+			isa = PBXGroup;
+			children = (
+				938F1FF6266F135F008D8874 /* BookmarkView.swift */,
+			);
+			path = BookMark;
 			sourceTree = "<group>";
 		};
 		977F5492185373810A0FEDDC /* Pods */ = {
@@ -369,12 +410,15 @@
 				54FA7D4E266A4432002AE850 /* Response.swift in Sources */,
 				54FA7D4B2669CFD8002AE850 /* TestNews.swift in Sources */,
 				54FA7D492669CC33002AE850 /* TestNewsService.swift in Sources */,
+				938F1FE4266E4F8B008D8874 /* BottomTabView.swift in Sources */,
 				54935A722667A69500608FCA /* ContentView.swift in Sources */,
 				9C8C80E6266E0F6500BC2481 /* TestUIView.swift in Sources */,
+				938F1FF7266F135F008D8874 /* BookmarkView.swift in Sources */,
 				542D088C2668841E000CE6EE /* TestApiService.swift in Sources */,
 				54FA7D472669CB67002AE850 /* TestPresenter.swift in Sources */,
 				54FA7D50266A4F1C002AE850 /* SQLiteManager.swift in Sources */,
 				54935A702667A69500608FCA /* BitBrowserApp.swift in Sources */,
+				938F1FEE266F0F4E008D8874 /* WebView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
