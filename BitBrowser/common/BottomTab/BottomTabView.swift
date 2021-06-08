@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct BottomTabView: View {
+    @State var showInfoModal = false
     var body: some View {
         VStack {
-            Spacer()
             HStack(){
                 Image("arrowLeft")
                 Spacer()
@@ -26,7 +26,13 @@ struct BottomTabView: View {
                 }
                 Spacer()
                 Image("me")
-                    .scaleEffect(CGSize(width: 0.8, height: 0.8))
+                    .scaleEffect(0.8)
+                    .onTapGesture {
+                        self.showInfoModal = true
+                    }
+                    .sheet(isPresented: $showInfoModal) {
+                        InfoModalView(showModal: self.showInfoModal)
+                    }
             }
             .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity)
             .padding()

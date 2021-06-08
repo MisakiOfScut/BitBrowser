@@ -8,7 +8,7 @@
 import SwiftUI
 import WebKit
 
-struct WebView: UIViewRepresentable {
+struct WebView: UIViewRepresentable, View {
     let url: URL
     func makeUIView(context: UIViewRepresentableContext<WebView>) -> WKWebView {
         let webview = WKWebView()
@@ -22,6 +22,7 @@ struct WebView: UIViewRepresentable {
         let request = URLRequest(url: self.url, cachePolicy: .returnCacheDataElseLoad)
         webview.load(request)
     }
+    
 }
 
 struct WebView_Previews: PreviewProvider {

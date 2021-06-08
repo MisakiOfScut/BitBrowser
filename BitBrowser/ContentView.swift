@@ -18,6 +18,7 @@ struct ContentView: View {
                 BottomTabView()
             }.navigationBarHidden(true)
         }
+        .edgesIgnoringSafeArea(.top)
     }
 }
 
