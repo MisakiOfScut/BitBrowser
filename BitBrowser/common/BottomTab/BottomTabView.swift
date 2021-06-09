@@ -9,12 +9,19 @@ import SwiftUI
 
 struct BottomTabView: View {
     @State var showInfoModal = false
+    @EnvironmentObject var web: Web
     var body: some View {
         VStack {
             HStack(){
                 Image("arrowLeft")
+                    .onTapGesture {
+                        web.webview.goBack()
+                    }
                 Spacer()
                 Image("arrowRight")
+                    .onTapGesture {
+                        web.webview.goForward()
+                    }
                 Spacer()
                 Image("home")
                     .scaleEffect(CGSize(width: 0.8, height: 0.8))
