@@ -31,7 +31,7 @@ struct BottomTabView: View {
                         self.showInfoModal = true
                     }
                     .sheet(isPresented: $showInfoModal) {
-                        InfoModalView(showModal: self.showInfoModal)
+                        InfoModalView(showModal: self.$showInfoModal)
                     }
             }
             .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity)

@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct InfoModalView: View {
-    var showModal: Bool
+    @Binding var showModal: Bool
     var body: some View {
         NavigationView {
             VStack {
                 Button("关闭") {
-//                    self.$showModal = false
+                    self.showModal = false
                 }
                 HStack {
                     Button("登录") {
@@ -33,13 +33,15 @@ struct InfoModalView: View {
                         Text("书签")
                     }
                 }.navigationBarHidden(true)
-            }.frame(height: 50)
+            }
         }
     }
 }
 
 struct InfoModalView_Previews: PreviewProvider {
+//    @State var show = true
     static var previews: some View {
-        InfoModalView(showModal: true)
+        Text("hello")
+//        InfoModalView()
     }
 }

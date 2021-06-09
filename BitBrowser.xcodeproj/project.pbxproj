@@ -24,6 +24,7 @@
 		938F1FF7266F135F008D8874 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938F1FF6266F135F008D8874 /* BookmarkView.swift */; };
 		938F2009266F7CB4008D8874 /* InfoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938F2008266F7CB4008D8874 /* InfoModalView.swift */; };
 		938F2012266F85FE008D8874 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938F2011266F85FE008D8874 /* HistoryView.swift */; };
+		938F202726705611008D8874 /* HistoryRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938F202626705611008D8874 /* HistoryRecord.swift */; };
 		9C8C80E6266E0F6500BC2481 /* TestUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C80E5266E0F6500BC2481 /* TestUIView.swift */; };
 		D96B7DC28232DF2C6B2FE10F /* Pods_BitBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058BEF841A90D0412931DEB /* Pods_BitBrowser.framework */; };
 /* End PBXBuildFile section */
@@ -72,6 +73,7 @@
 		938F1FF6266F135F008D8874 /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
 		938F2008266F7CB4008D8874 /* InfoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoModalView.swift; sourceTree = "<group>"; };
 		938F2011266F85FE008D8874 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		938F202626705611008D8874 /* HistoryRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRecord.swift; sourceTree = "<group>"; };
 		9C8C80E5266E0F6500BC2481 /* TestUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUIView.swift; sourceTree = "<group>"; };
 		B6CD55F1BB0816DA7774AA4C /* Pods-BitBrowser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBrowser.debug.xcconfig"; path = "Target Support Files/Pods-BitBrowser/Pods-BitBrowser.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -235,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				938F2011266F85FE008D8874 /* HistoryView.swift */,
+				938F202626705611008D8874 /* HistoryRecord.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				9C8C80E6266E0F6500BC2481 /* TestUIView.swift in Sources */,
 				938F2012266F85FE008D8874 /* HistoryView.swift in Sources */,
 				938F1FF7266F135F008D8874 /* BookmarkView.swift in Sources */,
+				938F202726705611008D8874 /* HistoryRecord.swift in Sources */,
 				542D088C2668841E000CE6EE /* TestApiService.swift in Sources */,
 				54FA7D472669CB67002AE850 /* TestPresenter.swift in Sources */,
 				54FA7D50266A4F1C002AE850 /* SQLiteManager.swift in Sources */,
