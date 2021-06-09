@@ -8,25 +8,35 @@
 import SwiftUI
 import WebKit
 
-struct WebView: UIViewRepresentable, View {
-    let url: URL
-    func makeUIView(context: UIViewRepresentableContext<WebView>) -> WKWebView {
-        let webview = WKWebView()
-        
-        let request = URLRequest(url: self.url, cachePolicy: .returnCacheDataElseLoad)
-        webview.load(request)
-        return webview
+struct WebView: UIViewRepresentable {
+    let request: URLRequest
+    var webview: WKWebView?
+    
+    init(web: WKWebView?, req: URLRequest) {
+        self.webview = WKWebView()
+        self.request = req
     }
     
-    func updateUIView(_ webview: WKWebView, context: UIViewRepresentableContext<WebView>) {
-        let request = URLRequest(url: self.url, cachePolicy: .returnCacheDataElseLoad)
-        webview.load(request)
+    func makeUIView(context: Context) -> WKWebView  {
+        return webview!
+    }
+    
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        uiView.load(request)
+    }
+    
+    func goBack(){
+        webview?.goBack()
+    }
+    
+    func goForward(){
+        webview?.goForward()
     }
     
 }
 
 struct WebView_Previews: PreviewProvider {
     static var previews: some View {
-        WebView(url: URL(string: "https://www.baidu.com")!)
+        WebView(web: nil, req: URLRequest(url: URL(string: "https://www.baidu.com")!))
     }
 }
