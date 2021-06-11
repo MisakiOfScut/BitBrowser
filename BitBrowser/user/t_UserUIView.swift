@@ -20,7 +20,9 @@ struct t_UserUIView: View {
         Button("login", action: {
             //p.login(username: username, password: password)
             
-            p.register(username: "dd", password: "123456", email: "724223086@qq.com", vaildCode: "134309")
+            //p.register(username: "dd", password: "123456", email: "724223086@qq.com", vaildCode: "134309")
+            
+            p.sendMail(email: "724223086@qq.com")
         })
     }
 }

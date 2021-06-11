@@ -13,6 +13,7 @@ let UserApiProvider = MoyaProvider<UserApiService>()
 enum UserApiService{
     case login(username: String, password: String)
     case register(username: String, password: String, email: String, vaildCode: String)
+    case sendMail(email: String)
 }
 
 struct UserApiConstant{
@@ -30,13 +31,16 @@ extension UserApiService: TargetType{
             return "/login"
         case .register:
             return "/register"
+        case .sendMail:
+            return "/emailService"
         }
     }
     
     var method: Moya.Method {
         switch self{
         case .login,
-             .register:
+             .register,
+             .sendMail:
             return .post
         }
     }
@@ -56,6 +60,8 @@ extension UserApiService: TargetType{
                 "username": username,
                 "password" : password
             ]
+        case .sendMail(let email):
+            return ["email" : email]
         //default: return nil
         }
     }
@@ -63,7 +69,8 @@ extension UserApiService: TargetType{
     var parametersEncoding : Moya.ParameterEncoding{
         switch self {
         case .login,
-             .register:
+             .register,
+             .sendMail:
             return JSONEncoding.default //POST
         default:
             return URLEncoding.default//GET

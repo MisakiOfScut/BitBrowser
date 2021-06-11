@@ -30,7 +30,7 @@ class UserService{
             case let .success(response):
                 //print(response.json)
                 let data = Mapper<GeneralResp>().map(JSONObject: response.json)
-                print(data?.msg)
+                //print(data?.msg)
                 callback(response.success, data, nil)
             case let .failure(error):
                 print(error)
@@ -39,5 +39,18 @@ class UserService{
         }
     }
     
-    
+    static func sendMail(email: String, callback: @escaping(Bool, GeneralResp?, Error?)->Void){
+        UserApiProvider.request(.sendMail(email: email)){ result in
+            switch result{
+            case let .success(response):
+                //print(response.json)
+                let data = Mapper<GeneralResp>().map(JSONObject: response.json)
+                print(data?.msg)
+                callback(response.success, data, nil)
+            case let .failure(error):
+                print(error)
+                callback(false, nil, error)
+            }
+        }
+    }
 }

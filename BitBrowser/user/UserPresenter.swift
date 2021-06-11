@@ -42,4 +42,17 @@ class UserPresenter {
         }
     }
     
+    func sendMail(email: String){
+        UserService.sendMail(email: email){ (success: Bool, resp: GeneralResp?, error:Error?) in
+            if success{
+                
+            }else{
+                if error != nil{
+                    print(error)
+                }else{
+                    
+                }
+            }
+        }
+    }
 }
