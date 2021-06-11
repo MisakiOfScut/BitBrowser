@@ -12,7 +12,7 @@ import SwiftUI
 struct BitBrowserApp: App {
     var body: some Scene {
         WindowGroup {
-            t_UserUIView()
+            LoginView()
         }
     }
 }

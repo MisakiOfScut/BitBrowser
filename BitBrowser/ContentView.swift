@@ -1,4 +1,4 @@
-//
+ //
 //  ContentView.swift
 //  BitBrowser
 //
@@ -8,17 +8,22 @@
 import SwiftUI
 
 let tp = TestPresenter()
+ 
+ class Web: ObservableObject {
+    @Published var webview = WebView(web: nil, req: URLRequest(url: URL(string: "https://www.baidu.com")!))
+ }
 
 struct ContentView: View {
+    let web = Web()
     var body: some View {
         NavigationView {
             VStack {
-                WebView(url: URL(string: "https://www.baidu.com")!)
-                    .frame(minHeight: 0, maxHeight: .infinity)
+                web.webview.frame(minHeight: 0, maxHeight: .infinity)
                 BottomTabView()
             }.navigationBarHidden(true)
         }
         .edgesIgnoringSafeArea(.top)
+        .environmentObject(web)
     }
 }
 

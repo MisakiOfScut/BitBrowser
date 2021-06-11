@@ -14,8 +14,8 @@ class UserService{
         UserApiProvider.request(UserApiService.login(username: username, password: password)){ result in
             switch result{
             case let .success(response):
-                //print(response.json)
                 let data = Mapper<GeneralResp>().map(JSONObject: response.json)
+                print(data?.msg)
                 callback(response.success, data, nil)
             case let .failure(error):
                 print(error)
