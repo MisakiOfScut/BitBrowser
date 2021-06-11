@@ -12,7 +12,7 @@ let UserApiProvider = MoyaProvider<UserApiService>()
 
 enum UserApiService{
     case login(username: String, password: String)
-    case register(username: String, password: String)
+    case register(username: String, password: String, email: String, vaildCode: String)
 }
 
 struct UserApiConstant{
@@ -44,10 +44,12 @@ extension UserApiService: TargetType{
     //设置请求参数（body中的key-value对）
     var parameters : [String:Any]? {
         switch self {
-        case .register(let username, let password):
+        case .register(let username, let password, let email, let validCode):
             return [
                 "username": username,
-                "password" : password
+                "password" : password,
+                "email" : email,
+                "validCode" : validCode
             ]
         case .login(let username, let password):
             return [

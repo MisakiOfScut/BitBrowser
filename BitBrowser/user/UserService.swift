@@ -14,7 +14,7 @@ class UserService{
         UserApiProvider.request(UserApiService.login(username: username, password: password)){ result in
             switch result{
             case let .success(response):
-                print(response.json)
+                //print(response.json)
                 let data = Mapper<GeneralResp>().map(JSONObject: response.json)
                 callback(response.success, data, nil)
             case let .failure(error):
@@ -24,12 +24,13 @@ class UserService{
         }
     }
     
-    static func register(username: String, password: String, callback: @escaping(Bool, GeneralResp?, Error?)->Void){
-        UserApiProvider.request(UserApiService.register(username: username, password: password)){ result in
+    static func register(username: String, password: String, email: String, vaildCode: String, callback: @escaping(Bool, GeneralResp?, Error?)->Void){
+        UserApiProvider.request(UserApiService.register(username: username, password: password, email: email, vaildCode: vaildCode)){ result in
             switch result{
             case let .success(response):
-                print(response.json)
+                //print(response.json)
                 let data = Mapper<GeneralResp>().map(JSONObject: response.json)
+                print(data?.msg)
                 callback(response.success, data, nil)
             case let .failure(error):
                 print(error)
@@ -37,4 +38,6 @@ class UserService{
             }
         }
     }
+    
+    
 }

@@ -26,19 +26,20 @@ class UserPresenter {
         }
     }
     
-    func register(username: String, password: String){
+    func register(username: String, password: String, email: String, vaildCode: String){
         // encoded password
         
-        UserService.register(username: username, password: password){ (success: Bool, resp: GeneralResp?, error:Error?) in
+        UserService.register(username: username, password: password, email: email, vaildCode: vaildCode){ (success: Bool, resp: GeneralResp?, error:Error?) in
             if success{
                 
             }else{
                 if error != nil{
-                    
+                    print(error)
                 }else{
                     
                 }
             }
         }
     }
+    
 }

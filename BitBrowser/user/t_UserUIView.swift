@@ -18,7 +18,9 @@ struct t_UserUIView: View {
         TextField("username", text: $username)
         TextField("password", text: $password)
         Button("login", action: {
-            p.login(username: username, password: password)
+            //p.login(username: username, password: password)
+            
+            p.register(username: "dd", password: "123456", email: "724223086@qq.com", vaildCode: "134309")
         })
     }
 }
