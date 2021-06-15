@@ -12,7 +12,12 @@ import SwiftUI
 struct LoginView: View {
     @State var account:String = ""
     @State var password:String = ""
-    let userPresenter = UserPresenter()
+    @State var showingAlert:Bool = false
+    @State var showingSuccess:Bool = false
+    @ObservedObject var userPresenter = UserPresenter()
+    let dispatchQueue = DispatchQueue(label:"serial")
+    let semaphore = DispatchSemaphore(value: 0)
+    
     
     var body: some View {
         VStack(alignment: .center, spacing: nil){
@@ -41,13 +46,22 @@ struct LoginView: View {
                 .stroke(Color.gray,lineWidth: 2)
             )
             .padding()
+            .alert(isPresented: $userPresenter.login_failed, content: {
+                Alert(title: Text("登陆失败"), message: Text(userPresenter.msg), dismissButton: .default(Text("好的")))
+            })
+            
             Button(action: {
-                userPresenter.login(username: account, password: password)
+                    userPresenter.login(username: account, password: password)
             }){
                 HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing:nil){
                     Text("登录")
                         .foregroundColor(.black)
                 }
+                .alert(isPresented: $userPresenter.login_success, content: {
+                    Alert(title: Text("系统提示"), message: Text(userPresenter.msg), dismissButton: .default(Text("好的")))
+                })
+                
+                
                 .frame(width:150, height:40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .overlay(
                 RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)

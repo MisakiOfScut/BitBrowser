@@ -7,7 +7,12 @@
 
 import Foundation
 
-class UserPresenter {
+class UserPresenter : ObservableObject {
+    
+    @Published var login_success:Bool = false
+    @Published var login_failed:Bool = false
+    var msg:String = ""
+    
     
     func login(username: String, password: String){
         // encoded password
@@ -15,10 +20,18 @@ class UserPresenter {
         UserService.login(username: username, password: password){ (success: Bool, resp: GeneralResp?, error: Error?) in
             if success{
                 //login success
+                if (resp?.success)!{
+                self.login_success = true
+                    self.msg = (resp?.msg)!
+                    print("login success")}
+                else{
+                    self.login_failed = true
+                    self.msg = (resp?.msg)!
+                    print("login failed")
+                }
             }else{
                 if error != nil{
                     //login error
-                    print(error)
                 }else{
                     //login failed
                 }
