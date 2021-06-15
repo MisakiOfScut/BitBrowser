@@ -22,7 +22,8 @@ struct ContentView: View {
                 ZStack(alignment: .bottomTrailing) {
                     web.webview.frame(minHeight: 0, maxHeight: .infinity)
                     InfoModalView()
-                        .offset(x: 0, y: showModal ? geometry.size.height - 236 : 1000)
+                        .offset(x: 0, y: showModal ? geometry.size.height - 236 : geometry.size.height)
+                        .animation(.spring())
                     BottomTabView(showModal: self.$showModal)
 //                        .zIndex(1)
                 }.navigationBarHidden(true)

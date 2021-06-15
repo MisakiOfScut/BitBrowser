@@ -24,6 +24,7 @@ struct BookmarkView: View {
             Text("这是书签页")
             Spacer()
         }
+        .navigationBarHidden(true)
     }
 }
 
