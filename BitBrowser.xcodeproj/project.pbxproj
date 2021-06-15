@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		540F8D62266EF9FB007E3871 /* UserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F8D61266EF9FB007E3871 /* UserPresenter.swift */; };
+		540F8D64266F0306007E3871 /* t_UserUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F8D63266F0306007E3871 /* t_UserUIView.swift */; };
 		542D088C2668841E000CE6EE /* TestApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542D088B2668841E000CE6EE /* TestApiService.swift */; };
 		54935A702667A69500608FCA /* BitBrowserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54935A6F2667A69500608FCA /* BitBrowserApp.swift */; };
 		54935A722667A69500608FCA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54935A712667A69500608FCA /* ContentView.swift */; };
@@ -14,6 +16,10 @@
 		54935A772667A6C900608FCA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54935A762667A6C900608FCA /* Preview Assets.xcassets */; };
 		54935A822667A6CC00608FCA /* BitBrowserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54935A812667A6CC00608FCA /* BitBrowserTests.swift */; };
 		54935A8D2667A6CC00608FCA /* BitBrowserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54935A8C2667A6CC00608FCA /* BitBrowserUITests.swift */; };
+		54A5DEDC266E2F4D00DFC53B /* UserServiceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A5DEDB266E2F4D00DFC53B /* UserServiceApi.swift */; };
+		54A5DEDF266E369F00DFC53B /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A5DEDE266E369F00DFC53B /* UserService.swift */; };
+		54A5DEE1266E372200DFC53B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A5DEE0266E372200DFC53B /* UserModel.swift */; };
+		54A5DEE3266E390500DFC53B /* GeneralResp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A5DEE2266E390500DFC53B /* GeneralResp.swift */; };
 		54FA7D472669CB67002AE850 /* TestPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA7D462669CB67002AE850 /* TestPresenter.swift */; };
 		54FA7D492669CC33002AE850 /* TestNewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA7D482669CC33002AE850 /* TestNewsService.swift */; };
 		54FA7D4B2669CFD8002AE850 /* TestNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA7D4A2669CFD8002AE850 /* TestNews.swift */; };
@@ -49,6 +55,8 @@
 
 /* Begin PBXFileReference section */
 		1058BEF841A90D0412931DEB /* Pods_BitBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		540F8D61266EF9FB007E3871 /* UserPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPresenter.swift; sourceTree = "<group>"; };
+		540F8D63266F0306007E3871 /* t_UserUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = t_UserUIView.swift; sourceTree = "<group>"; };
 		542D088B2668841E000CE6EE /* TestApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestApiService.swift; sourceTree = "<group>"; };
 		54935A6C2667A69400608FCA /* BitBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54935A6F2667A69500608FCA /* BitBrowserApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitBrowserApp.swift; sourceTree = "<group>"; };
@@ -62,6 +70,10 @@
 		54935A882667A6CC00608FCA /* BitBrowserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitBrowserUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54935A8C2667A6CC00608FCA /* BitBrowserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitBrowserUITests.swift; sourceTree = "<group>"; };
 		54935A8E2667A6CC00608FCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54A5DEDB266E2F4D00DFC53B /* UserServiceApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceApi.swift; sourceTree = "<group>"; };
+		54A5DEDE266E369F00DFC53B /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		54A5DEE0266E372200DFC53B /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		54A5DEE2266E390500DFC53B /* GeneralResp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralResp.swift; sourceTree = "<group>"; };
 		54DAA2EE2667C04000D032D7 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		54FA7D462669CB67002AE850 /* TestPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPresenter.swift; sourceTree = "<group>"; };
 		54FA7D482669CC33002AE850 /* TestNewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNewsService.swift; sourceTree = "<group>"; };
@@ -144,7 +156,7 @@
 		54935A6E2667A69400608FCA /* BitBrowser */ = {
 			isa = PBXGroup;
 			children = (
-				938F202B267087EF008D8874 /* Login */,
+				54A5DEDD266E367F00DFC53B /* user */,
 				938F2010266F85EC008D8874 /* History */,
 				938F2007266F7C9A008D8874 /* InfoModal */,
 				938F1FF5266F1348008D8874 /* BookMark */,
@@ -156,6 +168,7 @@
 				54935A732667A6C900608FCA /* Assets.xcassets */,
 				54935A782667A6CA00608FCA /* Info.plist */,
 				54935A752667A6C900608FCA /* Preview Content */,
+				54A5DEDB266E2F4D00DFC53B /* UserServiceApi.swift */,
 			);
 			path = BitBrowser;
 			sourceTree = "<group>";
@@ -186,11 +199,24 @@
 			path = BitBrowserUITests;
 			sourceTree = "<group>";
 		};
+		54A5DEDD266E367F00DFC53B /* user */ = {
+			isa = PBXGroup;
+			children = (
+				54A5DEDE266E369F00DFC53B /* UserService.swift */,
+				54A5DEE0266E372200DFC53B /* UserModel.swift */,
+				540F8D61266EF9FB007E3871 /* UserPresenter.swift */,
+				540F8D63266F0306007E3871 /* t_UserUIView.swift */,
+				938F203726708872008D8874 /* LoginView.swift */,
+			);
+			path = user;
+			sourceTree = "<group>";
+		};
 		54FA7D4C266A432F002AE850 /* utils */ = {
 			isa = PBXGroup;
 			children = (
 				54FA7D4D266A4432002AE850 /* Response.swift */,
 				54FA7D4F266A4F1C002AE850 /* SQLiteManager.swift */,
+				54A5DEE2266E390500DFC53B /* GeneralResp.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -243,14 +269,6 @@
 				938F202626705611008D8874 /* HistoryRecord.swift */,
 			);
 			path = History;
-			sourceTree = "<group>";
-		};
-		938F202B267087EF008D8874 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				938F203726708872008D8874 /* LoginView.swift */,
-			);
-			path = Login;
 			sourceTree = "<group>";
 		};
 		977F5492185373810A0FEDDC /* Pods */ = {
@@ -446,6 +464,7 @@
 				54FA7D4E266A4432002AE850 /* Response.swift in Sources */,
 				54FA7D4B2669CFD8002AE850 /* TestNews.swift in Sources */,
 				54FA7D492669CC33002AE850 /* TestNewsService.swift in Sources */,
+				540F8D62266EF9FB007E3871 /* UserPresenter.swift in Sources */,
 				938F2009266F7CB4008D8874 /* InfoModalView.swift in Sources */,
 				938F1FE4266E4F8B008D8874 /* BottomTabView.swift in Sources */,
 				54935A722667A69500608FCA /* ContentView.swift in Sources */,
@@ -454,9 +473,14 @@
 				938F1FF7266F135F008D8874 /* BookmarkView.swift in Sources */,
 				938F202726705611008D8874 /* HistoryRecord.swift in Sources */,
 				542D088C2668841E000CE6EE /* TestApiService.swift in Sources */,
+				54A5DEDF266E369F00DFC53B /* UserService.swift in Sources */,
 				54FA7D472669CB67002AE850 /* TestPresenter.swift in Sources */,
 				54FA7D50266A4F1C002AE850 /* SQLiteManager.swift in Sources */,
+				54A5DEE3266E390500DFC53B /* GeneralResp.swift in Sources */,
 				54935A702667A69500608FCA /* BitBrowserApp.swift in Sources */,
+				54A5DEE1266E372200DFC53B /* UserModel.swift in Sources */,
+				54A5DEDC266E2F4D00DFC53B /* UserServiceApi.swift in Sources */,
+				540F8D64266F0306007E3871 /* t_UserUIView.swift in Sources */,
 				938F203826708872008D8874 /* LoginView.swift in Sources */,
 				938F1FEE266F0F4E008D8874 /* WebView.swift in Sources */,
 			);

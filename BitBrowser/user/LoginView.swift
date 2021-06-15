@@ -4,16 +4,16 @@
 //
 //  Created by Aaron_Chan on 2021/6/9.
 //
-
 import SwiftUI
 
 //页面数据：账号和密码
-
 struct LoginView: View {
     @State var account:String = ""
     @State var password:String = ""
     
     @Environment(\.presentationMode) private var presentationMode
+    let userPresenter = UserPresenter()
+    
     
     var body: some View {
         VStack {
@@ -38,8 +38,8 @@ struct LoginView: View {
                 }
                 .frame(width:250,height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .overlay(
-                RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
-                    .stroke(Color.gray,lineWidth: 2)
+                    RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
+                        .stroke(Color.gray,lineWidth: 2)
                 )
                 .padding()
                 HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 8){
@@ -47,19 +47,21 @@ struct LoginView: View {
                 }
                 .frame(width:250,height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .overlay(
-                RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
-                    .stroke(Color.gray,lineWidth: 2)
+                    RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
+                        .stroke(Color.gray,lineWidth: 2)
                 )
                 .padding()
-                Button(action: {}){
+                Button(action: {
+                    userPresenter.login(username: account, password: password)
+                }){
                     HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing:nil){
                         Text("登录")
                             .foregroundColor(.black)
                     }
                     .frame(width:150, height:40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .overlay(
-                    RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
-                        .stroke(Color("Color_Login"),lineWidth: 3)
+                        RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
+                            .stroke(Color("Color_Login"),lineWidth: 3)
                     )
                 }
                 .padding(.bottom)
@@ -82,7 +84,7 @@ struct LoginView: View {
             }
         }
         
-      
+        
     }
 }
 
