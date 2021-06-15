@@ -32,8 +32,3 @@ struct t_UserUIView_Previews: PreviewProvider {
         t_UserUIView()
     }
 }
-
-
-
-
-

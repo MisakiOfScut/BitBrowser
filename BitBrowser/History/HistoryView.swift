@@ -15,23 +15,34 @@ struct HistoryView: View {
     
     var temp:String = ""
     var is_printed:Bool=true
-    
+    @Environment(\.presentationMode) private var presentationMode
     
     var body: some View {
-        ScrollView{
-            ForEach(0..<history.recordList.count){item in
-                if item == 0 || history.dateString_date(id: item) != history.dateString_date(id: item-1) {
-                    SingleRecordView_Ahead(record: history.recordList[item],dateDate: history.dateString_date(id: item),dateTime: history.dateString_time(id: item))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 0, style: .continuous)
-                                .stroke(Color.gray,lineWidth: 1)
-                        )}
-                else{
-                    SingleRecordView(record: history.recordList[item],dateDate: history.dateString_date(id: item),dateTime: history.dateString_time(id: item))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 0, style: .continuous)
-                                .stroke(Color.gray,lineWidth: 1)
-                        )
+        
+        VStack {
+            HStack {
+                Image("arrowLeft")
+                    .onTapGesture {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                    .padding(.leading)
+                Spacer()
+            }
+            ScrollView{
+                ForEach(0..<history.recordList.count){item in
+                    if item == 0 || history.dateString_date(id: item) != history.dateString_date(id: item-1) {
+                        SingleRecordView_Ahead(record: history.recordList[item],dateDate: history.dateString_date(id: item),dateTime: history.dateString_time(id: item))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 0, style: .continuous)
+                                    .stroke(Color.gray,lineWidth: 1)
+                            )}
+                    else{
+                        SingleRecordView(record: history.recordList[item],dateDate: history.dateString_date(id: item),dateTime: history.dateString_time(id: item))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 0, style: .continuous)
+                                    .stroke(Color.gray,lineWidth: 1)
+                            )
+                    }
                 }
             }
         }

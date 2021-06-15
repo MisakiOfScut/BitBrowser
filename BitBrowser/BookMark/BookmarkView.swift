@@ -8,8 +8,23 @@
 import SwiftUI
 
 struct BookmarkView: View {
+    
+    @Environment(\.presentationMode) private var presentationMode
+    
     var body: some View {
-        Text("这是书签页")
+        VStack {
+            HStack {
+                Image("arrowLeft")
+                    .onTapGesture {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                    .padding(.leading)
+                Spacer()
+            }
+            Text("这是书签页")
+            Spacer()
+        }
+        .navigationBarHidden(true)
     }
 }
 
