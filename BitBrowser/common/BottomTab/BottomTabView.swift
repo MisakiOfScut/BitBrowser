@@ -25,6 +25,9 @@ struct BottomTabView: View {
             Spacer()
             Image("home")
                 .scaleEffect(CGSize(width: 0.8, height: 0.8))
+                .onTapGesture {
+                    web.webview.load("https://www.baidu.com")
+                }
             Spacer()
             NavigationLink(
                 destination: BookmarkView()) {
@@ -35,7 +38,6 @@ struct BottomTabView: View {
             Image("me")
                 .scaleEffect(0.8)
                 .onTapGesture {
-//                    self.showInfoModal = true
                     self.showModal = !self.showModal
                 }
             //                    .sheet(isPresented: $showInfoModal) {
@@ -46,7 +48,8 @@ struct BottomTabView: View {
             
         }
         .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity)
-        .padding()
+        .padding(.horizontal)
+        .padding(.vertical, 10)
         .background(Color("background1"))
     }
 }

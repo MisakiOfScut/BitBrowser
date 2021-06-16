@@ -20,7 +20,11 @@ struct ContentView: View {
         GeometryReader(content: { geometry in
             NavigationView {
                 ZStack(alignment: .bottomTrailing) {
-                    web.webview.frame(minHeight: 0, maxHeight: .infinity)
+                    VStack(spacing: 0) {
+                        SearchView()
+                        web.webview.frame(minHeight: 0, maxHeight: .infinity)
+                    }
+//                    .edgesIgnoringSafeArea(.top)
                     InfoModalView()
                         .offset(x: 0, y: showModal ? geometry.size.height - 236 : geometry.size.height)
                         .animation(.spring())
