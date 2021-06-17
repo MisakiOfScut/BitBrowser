@@ -22,8 +22,14 @@ class Bookmark: ObservableObject{
             self.count += 1
         }
     }
+    //取消收藏
     func remove(id: Int) {
         self.markList[id].isRemove.toggle()
+    }
+    //新增收藏
+    func add(data: Mark) {
+        self.markList.append(Mark(title: data.title, webUrl: data.webUrl, id: self.count))
+        self.count += 1
     }
 }
 struct Mark: Identifiable{

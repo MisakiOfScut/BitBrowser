@@ -10,13 +10,28 @@ import SwiftUI
 let tp = TestPresenter()
  
  class Web: ObservableObject {
-    @Published var webview = WebView(web: nil, req: URLRequest(url: URL(string: "https://www.baidu.com")!))
+//    @Published var webview = WebView(web: nil, req: URLRequest(url: URL(string: "https://www.baidu.com")!))
+    @Published var webview: WebView
     
+    init() {
+        self.webview = WebView(web: nil, req: URLRequest(url: URL(string: "https://www.baidu.com")!))
+    }
+    init(url: String) {
+        self.webview = WebView(web: nil, req: URLRequest(url: URL(string: url)!))
+    }
  }
 
 struct ContentView: View {
-    let web = Web()
+    var url: String
+//    @ObservedObject var web: Web = Web(url: "http://www.bilibili.com")
     @State var showModal = false;
+    let web: Web
+//    @Binding var web: Web
+    init(url: String) {
+        self.url = url
+        web = Web(url: url)
+    }
+    
     var body: some View {
         GeometryReader(content: { geometry in
             NavigationView {
@@ -41,6 +56,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(url: "https://www.baidu.com")
     }
 }

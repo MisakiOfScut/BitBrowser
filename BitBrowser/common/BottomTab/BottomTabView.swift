@@ -51,6 +51,7 @@ struct BottomTabView: View {
         .padding(.horizontal)
         .padding(.vertical, 10)
         .background(Color("background1"))
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 
