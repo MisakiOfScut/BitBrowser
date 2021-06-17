@@ -26,6 +26,7 @@ class NavigationDelegate: NSObject, WKNavigationDelegate {
     
 //    若输入无效的url，会调用这个方法，返回自定义的404页面
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        print("fail to load =========")
         webView.loadHTMLString(html, baseURL: nil)
     }
     
@@ -34,7 +35,7 @@ class NavigationDelegate: NSObject, WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
 //        请求拦截，为url添加一些前缀
         if var string = navigationAction.request.url?.absoluteString {
-            if (!string.hasPrefix("https://")) {
+            if (!string.hasPrefix("https://") && !string.contains("about:blank")) {
                 if (!string.hasPrefix("www")) {
                     string = "https://www." + string
                 } else {
@@ -45,6 +46,8 @@ class NavigationDelegate: NSObject, WKNavigationDelegate {
                 return
             }
         }
+        print(navigationAction.request.url)
+        print("allow")
         decisionHandler(.allow)
     }
     
