@@ -14,6 +14,7 @@ enum UserApiService{
     case login(username: String, password: String)
     case register(username: String, password: String, email: String, vaildCode: String)
     case sendMail(email: String)
+    case verifyCode(email:String, validCode: String)
 }
 
 struct UserApiConstant{
@@ -33,14 +34,18 @@ extension UserApiService: TargetType{
             return "/register"
         case .sendMail:
             return "/emailService"
+        case .verifyCode:
+            return "/verifyCode"
         }
+        
     }
     
     var method: Moya.Method {
         switch self{
         case .login,
              .register,
-             .sendMail:
+             .sendMail,
+             .verifyCode:
             return .post
         }
     }
@@ -55,25 +60,30 @@ extension UserApiService: TargetType{
                 "email" : email,
                 "validCode" : validCode
             ]
+            
         case .login(let username, let password):
             return [
                 "username": username,
                 "password" : password
             ]
+            
         case .sendMail(let email):
             return ["email" : email]
+            
+        case .verifyCode(let email, let validCode):
+            return [
+                "eamil": email,
+                "validCode": validCode
+            ]
         //default: return nil
         }
     }
     //请求参数编码
     var parametersEncoding : Moya.ParameterEncoding{
         switch self {
-        case .login,
-             .register,
-             .sendMail:
-            return JSONEncoding.default //POST
+            //return URLEncoding.default//GET
         default:
-            return URLEncoding.default//GET
+            return JSONEncoding.default //POST
         }
     }
     

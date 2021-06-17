@@ -22,7 +22,8 @@ struct t_UserUIView: View {
             
             //p.register(username: "dd", password: "123456", email: "724223086@qq.com", vaildCode: "134309")
             
-            p.sendMail(email: "724223086@qq.com")
+            //p.sendMail(email: "724223086@qq.com")
+            p.verifyCode(email: "724223086@qq.com", vaildCode: "123456")
         })
     }
 }

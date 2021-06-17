@@ -53,4 +53,24 @@ class UserService{
             }
         }
     }
+    
+    static func verifyCode(email: String, vaildCode:String, callback: @escaping(Bool, GeneralResp?, Error?)->Void){
+        UserApiProvider.request(.verifyCode(email: email, validCode: vaildCode)){ result in
+            generalCompletion(result: result, callback: callback)
+        }
+    }
+    
+    
+    static func generalCompletion(result: Result<Response, MoyaError>, callback: @escaping(Bool, GeneralResp?, Error?)->Void){
+        switch result{
+        case let .success(response):
+            //print(response.json)
+            let data = Mapper<GeneralResp>().map(JSONObject: response.json)
+            print(data?.msg)
+            callback(response.success, data, nil)
+        case let .failure(error):
+            print(error)
+            callback(false, nil, error)
+        }
+    }
 }
