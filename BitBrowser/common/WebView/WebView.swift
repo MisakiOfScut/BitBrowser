@@ -8,13 +8,57 @@
 import SwiftUI
 import WebKit
 
+class NavigationDelegate: NSObject, WKNavigationDelegate {
+    let html = """
+        <html>
+            <body>
+                <h1>404</h1>
+            </body>
+        </html>
+    """
+    
+//    页面跳转后，内容接受完毕调用
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print(webView.title ?? "default value")
+        print(webView.url)
+        print(Date())
+    }
+    
+//    若输入无效的url，会调用这个方法，返回自定义的404页面
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        webView.loadHTMLString(html, baseURL: nil)
+    }
+    
+//    webView发起请求之前调用
+//    allow后才会进行后面的代理方法
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+//        请求拦截，为url添加一些前缀
+        if var string = navigationAction.request.url?.absoluteString {
+            if (!string.hasPrefix("https://")) {
+                if (!string.hasPrefix("www")) {
+                    string = "https://www." + string
+                } else {
+                    string = "https://" + string
+                }
+                decisionHandler(.cancel)
+                webView.load(URLRequest(url: URL(string: string)!))
+                return
+            }
+        }
+        decisionHandler(.allow)
+    }
+    
+}
 struct WebView: UIViewRepresentable {
     let request: URLRequest
     var webview: WKWebView?
+    var navigationDelegate = NavigationDelegate()
     
     init(web: WKWebView?, req: URLRequest) {
         self.webview = WKWebView()
         self.request = req
+        self.webview?.navigationDelegate = navigationDelegate;
+        webview?.allowsBackForwardNavigationGestures = true
     }
     
     func makeUIView(context: Context) -> WKWebView  {

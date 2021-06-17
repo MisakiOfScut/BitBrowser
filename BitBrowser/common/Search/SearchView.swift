@@ -13,17 +13,19 @@ struct SearchView: View {
     @EnvironmentObject var web: Web
     var body: some View {
         HStack {
-            TextField("请输入页面url", text: self.$inputUrl)
+            TextField("请输入页面url", text: self.$inputUrl, onCommit: {
+                inputUrl = inputUrl.lowercased()
+                web.webview.load(inputUrl)
+            })
                 .padding(10)
                 .padding(.leading)
                 .overlay(
                 RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
                     .stroke(Color("Color_Login"),lineWidth: 2)
-            )
+                )
             Image(self.isFavorite ? "shoucang" : "weishoucang")
                 .onTapGesture {
                     self.isFavorite = !self.isFavorite
-//                    web.webview.load("https://qq.com")
                 }
         }
         .frame(minWidth: 0, maxWidth: .infinity)

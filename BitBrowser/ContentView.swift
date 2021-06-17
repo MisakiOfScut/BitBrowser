@@ -11,6 +11,7 @@ let tp = TestPresenter()
  
  class Web: ObservableObject {
     @Published var webview = WebView(web: nil, req: URLRequest(url: URL(string: "https://www.baidu.com")!))
+    
  }
 
 struct ContentView: View {
