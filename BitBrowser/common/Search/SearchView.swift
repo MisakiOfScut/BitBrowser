@@ -17,8 +17,8 @@ struct SearchView: View {
                 inputUrl = inputUrl.lowercased()
                 web.webview.load(inputUrl)
             })
-                .padding(10)
-                .padding(.leading)
+                .padding(5)
+                .padding(.leading, 5)
                 .overlay(
                 RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
                     .stroke(Color("Color_Login"),lineWidth: 2)
@@ -27,6 +27,7 @@ struct SearchView: View {
                 .onTapGesture {
                     self.isFavorite = !self.isFavorite
                 }
+                .scaleEffect(0.8)
         }
         .frame(minWidth: 0, maxWidth: .infinity)
         .padding(.vertical, 10)
