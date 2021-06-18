@@ -7,6 +7,9 @@
 
 import Foundation
 
+var encoder = JSONEncoder()
+var decoder = JSONDecoder()
+
 // ObservableObject 能够被实时监听到
 class Bookmark: ObservableObject{
     @Published var markList: [Mark]
@@ -25,14 +28,21 @@ class Bookmark: ObservableObject{
     //取消收藏
     func remove(id: Int) {
         self.markList[id].isRemove.toggle()
+        self.store()
     }
     //新增收藏
     func add(data: Mark) {
         self.markList.append(Mark(title: data.title, webUrl: data.webUrl, id: self.count))
         self.count += 1
+        self.store()
+    }
+    //数据存储
+    func store() {
+        let dataStored = try! encoder.encode(self.markList)
+        UserDefaults.standard.set(dataStored, forKey: "markList")
     }
 }
-struct Mark: Identifiable{
+struct Mark: Identifiable, Codable{
     var title: String = ""
     var webUrl: String = ""
     var isRemove: Bool = false
