@@ -11,20 +11,30 @@ struct SearchView: View {
     @State var inputUrl: String = ""
     @State var isFavorite: Bool = false
     @EnvironmentObject var web: Web
+    @EnvironmentObject var BookmarkData: Bookmark
+    
     var body: some View {
         HStack {
-            TextField("请输入页面url", text: self.$inputUrl)
-                .padding(10)
-                .padding(.leading)
+            TextField("请输入页面url", text: self.$inputUrl, onCommit: {
+                inputUrl = inputUrl.lowercased()
+                web.webview.load(inputUrl)
+            })
+                .padding(5)
+                .padding(.leading, 5)
                 .overlay(
                 RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
                     .stroke(Color("Color_Login"),lineWidth: 2)
-            )
+                )
             Image(self.isFavorite ? "shoucang" : "weishoucang")
                 .onTapGesture {
                     self.isFavorite = !self.isFavorite
-//                    web.webview.load("https://qq.com")
+                    self.BookmarkData.add(data: Mark(title: web.webview.webview?.title ?? "default value", webUrl:  (web.webview.webview?.url)?.absoluteString ?? "default value"))
+//                    print(web.webview.webview?.title ?? "default value")
+//                    print((web.webview.webview?.url)?.absoluteString ?? "default value")
+//                    self.BookmarkData.add(data: Mark(title: "test", webUrl: "https://www.qq.com"))
+                    print(self.BookmarkData.count)
                 }
+                .scaleEffect(0.8)
         }
         .frame(minWidth: 0, maxWidth: .infinity)
         .padding(.vertical, 10)

@@ -8,6 +8,9 @@
 import Foundation
 import ObjectMapper
 
+var encoder = JSONEncoder()
+var decoder = JSONDecoder()
+
 // ObservableObject 能够被实时监听到
 class Bookmark: Mappable{
     var markList: [Mark] = []
@@ -19,9 +22,21 @@ class Bookmark: Mappable{
             self.count += 1
         }
     }
-    
+    //取消收藏
     func remove(id: Int) {
         self.markList[id].isRemove.toggle()
+        self.store()
+    }
+    //新增收藏
+    func add(data: Mark) {
+        self.markList.append(Mark(title: data.title, webUrl: data.webUrl, id: self.count))
+        self.count += 1
+        self.store()
+    }
+    //数据存储
+    func store() {
+        let dataStored = try! encoder.encode(self.markList)
+        UserDefaults.standard.set(dataStored, forKey: "markList")
     }
     
     required init?(map: Map) {
@@ -32,7 +47,7 @@ class Bookmark: Mappable{
     }
 }
 
-struct Mark: Identifiable, Mappable{
+struct Mark: Identifiable, Mappable, Codable{
     var title: String = ""
     var webUrl: String = ""
     var isRemove: Bool = false

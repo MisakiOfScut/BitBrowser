@@ -19,8 +19,13 @@ struct LoginView: View {
     
     
     @Environment(\.presentationMode) private var presentationMode
-    
-    
+    //自定义跳转函数
+    func goToHome() {
+        if let window = UIApplication.shared.windows.first {
+            window.rootViewController = UIHostingController(rootView: ContentView(url: "https://www.baidu.com"))
+            window.makeKeyAndVisible()
+        }
+    }
     
     
     var body: some View {
@@ -70,7 +75,9 @@ struct LoginView: View {
                             .foregroundColor(.black)
                     }
                     .alert(isPresented: $userPresenter.login_success, content: {
-                        Alert(title: Text("系统提示"), message: Text(userPresenter.msg), dismissButton: .default(Text("好的")))
+                        Alert(title: Text("系统提示"), message: Text(userPresenter.msg), dismissButton: .default(Text("好的")) {
+                            self.goToHome()
+                        })
                     })
                     .frame(width:150, height:40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .overlay(

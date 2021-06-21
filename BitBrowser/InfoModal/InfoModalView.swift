@@ -78,6 +78,14 @@ struct InfoModalView: View {
                             .fullScreenCover(isPresented: $isBookmark, content: {
                                 BookmarkView()
                             })
+                            .disabled(!isLogin)
+                            .onTapGesture {
+                                showAlert = isLogin ? false : true
+                            }
+                            .alert(isPresented: $showAlert){
+                                Alert(title: Text("请先登录"),
+                                      dismissButton: .default(Text("OK")))
+                            }
 //                        }
                         
 //                        NavigationLink(destination: HistoryView()){
@@ -96,20 +104,14 @@ struct InfoModalView: View {
 //                        }
                         Spacer()
                     }
-                    .disabled(!isLogin)
-                    .onTapGesture {
-                        showAlert = isLogin ? false : true
-                    }
-                    .alert(isPresented: $showAlert){
-                        Alert(title: Text("请先登录"),
-                              dismissButton: .default(Text("OK")))
-                    }
+                    
     //                .disabled(!isLogin)
                     .padding([.top, .leading, .bottom], 14.0)
                 }
 //                .frame(height: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
 //                .frame(height: 180)
                 .background(Color("background1"))
+                .cornerRadius(10)
                 .ignoresSafeArea()
                 Spacer()
             }
