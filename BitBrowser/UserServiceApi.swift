@@ -15,6 +15,7 @@ enum UserApiService{
     case register(username: String, password: String, email: String, vaildCode: String)
     case sendMail(email: String)
     case verifyCode(email:String, validCode: String)
+    case getFavourites(usr_id: String)
 }
 
 struct UserApiConstant{
@@ -36,16 +37,15 @@ extension UserApiService: TargetType{
             return "/emailService"
         case .verifyCode:
             return "/verifyCode"
+        case .getFavourites:
+            return "/getFavourites"
         }
         
     }
     
     var method: Moya.Method {
         switch self{
-        case .login,
-             .register,
-             .sendMail,
-             .verifyCode:
+        default:
             return .post
         }
     }
@@ -74,6 +74,10 @@ extension UserApiService: TargetType{
             return [
                 "eamil": email,
                 "validCode": validCode
+            ]
+        case .getFavourites(let usr_id):
+            return [
+                "usr_id": usr_id
             ]
         //default: return nil
         }

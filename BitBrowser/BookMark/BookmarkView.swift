@@ -11,7 +11,8 @@ struct BookmarkView: View {
     
     @Environment(\.presentationMode) private var presentationMode
     //初始化书签数据
-    @ObservedObject var BookmarkData: Bookmark = Bookmark(data: [Mark(title: "百度", webUrl: "http://www.baidu.com"),Mark(title: "搜狐", webUrl: "http://www.souhu.com"),Mark(title: "b站", webUrl: "http://www.bilibili.com")])
+    //@ObservedObject var BookmarkData: Bookmark = Bookmark(data: [Mark(title: "百度", webUrl: "http://www.baidu.com"),Mark(title: "搜狐", webUrl: "http://www.souhu.com"),Mark(title: "b站", webUrl: "http://www.bilibili.com")])
+    @ObservedObject var bookMarkPresenter = BookMarkPresenter()
     
     var body: some View {
         VStack {
@@ -36,9 +37,9 @@ struct BookmarkView: View {
             //书签展示
             ScrollView(.vertical, showsIndicators: true) {
                 VStack {
-                    ForEach(self.BookmarkData.markList) {item in
+                    ForEach(self.bookMarkPresenter.marklist) {item in
                         SingleBookmarkView(index: item.id)
-                            .environmentObject(self.BookmarkData)
+                            .environmentObject(self.bookMarkPresenter)
                     }
                 }
             }
@@ -47,6 +48,9 @@ struct BookmarkView: View {
         }
         .navigationBarHidden(true)
         .ignoresSafeArea()
+        .onAppear(perform: {
+            bookMarkPresenter.getMarkList()
+        })
     }
 }
 
@@ -56,21 +60,21 @@ struct SingleBookmarkView: View {
 //    var title: String = "百度"
 //    var webUrl: String = "http://baidu.com"
     
-    @EnvironmentObject var BookmarkData: Bookmark
+    @EnvironmentObject var bookMarkPresenter:BookMarkPresenter
     var index: Int
     
     var body: some View {
         HStack {
-            Image(self.BookmarkData.markList[index].isRemove ? "like": "like_fill")
+            Image(self.bookMarkPresenter.marklist[index].isRemove ? "like": "like_fill")
                 .padding(.leading)
                 .onTapGesture {
-                    self.BookmarkData.remove(id: self.index)
+                    self.bookMarkPresenter.remove(id: self.index)
                 }
             VStack(alignment: .leading, spacing: 6.0) {
-                Text(self.BookmarkData.markList[index].title)
+                Text(self.bookMarkPresenter.marklist[index].title)
                     .font(.headline)
                     .fontWeight(.heavy)
-                Text(self.BookmarkData.markList[index].webUrl)
+                Text(self.bookMarkPresenter.marklist[index].webUrl)
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
