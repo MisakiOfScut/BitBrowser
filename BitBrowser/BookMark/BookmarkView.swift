@@ -82,7 +82,6 @@ struct BookmarkView: View {
                     }
                 }
             }
-            
             Spacer()
         }
         .navigationBarHidden(true)
@@ -121,7 +120,7 @@ struct SingleBookmarkView: View {
         .frame(height: 80)
         .background(Color.white)
         .cornerRadius(10)
-        .shadow(radius: 4, x: 0, y: 4)
+        .shadow(radius: 1, x: 0, y: 0)
     }
 }
 struct BookmarkView_Previews: PreviewProvider {

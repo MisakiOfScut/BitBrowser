@@ -13,7 +13,7 @@ var decoder = JSONDecoder()
 // ObservableObject 能够被实时监听到
 class Bookmark: ObservableObject{
     @Published var markList: [Mark]
-    var count = 0
+    @Published var count = 0
     
     init() {
         self.markList = []
@@ -25,9 +25,13 @@ class Bookmark: ObservableObject{
             self.count += 1
         }
     }
+    func getCount() -> Int {
+        return self.count
+    }
     //取消收藏
     func remove(id: Int) {
         self.markList[id].isRemove.toggle()
+//        self.count -= 1
         self.store()
     }
     //新增收藏
@@ -40,6 +44,11 @@ class Bookmark: ObservableObject{
     func store() {
         let dataStored = try! encoder.encode(self.markList)
         UserDefaults.standard.set(dataStored, forKey: "markList")
+    }
+    //清空数据
+    func clear() {
+        UserDefaults.standard.removeObject(forKey: "markList")
+        self.count = 0
     }
 }
 struct Mark: Identifiable, Codable{
