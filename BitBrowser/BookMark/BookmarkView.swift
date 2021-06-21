@@ -28,7 +28,7 @@ struct BookmarkView: View {
     //初始化书签数据
     //@ObservedObject var BookmarkData: Bookmark = Bookmark(data: [Mark(title: "百度", webUrl: "http://www.baidu.com"),Mark(title: "搜狐", webUrl: "http://www.souhu.com"),Mark(title: "b站", webUrl: "http://www.bilibili.com")])
     @ObservedObject var bookMarkPresenter = BookMarkPresenter()
-    @ObservedObject var BookmarkData: Bookmark = Bookmark(data: initBookmarkData())
+    //@ObservedObject var BookmarkData: Bookmark = Bookmark(data: initBookmarkData())
 //    @EnvironmentObject var web: Web
     
     //自定义跳转函数
@@ -70,7 +70,7 @@ struct BookmarkView: View {
             //书签展示
             ScrollView(.vertical, showsIndicators: true) {
                 VStack {
-                    ForEach(self.BookmarkData.markList) {item in
+                    ForEach(self.bookMarkPresenter.marklist) {item in
 //                        if !item.isRemove {
                             //书签跳转
                             Button(action:{

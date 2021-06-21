@@ -11,7 +11,7 @@ struct SearchView: View {
     @State var inputUrl: String = ""
     @State var isFavorite: Bool = false
     @EnvironmentObject var web: Web
-    @EnvironmentObject var BookmarkData: Bookmark
+    @EnvironmentObject var bookMarkPresenter:BookMarkPresenter
     
     var body: some View {
         HStack {
@@ -28,11 +28,11 @@ struct SearchView: View {
             Image(self.isFavorite ? "shoucang" : "weishoucang")
                 .onTapGesture {
                     self.isFavorite = !self.isFavorite
-                    self.BookmarkData.add(data: Mark(title: web.webview.webview?.title ?? "default value", webUrl:  (web.webview.webview?.url)?.absoluteString ?? "default value"))
+                    //self.BookmarkData.add(data: Mark(title: web.webview.webview?.title ?? "default value", webUrl:  (web.webview.webview?.url)?.absoluteString ?? "default value"))
 //                    print(web.webview.webview?.title ?? "default value")
 //                    print((web.webview.webview?.url)?.absoluteString ?? "default value")
 //                    self.BookmarkData.add(data: Mark(title: "test", webUrl: "https://www.qq.com"))
-                    print(self.BookmarkData.count)
+                    //print(self.BookmarkData.count)
                 }
                 .scaleEffect(0.8)
         }
