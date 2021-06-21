@@ -10,16 +10,16 @@
 		540F8D62266EF9FB007E3871 /* UserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F8D61266EF9FB007E3871 /* UserPresenter.swift */; };
 		540F8D64266F0306007E3871 /* t_UserUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F8D63266F0306007E3871 /* t_UserUIView.swift */; };
 		542D088C2668841E000CE6EE /* TestApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542D088B2668841E000CE6EE /* TestApiService.swift */; };
+		545466B826803B8C00C1B480 /* BookMarkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545466B726803B8C00C1B480 /* BookMarkService.swift */; };
+		545466BA26803FC300C1B480 /* BookMarkPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545466B926803FC300C1B480 /* BookMarkPresenter.swift */; };
 		54935A702667A69500608FCA /* BitBrowserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54935A6F2667A69500608FCA /* BitBrowserApp.swift */; };
 		54935A722667A69500608FCA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54935A712667A69500608FCA /* ContentView.swift */; };
 		54935A742667A6C900608FCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54935A732667A6C900608FCA /* Assets.xcassets */; };
 		54935A772667A6C900608FCA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54935A762667A6C900608FCA /* Preview Assets.xcassets */; };
-		54935A822667A6CC00608FCA /* BitBrowserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54935A812667A6CC00608FCA /* BitBrowserTests.swift */; };
-		54935A8D2667A6CC00608FCA /* BitBrowserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54935A8C2667A6CC00608FCA /* BitBrowserUITests.swift */; };
 		54A5DEDC266E2F4D00DFC53B /* UserServiceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A5DEDB266E2F4D00DFC53B /* UserServiceApi.swift */; };
 		54A5DEDF266E369F00DFC53B /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A5DEDE266E369F00DFC53B /* UserService.swift */; };
-		54A5DEE1266E372200DFC53B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A5DEE0266E372200DFC53B /* UserModel.swift */; };
 		54A5DEE3266E390500DFC53B /* GeneralResp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A5DEE2266E390500DFC53B /* GeneralResp.swift */; };
+		54EE7B58267B2AD700DFCEA7 /* BookmarkRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EE7B57267B2A2100DFCEA7 /* BookmarkRecord.swift */; };
 		54FA7D472669CB67002AE850 /* TestPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA7D462669CB67002AE850 /* TestPresenter.swift */; };
 		54FA7D492669CC33002AE850 /* TestNewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA7D482669CC33002AE850 /* TestNewsService.swift */; };
 		54FA7D4B2669CFD8002AE850 /* TestNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA7D4A2669CFD8002AE850 /* TestNews.swift */; };
@@ -37,45 +37,32 @@
 		D96B7DC28232DF2C6B2FE10F /* Pods_BitBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058BEF841A90D0412931DEB /* Pods_BitBrowser.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		54935A7E2667A6CC00608FCA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 54935A642667A69100608FCA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 54935A6B2667A69300608FCA;
-			remoteInfo = BitBrowser;
-		};
-		54935A892667A6CC00608FCA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 54935A642667A69100608FCA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 54935A6B2667A69300608FCA;
-			remoteInfo = BitBrowser;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		1058BEF841A90D0412931DEB /* Pods_BitBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		540F8D61266EF9FB007E3871 /* UserPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPresenter.swift; sourceTree = "<group>"; };
 		540F8D63266F0306007E3871 /* t_UserUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = t_UserUIView.swift; sourceTree = "<group>"; };
 		542D088B2668841E000CE6EE /* TestApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestApiService.swift; sourceTree = "<group>"; };
+		545466B726803B8C00C1B480 /* BookMarkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkService.swift; sourceTree = "<group>"; };
+		545466B926803FC300C1B480 /* BookMarkPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkPresenter.swift; sourceTree = "<group>"; };
 		54935A6C2667A69400608FCA /* BitBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54935A6F2667A69500608FCA /* BitBrowserApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitBrowserApp.swift; sourceTree = "<group>"; };
 		54935A712667A69500608FCA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		54935A732667A6C900608FCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54935A762667A6C900608FCA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		54935A782667A6CA00608FCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		54935A7D2667A6CC00608FCA /* BitBrowserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitBrowserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54935A812667A6CC00608FCA /* BitBrowserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitBrowserTests.swift; sourceTree = "<group>"; };
 		54935A832667A6CC00608FCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		54935A882667A6CC00608FCA /* BitBrowserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitBrowserUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54935A8C2667A6CC00608FCA /* BitBrowserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitBrowserUITests.swift; sourceTree = "<group>"; };
 		54935A8E2667A6CC00608FCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54A5DEDB266E2F4D00DFC53B /* UserServiceApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceApi.swift; sourceTree = "<group>"; };
 		54A5DEDE266E369F00DFC53B /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		54A5DEE0266E372200DFC53B /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		54A5DEE2266E390500DFC53B /* GeneralResp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralResp.swift; sourceTree = "<group>"; };
 		54DAA2EE2667C04000D032D7 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		54EE7B57267B2A2100DFCEA7 /* BookmarkRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkRecord.swift; sourceTree = "<group>"; };
+		54EE7B73267B2F4200DFCEA7 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		54EE7B75267B2F4200DFCEA7 /* Moya.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Moya.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		54EE7B77267B2F4200DFCEA7 /* ObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		54EE7B79267B2F4200DFCEA7 /* SQLite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SQLite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54FA7D462669CB67002AE850 /* TestPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPresenter.swift; sourceTree = "<group>"; };
 		54FA7D482669CC33002AE850 /* TestNewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNewsService.swift; sourceTree = "<group>"; };
 		54FA7D4A2669CFD8002AE850 /* TestNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNews.swift; sourceTree = "<group>"; };
@@ -100,20 +87,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D96B7DC28232DF2C6B2FE10F /* Pods_BitBrowser.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		54935A7A2667A6CC00608FCA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		54935A852667A6CC00608FCA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,8 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				54935A6C2667A69400608FCA /* BitBrowser.app */,
-				54935A7D2667A6CC00608FCA /* BitBrowserTests.xctest */,
-				54935A882667A6CC00608FCA /* BitBrowserUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -205,7 +176,6 @@
 			isa = PBXGroup;
 			children = (
 				54A5DEDE266E369F00DFC53B /* UserService.swift */,
-				54A5DEE0266E372200DFC53B /* UserModel.swift */,
 				540F8D61266EF9FB007E3871 /* UserPresenter.swift */,
 				540F8D63266F0306007E3871 /* t_UserUIView.swift */,
 				938F203726708872008D8874 /* LoginView.swift */,
@@ -261,6 +231,9 @@
 			isa = PBXGroup;
 			children = (
 				938F1FF6266F135F008D8874 /* BookmarkView.swift */,
+				54EE7B57267B2A2100DFCEA7 /* BookmarkRecord.swift */,
+				545466B726803B8C00C1B480 /* BookMarkService.swift */,
+				545466B926803FC300C1B480 /* BookMarkPresenter.swift */,
 			);
 			path = BookMark;
 			sourceTree = "<group>";
@@ -294,6 +267,10 @@
 		C02AF35393E5D679FD89AAE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				54EE7B73267B2F4200DFCEA7 /* Alamofire.framework */,
+				54EE7B75267B2F4200DFCEA7 /* Moya.framework */,
+				54EE7B77267B2F4200DFCEA7 /* ObjectMapper.framework */,
+				54EE7B79267B2F4200DFCEA7 /* SQLite.framework */,
 				1058BEF841A90D0412931DEB /* Pods_BitBrowser.framework */,
 			);
 			name = Frameworks;
@@ -321,42 +298,6 @@
 			productReference = 54935A6C2667A69400608FCA /* BitBrowser.app */;
 			productType = "com.apple.product-type.application";
 		};
-		54935A7C2667A6CC00608FCA /* BitBrowserTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 54935A942667A6CD00608FCA /* Build configuration list for PBXNativeTarget "BitBrowserTests" */;
-			buildPhases = (
-				54935A792667A6CC00608FCA /* Sources */,
-				54935A7A2667A6CC00608FCA /* Frameworks */,
-				54935A7B2667A6CC00608FCA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				54935A7F2667A6CC00608FCA /* PBXTargetDependency */,
-			);
-			name = BitBrowserTests;
-			productName = BitBrowserTests;
-			productReference = 54935A7D2667A6CC00608FCA /* BitBrowserTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		54935A872667A6CC00608FCA /* BitBrowserUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 54935A972667A6CD00608FCA /* Build configuration list for PBXNativeTarget "BitBrowserUITests" */;
-			buildPhases = (
-				54935A842667A6CC00608FCA /* Sources */,
-				54935A852667A6CC00608FCA /* Frameworks */,
-				54935A862667A6CC00608FCA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				54935A8A2667A6CC00608FCA /* PBXTargetDependency */,
-			);
-			name = BitBrowserUITests;
-			productName = BitBrowserUITests;
-			productReference = 54935A882667A6CC00608FCA /* BitBrowserUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -368,14 +309,6 @@
 				TargetAttributes = {
 					54935A6B2667A69300608FCA = {
 						CreatedOnToolsVersion = 12.5;
-					};
-					54935A7C2667A6CC00608FCA = {
-						CreatedOnToolsVersion = 12.5;
-						TestTargetID = 54935A6B2667A69300608FCA;
-					};
-					54935A872667A6CC00608FCA = {
-						CreatedOnToolsVersion = 12.5;
-						TestTargetID = 54935A6B2667A69300608FCA;
 					};
 				};
 			};
@@ -393,8 +326,6 @@
 			projectRoot = "";
 			targets = (
 				54935A6B2667A69300608FCA /* BitBrowser */,
-				54935A7C2667A6CC00608FCA /* BitBrowserTests */,
-				54935A872667A6CC00608FCA /* BitBrowserUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -406,20 +337,6 @@
 			files = (
 				54935A772667A6C900608FCA /* Preview Assets.xcassets in Resources */,
 				54935A742667A6C900608FCA /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		54935A7B2667A6CC00608FCA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		54935A862667A6CC00608FCA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +396,7 @@
 				938F2009266F7CB4008D8874 /* InfoModalView.swift in Sources */,
 				938F1FE4266E4F8B008D8874 /* BottomTabView.swift in Sources */,
 				54935A722667A69500608FCA /* ContentView.swift in Sources */,
+				54EE7B58267B2AD700DFCEA7 /* BookmarkRecord.swift in Sources */,
 				9C8C80E6266E0F6500BC2481 /* TestUIView.swift in Sources */,
 				938F2012266F85FE008D8874 /* HistoryView.swift in Sources */,
 				938F1FF7266F135F008D8874 /* BookmarkView.swift in Sources */,
@@ -490,44 +408,16 @@
 				54FA7D50266A4F1C002AE850 /* SQLiteManager.swift in Sources */,
 				54A5DEE3266E390500DFC53B /* GeneralResp.swift in Sources */,
 				54935A702667A69500608FCA /* BitBrowserApp.swift in Sources */,
-				54A5DEE1266E372200DFC53B /* UserModel.swift in Sources */,
 				54A5DEDC266E2F4D00DFC53B /* UserServiceApi.swift in Sources */,
 				540F8D64266F0306007E3871 /* t_UserUIView.swift in Sources */,
 				938F203826708872008D8874 /* LoginView.swift in Sources */,
 				938F1FEE266F0F4E008D8874 /* WebView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		54935A792667A6CC00608FCA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				54935A822667A6CC00608FCA /* BitBrowserTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		54935A842667A6CC00608FCA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				54935A8D2667A6CC00608FCA /* BitBrowserUITests.swift in Sources */,
+				545466BA26803FC300C1B480 /* BookMarkPresenter.swift in Sources */,
+				545466B826803B8C00C1B480 /* BookMarkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		54935A7F2667A6CC00608FCA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 54935A6B2667A69300608FCA /* BitBrowser */;
-			targetProxy = 54935A7E2667A6CC00608FCA /* PBXContainerItemProxy */;
-		};
-		54935A8A2667A6CC00608FCA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 54935A6B2667A69300608FCA /* BitBrowser */;
-			targetProxy = 54935A892667A6CC00608FCA /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		54935A8F2667A6CC00608FCA /* Debug */ = {
@@ -692,90 +582,6 @@
 			};
 			name = Release;
 		};
-		54935A952667A6CD00608FCA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SDZ7RVCJRA;
-				INFOPLIST_FILE = BitBrowserTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = BitDance.BitBrowserTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BitBrowser.app/BitBrowser";
-			};
-			name = Debug;
-		};
-		54935A962667A6CD00608FCA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SDZ7RVCJRA;
-				INFOPLIST_FILE = BitBrowserTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = BitDance.BitBrowserTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BitBrowser.app/BitBrowser";
-			};
-			name = Release;
-		};
-		54935A982667A6CD00608FCA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SDZ7RVCJRA;
-				INFOPLIST_FILE = BitBrowserUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = BitDance.BitBrowserUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BitBrowser;
-			};
-			name = Debug;
-		};
-		54935A992667A6CD00608FCA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SDZ7RVCJRA;
-				INFOPLIST_FILE = BitBrowserUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = BitDance.BitBrowserUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BitBrowser;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -793,24 +599,6 @@
 			buildConfigurations = (
 				54935A922667A6CD00608FCA /* Debug */,
 				54935A932667A6CD00608FCA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		54935A942667A6CD00608FCA /* Build configuration list for PBXNativeTarget "BitBrowserTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				54935A952667A6CD00608FCA /* Debug */,
-				54935A962667A6CD00608FCA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		54935A972667A6CD00608FCA /* Build configuration list for PBXNativeTarget "BitBrowserUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				54935A982667A6CD00608FCA /* Debug */,
-				54935A992667A6CD00608FCA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
