@@ -13,7 +13,7 @@ struct BitBrowserApp: App {
     var body: some Scene {
         WindowGroup {
 //            LoginView()
-            ContentView()
+            ContentView(url: "https://www.baidu.com")
         }
     }
 }

@@ -7,11 +7,36 @@
 
 import SwiftUI
 
+//获取存储数据
+func initBookmarkData() -> [Mark] {
+    var output: [Mark] = []
+    if let dataStored = UserDefaults.standard.object(forKey: "markList") as? Data {
+        let data = try! decoder.decode([Mark].self, from: dataStored)
+        for item in data {
+            if !item.isRemove {
+                output.append(Mark(title: item.title, webUrl: item.webUrl, isRemove: item.isRemove, id: item.id))
+            }
+        }
+    }
+    return output
+}
+
 struct BookmarkView: View {
     
+    @State var searchContent: String = ""
     @Environment(\.presentationMode) private var presentationMode
     //初始化书签数据
-    @ObservedObject var BookmarkData: Bookmark = Bookmark(data: [Mark(title: "百度", webUrl: "http://www.baidu.com"),Mark(title: "搜狐", webUrl: "http://www.souhu.com"),Mark(title: "b站", webUrl: "http://www.bilibili.com")])
+    @ObservedObject var BookmarkData: Bookmark = Bookmark(data: initBookmarkData())
+//    @EnvironmentObject var web: Web
+    
+    //自定义跳转函数
+    func goToPage(url: String) {
+        if let window = UIApplication.shared.windows.first {
+            window.rootViewController = UIHostingController(rootView: ContentView(url: url))
+            window.makeKeyAndVisible()
+        }
+//        self.web.webview.load(url)
+    }
     
     var body: some View {
         VStack {
@@ -31,14 +56,29 @@ struct BookmarkView: View {
             .padding()
             
             //搜索框
-            
+            HStack {
+                TextField("请输入内容", text: self.$searchContent)
+                    .padding(8)
+                    .overlay(RoundedRectangle(cornerRadius: 20, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
+                                .stroke(Color("Color_Login"),lineWidth: 2))
+                Image("search")
+            }
+            .padding(.horizontal)
             
             //书签展示
             ScrollView(.vertical, showsIndicators: true) {
                 VStack {
                     ForEach(self.BookmarkData.markList) {item in
-                        SingleBookmarkView(index: item.id)
-                            .environmentObject(self.BookmarkData)
+//                        if !item.isRemove {
+                            //书签跳转
+                            Button(action:{
+//                                self.web.webview.load(item.webUrl)
+                                self.goToPage(url: item.webUrl)
+                            }){
+                                SingleBookmarkView(index: item.id)
+                                    .environmentObject(self.BookmarkData)
+                            }
+//                        }
                     }
                 }
             }
@@ -68,6 +108,7 @@ struct SingleBookmarkView: View {
                 }
             VStack(alignment: .leading, spacing: 6.0) {
                 Text(self.BookmarkData.markList[index].title)
+                    .foregroundColor(.black)
                     .font(.headline)
                     .fontWeight(.heavy)
                 Text(self.BookmarkData.markList[index].webUrl)

@@ -25,7 +25,9 @@
 		54FA7D4B2669CFD8002AE850 /* TestNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA7D4A2669CFD8002AE850 /* TestNews.swift */; };
 		54FA7D4E266A4432002AE850 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA7D4D266A4432002AE850 /* Response.swift */; };
 		54FA7D50266A4F1C002AE850 /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA7D4F266A4F1C002AE850 /* SQLiteManager.swift */; };
+		5E18F02F267AED0D000269AC /* BookmarkRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E18F02E267AED0D000269AC /* BookmarkRecord.swift */; };
 		9320921126799B4600A6F386 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9320921026799B4600A6F386 /* SearchView.swift */; };
+		9320921F267B3EF700A6F386 /* BookmarkRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9320921E267B3EF700A6F386 /* BookmarkRecord.swift */; };
 		938F1FE4266E4F8B008D8874 /* BottomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938F1FE3266E4F8B008D8874 /* BottomTabView.swift */; };
 		938F1FEE266F0F4E008D8874 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938F1FED266F0F4E008D8874 /* WebView.swift */; };
 		938F1FF7266F135F008D8874 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938F1FF6266F135F008D8874 /* BookmarkView.swift */; };
@@ -69,7 +71,9 @@
 		54FA7D4D266A4432002AE850 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		54FA7D4F266A4F1C002AE850 /* SQLiteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
 		598583E2C8F41B32C1F69AA5 /* Pods-BitBrowser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBrowser.release.xcconfig"; path = "Target Support Files/Pods-BitBrowser/Pods-BitBrowser.release.xcconfig"; sourceTree = "<group>"; };
+		5E18F02E267AED0D000269AC /* BookmarkRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkRecord.swift; sourceTree = "<group>"; };
 		9320921026799B4600A6F386 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		9320921E267B3EF700A6F386 /* BookmarkRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkRecord.swift; sourceTree = "<group>"; };
 		938F1FE3266E4F8B008D8874 /* BottomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabView.swift; sourceTree = "<group>"; };
 		938F1FED266F0F4E008D8874 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		938F1FF6266F135F008D8874 /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
@@ -409,6 +413,7 @@
 				54A5DEE3266E390500DFC53B /* GeneralResp.swift in Sources */,
 				54935A702667A69500608FCA /* BitBrowserApp.swift in Sources */,
 				54A5DEDC266E2F4D00DFC53B /* UserServiceApi.swift in Sources */,
+				5E18F02F267AED0D000269AC /* BookmarkRecord.swift in Sources */,
 				540F8D64266F0306007E3871 /* t_UserUIView.swift in Sources */,
 				938F203826708872008D8874 /* LoginView.swift in Sources */,
 				938F1FEE266F0F4E008D8874 /* WebView.swift in Sources */,
