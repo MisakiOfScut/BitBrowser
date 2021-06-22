@@ -21,6 +21,8 @@ struct SearchView: View {
             TextField("请输入页面url", text: self.$inputUrl, onCommit: {
                 inputUrl = inputUrl.lowercased()
                 web.webview.load(inputUrl)
+                //这里能不能返回根据url判断这个页面是否被收藏
+                self.isFavorite = false
             })
                 .padding(5)
                 .padding(.leading, 5)
@@ -41,7 +43,7 @@ struct SearchView: View {
                     self.isFavorite = !self.isFavorite
                     
                     //清空数据
-//                    self.BookmarkData.clear()
+//                    self.bookMarkPresenter.clear()
 
                     //self.BookmarkData.add(data: Mark(title: web.webview.webview?.title ?? "default value", webUrl:  (web.webview.webview?.url)?.absoluteString ?? "default value"))
 //                    print(web.webview.webview?.title ?? "default value")

@@ -26,9 +26,9 @@ struct BookmarkView: View {
     @State var searchContent: String = ""
     @Environment(\.presentationMode) private var presentationMode
     //初始化书签数据
+    @EnvironmentObject var bookMarkPresenter:BookMarkPresenter
     //@ObservedObject var BookmarkData: Bookmark = Bookmark(data: [Mark(title: "百度", webUrl: "http://www.baidu.com"),Mark(title: "搜狐", webUrl: "http://www.souhu.com"),Mark(title: "b站", webUrl: "http://www.bilibili.com")])
 //    @ObservedObject var bookMarkPresenter = BookMarkPresenter()
-    @EnvironmentObject var bookMarkPresenter:BookMarkPresenter
     //@ObservedObject var BookmarkData: Bookmark = Bookmark(data: initBookmarkData())
 //    @EnvironmentObject var web: Web
     
@@ -107,7 +107,8 @@ struct SingleBookmarkView: View {
     
     var body: some View {
         HStack {
-            Image(self.bookMarkPresenter.marklist[index].isRemove ? "like": "like_fill")
+//            Image(self.bookMarkPresenter.marklist[index].isRemove ? "like": "like_fill")
+            Image("like_fill")
                 .padding(.leading)
                 .onTapGesture {
                     self.removed = !self.removed
