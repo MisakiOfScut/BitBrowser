@@ -4,39 +4,31 @@
 //
 //  Created by Vivian on 2021/6/17.
 //
-
 import Foundation
+import ObjectMapper
 
 var encoder = JSONEncoder()
 var decoder = JSONDecoder()
 
 // ObservableObject 能够被实时监听到
-class Bookmark: ObservableObject{
-    @Published var markList: [Mark]
-    @Published var count = 0
+class Bookmark: Mappable{
+    var markList: [Mark] = []
+    var count = 0
     
-    init() {
-        self.markList = []
-    }
     init(data: [Mark]) {
-        self.markList = []
         for item in data {
-            self.markList.append(Mark(title: item.title, webUrl: item.webUrl, id: self.count))
+            self.markList.append(Mark(title: item.title, webUrl: item.webUrl, isRemove: false, id: self.count))
             self.count += 1
         }
-    }
-    func getCount() -> Int {
-        return self.count
     }
     //取消收藏
     func remove(id: Int) {
         self.markList[id].isRemove.toggle()
-//        self.count -= 1
         self.store()
     }
     //新增收藏
     func add(data: Mark) {
-        self.markList.append(Mark(title: data.title, webUrl: data.webUrl, id: self.count))
+        self.markList.append(Mark(title: data.title, webUrl: data.webUrl, isRemove: false, id: self.count))
         self.count += 1
         self.store()
     }
@@ -45,17 +37,40 @@ class Bookmark: ObservableObject{
         let dataStored = try! encoder.encode(self.markList)
         UserDefaults.standard.set(dataStored, forKey: "markList")
     }
-    //清空数据
-    func clear() {
-        UserDefaults.standard.removeObject(forKey: "markList")
-        self.count = 0
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map: Map) {
+        markList <- map["favourites"]
     }
 }
-struct Mark: Identifiable, Codable{
+
+struct Mark: Identifiable, Mappable, Codable{
     var title: String = ""
     var webUrl: String = ""
     var isRemove: Bool = false
     
     //使用identifiable必须有
     var id: Int = 0
+    
+    init?(map: Map) {
+        id = 0
+    }
+        
+    init(title: String, webUrl:String){
+        self.title = title
+        self.webUrl = webUrl
+    }
+    
+    init(title: String, webUrl:String, isRemove: Bool, id:Int){
+        self.init(title: title, webUrl: webUrl)
+        self.id = id
+        self.isRemove = isRemove
+    }
+    
+    mutating func mapping(map: Map) {
+        title <- map["title"]
+        webUrl <- map["url"]
+    }
 }

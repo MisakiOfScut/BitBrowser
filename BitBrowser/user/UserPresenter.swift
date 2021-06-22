@@ -68,4 +68,19 @@ class UserPresenter : ObservableObject {
             }
         }
     }
+    
+    func verifyCode(email: String, vaildCode:String){
+        UserService.verifyCode(email: email, vaildCode: vaildCode){(success: Bool, resp: GeneralResp?, error:Error?) in
+            if success{
+                print(resp?.msg)
+            }else{
+                if error != nil{
+                    print(error)
+                }else{
+                    
+                }
+            }
+        }
+    }
+    
 }

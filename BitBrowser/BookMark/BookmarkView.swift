@@ -26,7 +26,10 @@ struct BookmarkView: View {
     @State var searchContent: String = ""
     @Environment(\.presentationMode) private var presentationMode
     //初始化书签数据
-    @ObservedObject var BookmarkData: Bookmark = Bookmark(data: initBookmarkData())
+    //@ObservedObject var BookmarkData: Bookmark = Bookmark(data: [Mark(title: "百度", webUrl: "http://www.baidu.com"),Mark(title: "搜狐", webUrl: "http://www.souhu.com"),Mark(title: "b站", webUrl: "http://www.bilibili.com")])
+//    @ObservedObject var bookMarkPresenter = BookMarkPresenter()
+    @EnvironmentObject var bookMarkPresenter:BookMarkPresenter
+    //@ObservedObject var BookmarkData: Bookmark = Bookmark(data: initBookmarkData())
 //    @EnvironmentObject var web: Web
     
     //自定义跳转函数
@@ -68,17 +71,17 @@ struct BookmarkView: View {
             //书签展示
             ScrollView(.vertical, showsIndicators: true) {
                 VStack {
-                    ForEach(self.BookmarkData.markList) {item in
-//                        if !item.isRemove {
+                    ForEach(self.bookMarkPresenter.marklist) {item in
+                        if !item.isRemove {
                             //书签跳转
                             Button(action:{
 //                                self.web.webview.load(item.webUrl)
                                 self.goToPage(url: item.webUrl)
                             }){
                                 SingleBookmarkView(index: item.id)
-                                    .environmentObject(self.BookmarkData)
+                                    .environmentObject(self.bookMarkPresenter)
                             }
-//                        }
+                        }
                     }
                 }
             }
@@ -86,6 +89,9 @@ struct BookmarkView: View {
         }
         .navigationBarHidden(true)
         .ignoresSafeArea()
+//        .onAppear(perform: {
+//            bookMarkPresenter.getMarkList()
+//        })
     }
 }
 
@@ -95,22 +101,30 @@ struct SingleBookmarkView: View {
 //    var title: String = "百度"
 //    var webUrl: String = "http://baidu.com"
     
-    @EnvironmentObject var BookmarkData: Bookmark
+    @EnvironmentObject var bookMarkPresenter:BookMarkPresenter
     var index: Int
+    @State var removed: Bool = false
     
     var body: some View {
         HStack {
-            Image(self.BookmarkData.markList[index].isRemove ? "like": "like_fill")
+            Image(self.bookMarkPresenter.marklist[index].isRemove ? "like": "like_fill")
                 .padding(.leading)
                 .onTapGesture {
-                    self.BookmarkData.remove(id: self.index)
+                    self.removed = !self.removed
+//                    self.bookMarkPresenter.remove(id: self.index)
                 }
+                .alert(isPresented: $removed, content: {
+                    Alert(title: Text("确定取消收藏吗？"),  primaryButton: .default(Text("确定")){
+                        self.bookMarkPresenter.remove(id: self.index)
+                      },
+                      secondaryButton: .destructive(Text("取消")))
+                })
             VStack(alignment: .leading, spacing: 6.0) {
-                Text(self.BookmarkData.markList[index].title)
+                Text(self.bookMarkPresenter.marklist[index].title)
                     .foregroundColor(.black)
                     .font(.headline)
                     .fontWeight(.heavy)
-                Text(self.BookmarkData.markList[index].webUrl)
+                Text(self.bookMarkPresenter.marklist[index].webUrl)
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }

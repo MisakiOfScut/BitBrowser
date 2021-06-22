@@ -11,8 +11,10 @@ struct SearchView: View {
     @State var inputUrl: String = ""
     @State var isFavorite: Bool = false
     @EnvironmentObject var web: Web
-    @EnvironmentObject var BookmarkData: Bookmark
+
+//    @EnvironmentObject var BookmarkData: Bookmark
     @State var index: Int = 0
+    @EnvironmentObject var bookMarkPresenter:BookMarkPresenter
     
     var body: some View {
         HStack {
@@ -26,20 +28,26 @@ struct SearchView: View {
                 RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
                     .stroke(Color("Color_Login"),lineWidth: 2)
                 )
-            Image(self.isFavorite ? "shoucang" : "weishoucang")
+            Image(self.isFavorite ? "like_fill" : "like")
                 .onTapGesture {
                     if !isFavorite {
-                        self.BookmarkData.add(data: Mark(title: web.webview.webview?.title ?? "default value", webUrl:  (web.webview.webview?.url)?.absoluteString ?? "default value"))
-                        self.index = self.BookmarkData.getCount() - 1
+                        self.bookMarkPresenter.add(data: Mark(title: web.webview.webview?.title ?? "default value", webUrl:  (web.webview.webview?.url)?.absoluteString ?? "default value"))
+                        self.index = self.bookMarkPresenter.getCount() - 1
                     } else {
-                        self.BookmarkData.remove(id: self.index)
+                        self.bookMarkPresenter.remove(id: self.index)
                     }
+                    print(self.bookMarkPresenter.marklist)
+                    print(self.index)
                     self.isFavorite = !self.isFavorite
-                    print(self.BookmarkData.count)
                     
                     //清空数据
 //                    self.BookmarkData.clear()
-                    
+
+                    //self.BookmarkData.add(data: Mark(title: web.webview.webview?.title ?? "default value", webUrl:  (web.webview.webview?.url)?.absoluteString ?? "default value"))
+//                    print(web.webview.webview?.title ?? "default value")
+//                    print((web.webview.webview?.url)?.absoluteString ?? "default value")
+//                    self.BookmarkData.add(data: Mark(title: "test", webUrl: "https://www.qq.com"))
+                    //print(self.BookmarkData.count)
                 }
                 .scaleEffect(0.8)
         }

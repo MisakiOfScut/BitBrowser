@@ -11,6 +11,7 @@ struct BottomTabView: View {
     @State var showInfoModal = false
     @Binding var showModal: Bool
     @EnvironmentObject var web: Web
+    @EnvironmentObject var bookMarkPresenter:BookMarkPresenter
     var body: some View {
         HStack(){
             Image("arrowLeft")
@@ -34,6 +35,7 @@ struct BottomTabView: View {
                 Image("favorite")
                     .scaleEffect(CGSize(width: 0.8, height: 0.8))
             }
+            .environmentObject(self.bookMarkPresenter)
             Spacer()
             Image("me")
                 .scaleEffect(0.8)
