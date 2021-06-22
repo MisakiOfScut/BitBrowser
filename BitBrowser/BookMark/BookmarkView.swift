@@ -72,7 +72,7 @@ struct BookmarkView: View {
             ScrollView(.vertical, showsIndicators: true) {
                 VStack {
                     ForEach(self.bookMarkPresenter.marklist) {item in
-                        if !item.isRemove {
+//                        if !item.isRemove {
                             //书签跳转
                             Button(action:{
 //                                self.web.webview.load(item.webUrl)
@@ -81,7 +81,7 @@ struct BookmarkView: View {
                                 SingleBookmarkView(index: item.id)
                                     .environmentObject(self.bookMarkPresenter)
                             }
-                        }
+//                        }
                     }
                 }
             }
