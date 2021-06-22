@@ -43,13 +43,7 @@ struct SearchView: View {
                     self.isFavorite = !self.isFavorite
                     
                     //清空数据
-                    self.bookMarkPresenter.clear()
-
-                    //self.BookmarkData.add(data: Mark(title: web.webview.webview?.title ?? "default value", webUrl:  (web.webview.webview?.url)?.absoluteString ?? "default value"))
-//                    print(web.webview.webview?.title ?? "default value")
-//                    print((web.webview.webview?.url)?.absoluteString ?? "default value")
-//                    self.BookmarkData.add(data: Mark(title: "test", webUrl: "https://www.qq.com"))
-                    //print(self.BookmarkData.count)
+//                    self.bookMarkPresenter.clear()
                 }
                 .scaleEffect(0.8)
         }

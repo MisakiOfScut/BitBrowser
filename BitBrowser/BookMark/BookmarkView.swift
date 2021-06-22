@@ -7,30 +7,12 @@
 
 import SwiftUI
 
-//获取存储数据
-func initBookmarkData() -> [Mark] {
-    var output: [Mark] = []
-    if let dataStored = UserDefaults.standard.object(forKey: "markList") as? Data {
-        let data = try! decoder.decode([Mark].self, from: dataStored)
-        for item in data {
-            if !item.isRemove {
-                output.append(Mark(title: item.title, webUrl: item.webUrl, isRemove: item.isRemove, id: item.id))
-            }
-        }
-    }
-    return output
-}
-
 struct BookmarkView: View {
     
     @State var searchContent: String = ""
     @Environment(\.presentationMode) private var presentationMode
     //初始化书签数据
-    @EnvironmentObject var bookMarkPresenter:BookMarkPresenter
-    //@ObservedObject var BookmarkData: Bookmark = Bookmark(data: [Mark(title: "百度", webUrl: "http://www.baidu.com"),Mark(title: "搜狐", webUrl: "http://www.souhu.com"),Mark(title: "b站", webUrl: "http://www.bilibili.com")])
-//    @ObservedObject var bookMarkPresenter = BookMarkPresenter()
-    //@ObservedObject var BookmarkData: Bookmark = Bookmark(data: initBookmarkData())
-//    @EnvironmentObject var web: Web
+    @EnvironmentObject var bookMarkPresenter: BookMarkPresenter
     
     //自定义跳转函数
     func goToPage(url: String) {
@@ -72,7 +54,7 @@ struct BookmarkView: View {
             ScrollView(.vertical, showsIndicators: true) {
                 VStack {
                     ForEach(self.bookMarkPresenter.marklist) {item in
-//                        if !item.isRemove {
+                        if !item.isRemove {
                             //书签跳转
                             Button(action:{
 //                                self.web.webview.load(item.webUrl)
@@ -81,7 +63,7 @@ struct BookmarkView: View {
                                 SingleBookmarkView(index: item.id)
                                     .environmentObject(self.bookMarkPresenter)
                             }
-//                        }
+                        }
                     }
                 }
             }

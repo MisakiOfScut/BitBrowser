@@ -28,7 +28,7 @@ class Bookmark: Mappable{
     }
     //新增收藏
     func add(data: Mark) {
-        self.markList.append(Mark(title: data.title, webUrl: data.webUrl, isRemove: false, id: self.count))
+        self.markList.append(Mark(title: data.title, webUrl: data.webUrl, isRemove: false,id: self.count))
         self.count += 1
         self.store()
     }
