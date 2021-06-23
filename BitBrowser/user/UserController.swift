@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UserPresenter : ObservableObject {
+class UserController : ObservableObject {
     
     @Published var login_success:Bool = false
     @Published var login_failed:Bool = false

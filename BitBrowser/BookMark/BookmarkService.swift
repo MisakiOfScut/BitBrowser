@@ -8,7 +8,7 @@
 import Moya
 import ObjectMapper
 
-class BookMarkService {
+class BookmarkService {
     static func getFavourtites(callBack: @escaping(Bool, Bookmark?, Error?)->Void){
         let usr_id = "60bc7ff1b5bf6b007839269c" //后续从本地存储中获取
         UserApiProvider.request(.getFavourites(usr_id: usr_id)){ result in
@@ -23,28 +23,3 @@ class BookMarkService {
         }
     }
 }
-
-//struct MarkList: Mappable {
-//    var markList : [BookMark]?
-//
-//    init?(map: Map) {}
-//
-//    mutating func mapping(map: Map) {
-//        markList <- map["favourites"]
-//    }
-//}
-//
-//struct BookMark: Mappable, Identifiable {
-//    var id: Int
-//    var title: String!
-//    var webUrl: String!
-//
-//    init?(map: Map) {
-//        id = 0
-//    }
-//
-//    mutating func mapping(map: Map) {
-//        title <- map["title"]
-//        webUrl <- map["url"]
-//    }
-//}

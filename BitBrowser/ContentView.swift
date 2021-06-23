@@ -33,7 +33,7 @@ struct ContentView: View {
     }
     
 //    @ObservedObject var BookmarkData: Bookmark = Bookmark(data: [Mark(title: "百度一下，你就知道", webUrl: "https://www.baidu.com"),Mark(title: "搜狐新闻", webUrl: "https://www.sohu.com"),Mark(title: "哔哩哔哩，干杯🍻", webUrl: "https://www.bilibili.com")])
-    @ObservedObject var bookMarkPresenter : BookMarkPresenter = BookMarkPresenter()
+    @ObservedObject var bookMarkPresenter : BookmarkController = BookmarkController()
     
     var body: some View {
         GeometryReader(content: { geometry in

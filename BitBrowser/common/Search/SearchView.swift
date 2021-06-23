@@ -14,7 +14,7 @@ struct SearchView: View {
 
 //    @EnvironmentObject var BookmarkData: Bookmark
     @State var index: Int = 0
-    @EnvironmentObject var bookMarkPresenter:BookMarkPresenter
+    @EnvironmentObject var bookMarkPresenter:BookmarkController
     
     var body: some View {
         HStack {
@@ -43,7 +43,7 @@ struct SearchView: View {
                     self.isFavorite = !self.isFavorite
                     
                     //清空数据
-//                    self.bookMarkPresenter.clear()
+//                    self.bookmarkController.clear()
                 }
                 .scaleEffect(0.8)
         }

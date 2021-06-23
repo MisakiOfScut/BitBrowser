@@ -8,7 +8,7 @@
 import SwiftUI
 import Foundation
 
-class BookMarkPresenter:ObservableObject{
+class BookmarkController:ObservableObject{
     @Published var marklist:[Mark] = []
     
     func getMarkList(){

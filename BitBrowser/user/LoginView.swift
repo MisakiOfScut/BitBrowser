@@ -13,7 +13,7 @@ struct LoginView: View {
     
     @State var showingAlert:Bool = false
     @State var showingSuccess:Bool = false
-    @ObservedObject var userPresenter = UserPresenter()
+    @ObservedObject var userController = UserController()
     let dispatchQueue = DispatchQueue(label:"serial")
     let semaphore = DispatchSemaphore(value: 0)
     
@@ -64,18 +64,18 @@ struct LoginView: View {
                         .stroke(Color.gray,lineWidth: 2)
                 )
                 .padding()
-                .alert(isPresented: $userPresenter.login_failed, content: {
-                    Alert(title: Text("登陆失败"), message: Text(userPresenter.msg), dismissButton: .default(Text("好的")))
+                .alert(isPresented: $userController.login_failed, content: {
+                    Alert(title: Text("登陆失败"), message: Text(userController.msg), dismissButton: .default(Text("好的")))
                 })
                 Button(action: {
-                    userPresenter.login(username: account, password: password)
+                    userController.login(username: account, password: password)
                 }){
                     HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing:nil){
                         Text("登录")
                             .foregroundColor(.black)
                     }
-                    .alert(isPresented: $userPresenter.login_success, content: {
-                        Alert(title: Text("系统提示"), message: Text(userPresenter.msg), dismissButton: .default(Text("好的")) {
+                    .alert(isPresented: $userController.login_success, content: {
+                        Alert(title: Text("系统提示"), message: Text(userController.msg), dismissButton: .default(Text("好的")) {
                             self.goToHome()
                         })
                     })

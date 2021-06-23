@@ -12,7 +12,7 @@ struct BookmarkView: View {
     @State var searchContent: String = ""
     @Environment(\.presentationMode) private var presentationMode
     //初始化书签数据
-    @EnvironmentObject var bookMarkPresenter: BookMarkPresenter
+    @EnvironmentObject var bookmarkController: BookmarkController
     
     //自定义跳转函数
     func goToPage(url: String) {
@@ -53,7 +53,7 @@ struct BookmarkView: View {
             //书签展示
             ScrollView(.vertical, showsIndicators: true) {
                 VStack {
-                    ForEach(self.bookMarkPresenter.marklist) {item in
+                    ForEach(self.bookmarkController.marklist) {item in
                         if !item.isRemove {
                             //书签跳转
                             Button(action:{
@@ -61,7 +61,7 @@ struct BookmarkView: View {
                                 self.goToPage(url: item.webUrl)
                             }){
                                 SingleBookmarkView(index: item.id)
-                                    .environmentObject(self.bookMarkPresenter)
+                                    .environmentObject(self.bookmarkController)
                             }
                         }
                     }
@@ -72,7 +72,7 @@ struct BookmarkView: View {
         .navigationBarHidden(true)
         .ignoresSafeArea()
 //        .onAppear(perform: {
-//            bookMarkPresenter.getMarkList()
+//            bookmarkController.getMarkList()
 //        })
     }
 }
@@ -83,31 +83,31 @@ struct SingleBookmarkView: View {
 //    var title: String = "百度"
 //    var webUrl: String = "http://baidu.com"
     
-    @EnvironmentObject var bookMarkPresenter:BookMarkPresenter
+    @EnvironmentObject var bookmarkController:BookmarkController
     var index: Int
     @State var removed: Bool = false
     
     var body: some View {
         HStack {
-//            Image(self.bookMarkPresenter.marklist[index].isRemove ? "like": "like_fill")
+//            Image(self.bookmarkController.marklist[index].isRemove ? "like": "like_fill")
             Image("like_fill")
                 .padding(.leading)
                 .onTapGesture {
                     self.removed = !self.removed
-//                    self.bookMarkPresenter.remove(id: self.index)
+//                    self.bookmarkController.remove(id: self.index)
                 }
                 .alert(isPresented: $removed, content: {
                     Alert(title: Text("确定取消收藏吗？"),  primaryButton: .default(Text("确定")){
-                        self.bookMarkPresenter.remove(id: self.index)
+                        self.bookmarkController.remove(id: self.index)
                       },
                       secondaryButton: .destructive(Text("取消")))
                 })
             VStack(alignment: .leading, spacing: 6.0) {
-                Text(self.bookMarkPresenter.marklist[index].title)
+                Text(self.bookmarkController.marklist[index].title)
                     .foregroundColor(.black)
                     .font(.headline)
                     .fontWeight(.heavy)
-                Text(self.bookMarkPresenter.marklist[index].webUrl)
+                Text(self.bookmarkController.marklist[index].webUrl)
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }

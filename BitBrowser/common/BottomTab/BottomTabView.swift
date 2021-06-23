@@ -11,7 +11,7 @@ struct BottomTabView: View {
     @State var showInfoModal = false
     @Binding var showModal: Bool
     @EnvironmentObject var web: Web
-    @EnvironmentObject var bookMarkPresenter:BookMarkPresenter
+    @EnvironmentObject var bookMarkPresenter:BookmarkController
     var body: some View {
         HStack(){
             Image("arrowLeft")

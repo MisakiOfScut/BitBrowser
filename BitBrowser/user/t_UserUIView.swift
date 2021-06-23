@@ -11,8 +11,8 @@ import Combine
 struct t_UserUIView: View {
     @State private var username: String = ""
     @State private var password: String = ""
-    let p = UserPresenter()
-    let mp = BookMarkPresenter()
+    let p = UserController()
+    let mp = BookmarkController()
     
     var body: some View {
         Text("Hello, World!")
