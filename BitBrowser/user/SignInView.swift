@@ -16,7 +16,7 @@ struct SignInView: View {
     
     @State var showingAlert:Bool = false
     @State var showingSuccess:Bool = false
-    @ObservedObject var userPresenter = UserPresenter()
+    @ObservedObject var userController = UserController()
     let dispatchQueue = DispatchQueue(label:"serial")
     let semaphore = DispatchSemaphore(value: 0)
     
@@ -78,7 +78,7 @@ struct SignInView: View {
                     
                     VStack(alignment: .trailing, spacing: 8){
                         Button(action: {
-                            userPresenter.sendMail(email: email)
+                            userController.sendMail(email: email)
                         }){
                             Text("发送验证码")
                         }
@@ -94,7 +94,7 @@ struct SignInView: View {
                         .stroke(Color.gray,lineWidth: 2)
                 )
                 Button(action: {
-                    userPresenter.register(username: account, password: password, email: email, vaildCode: verify)
+                    userController.register(username: account, password: password, email: email, vaildCode: verify)
                 }){
                     HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing:nil){
                         Text("注册")

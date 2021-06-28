@@ -9,9 +9,19 @@ import SwiftUI
 
 struct BookmarkView: View {
     
+    @State var searchContent: String = ""
     @Environment(\.presentationMode) private var presentationMode
     //初始化书签数据
-    @ObservedObject var BookmarkData: Bookmark = Bookmark(data: [Mark(title: "百度", webUrl: "http://www.baidu.com"),Mark(title: "搜狐", webUrl: "http://www.souhu.com"),Mark(title: "b站", webUrl: "http://www.bilibili.com")])
+    @EnvironmentObject var bookmarkController: BookmarkController
+    
+    //自定义跳转函数
+    func goToPage(url: String) {
+        if let window = UIApplication.shared.windows.first {
+            window.rootViewController = UIHostingController(rootView: ContentView(url: url))
+            window.makeKeyAndVisible()
+        }
+//        self.web.webview.load(url)
+    }
     
     var body: some View {
         VStack {
@@ -31,22 +41,44 @@ struct BookmarkView: View {
             .padding()
             
             //搜索框
+            HStack {
+                TextField("请输入内容", text: self.$searchContent)
+                    .padding(8)
+                    .overlay(RoundedRectangle(cornerRadius: 20, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
+                                .stroke(Color("Color_Login"),lineWidth: 2))
+                Image("search")
+            }
+            .padding(.horizontal)
             
+            Divider()
+                .background(Color.gray)
+                .scaleEffect(CGSize(width: 1, height: 1))
+                .padding(.top, 4.0)
             
             //书签展示
             ScrollView(.vertical, showsIndicators: true) {
                 VStack {
-                    ForEach(self.BookmarkData.markList) {item in
-                        SingleBookmarkView(index: item.id)
-                            .environmentObject(self.BookmarkData)
+                    ForEach(self.bookmarkController.marklist) {item in
+                        if !item.isRemove {
+                            //书签跳转
+                            Button(action:{
+//                                self.web.webview.load(item.webUrl)
+                                self.goToPage(url: item.webUrl)
+                            }){
+                                SingleBookmarkView(index: item.id)
+                                    .environmentObject(self.bookmarkController)
+                            }
+                        }
                     }
                 }
             }
-            
             Spacer()
         }
         .navigationBarHidden(true)
-        .ignoresSafeArea()
+//        .ignoresSafeArea()
+//        .onAppear(perform: {
+//            bookmarkController.getMarkList()
+//        })
     }
 }
 
@@ -56,21 +88,31 @@ struct SingleBookmarkView: View {
 //    var title: String = "百度"
 //    var webUrl: String = "http://baidu.com"
     
-    @EnvironmentObject var BookmarkData: Bookmark
+    @EnvironmentObject var bookmarkController:BookmarkController
     var index: Int
+    @State var removed: Bool = false
     
     var body: some View {
         HStack {
-            Image(self.BookmarkData.markList[index].isRemove ? "like": "like_fill")
+//            Image(self.bookmarkController.marklist[index].isRemove ? "like": "like_fill")
+            Image("like_fill")
                 .padding(.leading)
                 .onTapGesture {
-                    self.BookmarkData.remove(id: self.index)
+                    self.removed = !self.removed
+//                    self.bookmarkController.remove(id: self.index)
                 }
+                .alert(isPresented: $removed, content: {
+                    Alert(title: Text("确定取消收藏吗？"),  primaryButton: .default(Text("确定")){
+                        self.bookmarkController.remove(id: self.index)
+                      },
+                      secondaryButton: .destructive(Text("取消")))
+                })
             VStack(alignment: .leading, spacing: 6.0) {
-                Text(self.BookmarkData.markList[index].title)
+                Text(self.bookmarkController.marklist[index].title)
+                    .foregroundColor(.black)
                     .font(.headline)
                     .fontWeight(.heavy)
-                Text(self.BookmarkData.markList[index].webUrl)
+                Text(self.bookmarkController.marklist[index].webUrl)
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
@@ -80,7 +122,7 @@ struct SingleBookmarkView: View {
         .frame(height: 80)
         .background(Color.white)
         .cornerRadius(10)
-        .shadow(radius: 4, x: 0, y: 4)
+        .shadow(radius: 0.2, x: 0, y: 0.2)
     }
 }
 struct BookmarkView_Previews: PreviewProvider {

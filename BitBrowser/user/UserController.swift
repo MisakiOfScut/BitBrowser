@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UserPresenter : ObservableObject {
+class UserController : ObservableObject {
     
     @Published var login_success:Bool = false
     @Published var login_failed:Bool = false
@@ -68,4 +68,19 @@ class UserPresenter : ObservableObject {
             }
         }
     }
+    
+    func verifyCode(email: String, vaildCode:String){
+        UserService.verifyCode(email: email, vaildCode: vaildCode){(success: Bool, resp: GeneralResp?, error:Error?) in
+            if success{
+                print(resp?.msg)
+            }else{
+                if error != nil{
+                    print(error)
+                }else{
+                    
+                }
+            }
+        }
+    }
+    
 }
