@@ -16,14 +16,22 @@ class NavigationDelegate: NSObject, WKNavigationDelegate {
             </body>
         </html>
     """
+//    var isFavorite: Bool = false
+//    @EnvironmentObject var web: Web
+//    @EnvironmentObject var bookmarkController:BookmarkController
     
 //    页面跳转后，内容接受完毕调用
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print(webView.title ?? "default value")
         print(webView.url)
         print(Date())
+//        self.isFavorite = !self.bookmarkController.getIsRemove(url: (web.webview.webview?.url)?.absoluteString ?? "default value")
     }
     
+    //获得isFavorite的值
+//    func getisFavorite() -> Bool{
+//        return self.isFavorite
+//    }
 //    若输入无效的url，会调用这个方法，返回自定义的404页面
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         print("fail to load =========")
@@ -56,6 +64,7 @@ struct WebView: UIViewRepresentable {
     let request: URLRequest
     var webview: WKWebView?
     var navigationDelegate = NavigationDelegate()
+    @EnvironmentObject var bookmarkController: BookmarkController
     
     init(web: WKWebView?, req: URLRequest) {
         self.webview = WKWebView()
@@ -63,6 +72,11 @@ struct WebView: UIViewRepresentable {
         self.webview?.navigationDelegate = navigationDelegate;
         webview?.allowsBackForwardNavigationGestures = true
     }
+    
+    //获得isFavorite的值
+//    func getisFavorite() -> Bool{
+//        return self.navigationDelegate.getisFavorite()
+//    }
     
     func makeUIView(context: Context) -> WKWebView  {
         return webview!
@@ -86,6 +100,10 @@ struct WebView: UIViewRepresentable {
     func goForward(){
         webview?.goForward()
     }
+    //判断该url是否被收藏
+//    func isRemove(url: String) -> Bool{
+//        return self.bookmarkController.getIsRemove(url: url)
+//    }
     
 }
 

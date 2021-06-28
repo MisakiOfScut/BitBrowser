@@ -41,10 +41,32 @@ class BookmarkController:ObservableObject{
 //            }
 //        }
     }
+    
+    //判断该url是否已经被收藏
+    func getIsRemove(url: String) -> Bool{
+        var isR:Bool = true //默认没有被收藏
+        for item in self.marklist {
+            if item.webUrl == url {
+                if item.isRemove == false { //marklist中可能有多个同样的url，直到找到isRemove为false的
+                    isR = item.isRemove
+                    break
+                }
+            }
+        }
+        return isR
+    }
     //删除书签
     func remove(id: Int) {
         self.marklist[id].isRemove.toggle()
         self.store()
+    }
+    func remove(url: String) {
+        for i in 0..<(self.marklist.count) {
+            if self.marklist[i].webUrl == url {
+                self.marklist[i].isRemove = true //全都要设为true 不用break
+            }
+        }
+        store()
     }
     //添加书签
     func add(data: Mark) {

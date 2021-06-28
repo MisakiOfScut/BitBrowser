@@ -14,7 +14,7 @@ struct SearchView: View {
 
 //    @EnvironmentObject var BookmarkData: Bookmark
     @State var index: Int = 0
-    @EnvironmentObject var bookMarkPresenter:BookmarkController
+    @EnvironmentObject var bookmarkController:BookmarkController
     
     var body: some View {
         HStack {
@@ -22,7 +22,14 @@ struct SearchView: View {
                 inputUrl = inputUrl.lowercased()
                 web.webview.load(inputUrl)
                 //这里能不能返回根据url判断这个页面是否被收藏
-                self.isFavorite = false
+//                self.isFavorite = self.web.webview.isRemove(url: inputUrl)
+                self.isFavorite = !self.bookmarkController.getIsRemove(url: (web.webview.webview?.url)?.absoluteString ?? "default value")
+                print("输入网址后是否刷新")
+                print((web.webview.webview?.url)?.absoluteString ?? "default value")
+                print(self.bookmarkController.marklist)
+                print(self.isFavorite)
+                
+//                print(self.web.webview.getisFavorite())
             })
                 .padding(5)
                 .padding(.leading, 5)
@@ -33,15 +40,15 @@ struct SearchView: View {
             Image(self.isFavorite ? "like_fill" : "like")
                 .onTapGesture {
                     if !isFavorite {
-                        self.bookMarkPresenter.add(data: Mark(title: web.webview.webview?.title ?? "default value", webUrl:  (web.webview.webview?.url)?.absoluteString ?? "default value"))
-                        self.index = self.bookMarkPresenter.getCount() - 1
+                        self.bookmarkController.add(data: Mark(title: web.webview.webview?.title ?? "default value", webUrl:  (web.webview.webview?.url)?.absoluteString ?? "default value"))
                     } else {
-                        self.bookMarkPresenter.remove(id: self.index)
+                        print("删除的网页是")
+                        print((web.webview.webview?.url)?.absoluteString ?? "default value")
+                        self.bookmarkController.remove(url: (web.webview.webview?.url)?.absoluteString ?? "default value")
                     }
-                    print(self.bookMarkPresenter.marklist)
-                    print(self.index)
+                    print(self.bookmarkController.marklist)
                     self.isFavorite = !self.isFavorite
-                    
+//
                     //清空数据
 //                    self.bookmarkController.clear()
                 }
@@ -50,6 +57,12 @@ struct SearchView: View {
         .frame(minWidth: 0, maxWidth: .infinity)
         .padding(.vertical, 10)
         .padding(.horizontal)
+        .onAppear() {
+//            self.isFavorite = self.web.webview.isRemove(url: inputUrl)
+            self.isFavorite = !self.bookmarkController.getIsRemove(url: (web.webview.webview?.url)?.absoluteString ?? "default value")
+            print("isfav")
+            print(self.isFavorite)
+        }
     }
 }
 

@@ -50,6 +50,11 @@ struct BookmarkView: View {
             }
             .padding(.horizontal)
             
+            Divider()
+                .background(Color.gray)
+                .scaleEffect(CGSize(width: 1, height: 1))
+                .padding(.top, 4.0)
+            
             //书签展示
             ScrollView(.vertical, showsIndicators: true) {
                 VStack {
@@ -70,7 +75,7 @@ struct BookmarkView: View {
             Spacer()
         }
         .navigationBarHidden(true)
-        .ignoresSafeArea()
+//        .ignoresSafeArea()
 //        .onAppear(perform: {
 //            bookmarkController.getMarkList()
 //        })
@@ -117,7 +122,7 @@ struct SingleBookmarkView: View {
         .frame(height: 80)
         .background(Color.white)
         .cornerRadius(10)
-        .shadow(radius: 1, x: 0, y: 0)
+        .shadow(radius: 0.2, x: 0, y: 0.2)
     }
 }
 struct BookmarkView_Previews: PreviewProvider {

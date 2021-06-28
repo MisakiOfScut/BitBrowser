@@ -26,14 +26,13 @@ struct ContentView: View {
 //    @ObservedObject var web: Web = Web(url: "http://www.bilibili.com")
     @State var showModal = false;
     let web: Web
-//    @Binding var web: Web
     init(url: String) {
         self.url = url
         web = Web(url: url)
     }
     
-//    @ObservedObject var BookmarkData: Bookmark = Bookmark(data: [Mark(title: "百度一下，你就知道", webUrl: "https://www.baidu.com"),Mark(title: "搜狐新闻", webUrl: "https://www.sohu.com"),Mark(title: "哔哩哔哩，干杯🍻", webUrl: "https://www.bilibili.com")])
-    @ObservedObject var bookMarkPresenter : BookmarkController = BookmarkController()
+    @ObservedObject var bookmarkController : BookmarkController = BookmarkController()
+    @State var isFavorite: Bool = false
     
     var body: some View {
         GeometryReader(content: { geometry in
@@ -41,7 +40,8 @@ struct ContentView: View {
                 ZStack(alignment: .bottomTrailing) {
                     VStack(spacing: 0) {
                         SearchView()
-                        web.webview.frame(minHeight: 0, maxHeight: .infinity)
+                        web.webview
+                            .frame(minHeight: 0, maxHeight: .infinity)
                     }
 //                    .edgesIgnoringSafeArea(.top)
                     InfoModalView()
@@ -53,9 +53,9 @@ struct ContentView: View {
             }
             .edgesIgnoringSafeArea(.top)
             .environmentObject(web)
-            .environmentObject(self.bookMarkPresenter)
+            .environmentObject(self.bookmarkController)
             .onAppear(perform: {
-                bookMarkPresenter.getMarkList()
+                bookmarkController.getMarkList()
             })
         })
     }
