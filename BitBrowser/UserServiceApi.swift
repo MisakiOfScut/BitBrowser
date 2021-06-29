@@ -72,7 +72,7 @@ extension UserApiService: TargetType{
             
         case .verifyCode(let email, let validCode):
             return [
-                "eamil": email,
+                "email": email,
                 "validCode": validCode
             ]
         case .getFavourites(let usr_id):

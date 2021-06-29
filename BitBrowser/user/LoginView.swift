@@ -64,7 +64,7 @@ struct LoginView: View {
                         .stroke(Color.gray,lineWidth: 2)
                 )
                 .padding()
-                .alert(isPresented: $userController.login_failed, content: {
+                .alert(isPresented: $userController.fail, content: {
                     Alert(title: Text("登陆失败"), message: Text(userController.msg), dismissButton: .default(Text("好的")))
                 })
                 Button(action: {
@@ -74,7 +74,7 @@ struct LoginView: View {
                         Text("登录")
                             .foregroundColor(.black)
                     }
-                    .alert(isPresented: $userController.login_success, content: {
+                    .alert(isPresented: $userController.success, content: {
                         Alert(title: Text("系统提示"), message: Text(userController.msg), dismissButton: .default(Text("好的")) {
                             self.goToHome()
                         })

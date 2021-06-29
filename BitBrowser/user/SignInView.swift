@@ -24,6 +24,13 @@ struct SignInView: View {
     @Environment(\.presentationMode) private var presentationMode
     
     
+    func goToHome() {
+        if let window = UIApplication.shared.windows.first {
+            window.rootViewController = UIHostingController(rootView: ContentView(url: "https://www.baidu.com"))
+            window.makeKeyAndVisible()
+        }
+    }
+    
     
     
     var body: some View {
@@ -43,13 +50,16 @@ struct SignInView: View {
                 }
                 .frame(width:340,height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .overlay(
-                    RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
+                    RoundedRectangle(cornerRadius: 25.0/*@END_MENU_TOKEN@*/, style: /*@START_MENU_TOKEN@*/.continuous)
                         .stroke(Color.gray,lineWidth: 2)
                 )
                 .padding()
                 HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 8){
                     TextField("  请输入你的密码", text: self.$password)
                 }
+                .alert(isPresented: $userController.success, content: {
+                    Alert(title: Text("注册成功"), message: Text(userController.msg), dismissButton: .default(Text("好的")) {})
+                })
                 .frame(width:340,height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .overlay(
                     RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
@@ -65,6 +75,9 @@ struct SignInView: View {
                     RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
                         .stroke(Color.gray,lineWidth: 2)
                 )
+                .alert(isPresented: $userController.fail, content: {
+                    Alert(title: Text("注册失败"), message: Text(userController.msg), dismissButton: .default(Text("好的")) {})
+                })
                 .padding()
                 HStack{
                     VStack(alignment: .leading, spacing: 8){
@@ -84,10 +97,16 @@ struct SignInView: View {
                         }
                     }
                 }
+                .alert(isPresented: $userController.fail, content: {
+                    Alert(title: Text("发送失败"), message: Text(userController.msg), dismissButton: .default(Text("好的")) {})
+                })
                 .padding(.bottom)
                 HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 8){
                     TextField("  请输入验证码", text: self.$verify)
                 }
+                .alert(isPresented: $userController.success, content: {
+                    Alert(title: Text("系统提示"), message: Text(userController.msg), dismissButton: .default(Text("好的")) {})
+                })
                 .frame(width:340,height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .overlay(
                     RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
