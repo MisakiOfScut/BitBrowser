@@ -10,24 +10,22 @@ import SwiftUI
 struct BottomTabView: View {
     @State var showInfoModal = false
     @Binding var showModal: Bool
-    @EnvironmentObject var web: Web
-    @EnvironmentObject var bookMarkPresenter:BookmarkController
     var body: some View {
         HStack(){
             Image("arrowLeft")
                 .onTapGesture {
-                    web.webview.goBack()
+                    ContentView.web.webview.goBack()
                 }
             Spacer()
             Image("arrowRight")
                 .onTapGesture {
-                    web.webview.goForward()
+                    ContentView.web.webview.goForward()
                 }
             Spacer()
             Image("home")
                 .scaleEffect(CGSize(width: 0.8, height: 0.8))
                 .onTapGesture {
-                    web.webview.load("https://www.baidu.com")
+                    ContentView.web.webview.load("https://www.baidu.com")
                 }
             Spacer()
             NavigationLink(
@@ -35,7 +33,7 @@ struct BottomTabView: View {
                 Image("favorite")
                     .scaleEffect(CGSize(width: 0.8, height: 0.8))
             }
-            .environmentObject(self.bookMarkPresenter)
+//            .environmentObject(self.bookmarkController)
             Spacer()
             Image("me")
                 .scaleEffect(0.8)

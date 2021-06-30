@@ -10,6 +10,11 @@ import Foundation
 
 class BookmarkController:ObservableObject{
     @Published var marklist:[Mark] = []
+    static var bookmarkController:BookmarkController = BookmarkController()
+        
+    private init() {
+        self.getMarkList()
+    }
     
     func getMarkList(){
         //获取本地数据
@@ -34,6 +39,7 @@ class BookmarkController:ObservableObject{
 //                    data?.markList[index].id = index
 //                }
 //                self.marklist = data?.markList ?? []
+                print("bookmarkcontroller getlist之后 marklist 和 count")
                 print(self.marklist)
                 print(self.marklist.count)
 //            }else{
@@ -58,7 +64,7 @@ class BookmarkController:ObservableObject{
     //删除书签
     func remove(id: Int) {
         self.marklist[id].isRemove.toggle()
-        self.store()
+        store()
     }
     func remove(url: String) {
         for i in 0..<(self.marklist.count) {

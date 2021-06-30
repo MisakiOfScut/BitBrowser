@@ -7,7 +7,15 @@
 
 import SwiftUI
 
-let tp = TestPresenter()
+ /// 一个单例
+// var data = DataClass()
+// class DataClass : ObservableObject{
+//     @Published var isFavorite : Bool = false
+//     func toggle(){
+//        isFavorite = !isFavorite
+//        NotificationCenter.default.post(name: Notification.Name.init(rawValue: "isFavorite_change"), object: self, userInfo: ["isFavorite":isFavorite])
+//     }
+// }
  
  class Web: ObservableObject {
 //    @Published var webview = WebView(web: nil, req: URLRequest(url: URL(string: "https://www.baidu.com")!))
@@ -22,17 +30,21 @@ let tp = TestPresenter()
  }
 
 struct ContentView: View {
+//    @State var isFavorite = false
+//    let pub = NotificationCenter.default.publisher(for: Notification.Name.init(rawValue: "isFavorite_change"))
+    
+//    static var web:Web = Web(url: "https://www.baidu.com")
     var url: String
 //    @ObservedObject var web: Web = Web(url: "http://www.bilibili.com")
     @State var showModal = false;
-    let web: Web
+    static var web: Web = Web()
     init(url: String) {
         self.url = url
-        web = Web(url: url)
+        ContentView.web = Web(url: url)
     }
+//    @State var isFavorite: Bool = false
+//    @ObservedObject var bookmarkController : BookmarkController = BookmarkController()
     
-    @ObservedObject var bookmarkController : BookmarkController = BookmarkController()
-    @State var isFavorite: Bool = false
     
     var body: some View {
         GeometryReader(content: { geometry in
@@ -40,22 +52,23 @@ struct ContentView: View {
                 ZStack(alignment: .bottomTrailing) {
                     VStack(spacing: 0) {
                         SearchView()
-                        web.webview
+                        ContentView.web.webview
                             .frame(minHeight: 0, maxHeight: .infinity)
                     }
 //                    .edgesIgnoringSafeArea(.top)
                     InfoModalView()
                         .offset(x: 0, y: showModal ? geometry.size.height - 224 : geometry.size.height)
-                        .animation(.spring())
+                        .animation(.linear)
                     BottomTabView(showModal: self.$showModal)
 //                        .zIndex(1)
                 }.navigationBarHidden(true)
             }
-            .edgesIgnoringSafeArea(.top)
-            .environmentObject(web)
-            .environmentObject(self.bookmarkController)
+            .edgesIgnoringSafeArea(.all)
             .onAppear(perform: {
-                bookmarkController.getMarkList()
+                print("contentview content的高度")
+                print(UIScreen.main.nativeBounds.height)
+                print(UIScreen.main.bounds.height)
+                print(geometry.size.height)
             })
         })
     }
@@ -64,5 +77,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(url: "https://www.baidu.com")
+//        ContentView()
     }
 }
