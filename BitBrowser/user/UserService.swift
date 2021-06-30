@@ -34,6 +34,12 @@ class UserService{
         }
     }
     
+    static func resetPasswd(username: String, password: String, email: String, vaildCode: String, callback: @escaping(Bool, GeneralResp?, Error?)->Void){
+        UserApiProvider.request(UserApiService.resetPasswd(username: username, password: password, email: email, vaildCode: vaildCode)){ result in
+            generalCompletion(result: result, callback: callback)
+        }
+    }
+    
     
     static func generalCompletion(result: Result<Response, MoyaError>, callback: @escaping(Bool, GeneralResp?, Error?)->Void){
         switch result{

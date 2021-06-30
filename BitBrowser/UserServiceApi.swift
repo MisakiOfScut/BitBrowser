@@ -16,6 +16,7 @@ enum UserApiService{
     case sendMail(email: String)
     case verifyCode(email:String, validCode: String)
     case getFavourites(usr_id: String)
+    case resetPasswd(username: String, password: String, email: String, vaildCode: String)
 }
 
 struct UserApiConstant{
@@ -39,6 +40,8 @@ extension UserApiService: TargetType{
             return "/verifyCode"
         case .getFavourites:
             return "/getFavourites"
+        case .resetPasswd:
+            return "/resetPasswd"
         }
         
     }
@@ -53,7 +56,8 @@ extension UserApiService: TargetType{
     //设置请求参数（body中的key-value对）
     var parameters : [String:Any]? {
         switch self {
-        case .register(let username, let password, let email, let validCode):
+        case .register(let username, let password, let email, let validCode),
+             .resetPasswd(let username, let password, let email, let validCode):
             return [
                 "username": username,
                 "password" : password,
