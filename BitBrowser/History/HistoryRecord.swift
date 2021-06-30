@@ -12,8 +12,8 @@ var _encoder = JSONEncoder()
 var _decoder = JSONDecoder()
 
 
-class HistoryRecord:Mappable{
-    var recordList:[Record] = []
+class HistoryRecord:Mappable, ObservableObject{
+    @Published var recordList:[Record] = []
     var count = 0
     
     func clear() {

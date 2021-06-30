@@ -11,7 +11,7 @@ import SwiftUI
 
 
 struct HistoryView: View {
-    var history:HistoryRecord = HistoryRecord()
+    @ObservedObject var history:HistoryRecord = HistoryRecord()
     var temp:String = ""
     var is_printed:Bool=true
     @Environment(\.presentationMode) private var presentationMode
