@@ -8,13 +8,11 @@
 import Foundation
 import ObjectMapper
 
-var _encoder = JSONEncoder()
-var _decoder = JSONDecoder()
-
 
 class HistoryRecord:Mappable, ObservableObject{
     @Published var recordList:[Record] = []
     var count = 0
+    var deleted = 0
     
     func clear() {
         UserDefaults.standard.removeObject(forKey: "markList")
@@ -22,7 +20,7 @@ class HistoryRecord:Mappable, ObservableObject{
     
     init(data: [Record]) {
         for item in data {
-            self.recordList.append(Record(recordDate: item.recordDate, url: item.url, webName: item.webName, isRemoved: item.isRemoved, id: item.id))
+            self.recordList.append(Record(recordDate: item.recordDate, url: item.url, webName: item.webName, isRemoved: item.isRemoved, id:self.count))
             self.count += 1
         }
     }
@@ -31,25 +29,45 @@ class HistoryRecord:Mappable, ObservableObject{
         if let dataStored = UserDefaults.standard.object(forKey: "recordList") as? Data {
             let data = try! decoder.decode([Record].self, from: dataStored)
             //注意这里id要重新按顺序排
-            var id: Int = 0
             for item in data {
                 if !item.isRemoved {
-                    self.recordList.append(Record(recordDate: item.recordDate, url: item.url, webName: item.webName, isRemoved: item.isRemoved, id: item.id))
-                    id += 1
+                    self.recordList.append(Record(recordDate: item.recordDate, url: item.url, webName: item.webName, isRemoved: item.isRemoved, id: self.count))
+                    count += 1
                 }
             }
+            self.sort()
         }
     }
     
     //取消收藏
     func remove(id: Int) {
-        self.recordList[id].isRemoved.toggle()
+        var index:Int = id
+        if isFirst(index: id){
+            recordList[id] = Record(recordDate: recordList[id+1].recordDate, url: recordList[id+1].url, webName: recordList[id+1].webName, isRemoved: false, id: id)
+            index += 1
+            print("dd")
+        }
+        self.recordList[index].isRemoved.toggle()
+        deleted += 1
+        var temp = recordList[index]
+        temp.id = self.count - 1
+        for i in index..<self.count-1{
+            self.recordList[i] = self.recordList[i+1]
+            self.recordList[i].id = i
+            print(i)
+        }
+        self.recordList[self.count - 1] = temp
+        
         self.store()
     }
     
     //新增收藏
     func add(data: Record) {
-        self.recordList.append(Record(recordDate: data.recordDate, url: data.url, webName: data.webName, isRemoved: data.isRemoved, id: data.id))
+        self.recordList.append(Record(recordDate: data.recordDate, url: data.url, webName: data.webName, isRemoved: data.isRemoved, id:self.count-self.deleted))//要将新增的放在准确的排序当中
+        var temp:Record
+        temp = recordList[self.count-self.deleted]
+        recordList[self.count-self.deleted] = recordList[self.count]
+        recordList[self.count]=temp
         self.count += 1
         self.store()
     }
@@ -67,7 +85,7 @@ class HistoryRecord:Mappable, ObservableObject{
     }
     
     func store() {
-        let dataStored = try! _encoder.encode(self.recordList)
+        let dataStored = try! encoder.encode(self.recordList)
         UserDefaults.standard.set(dataStored, forKey: "recordList")
     }
     
@@ -76,6 +94,25 @@ class HistoryRecord:Mappable, ObservableObject{
     
     func mapping(map: Map) {
         recordList <- map["recordList"]
+    }
+    
+    func isFirst(index:Int)->Bool{
+        if index == self.count - 1{
+            return false
+        }
+        else if dateString_date(id: index) == dateString_date(id: index+1){
+            return true
+        }
+        return false
+    }
+    
+    func sort(){
+        self.recordList.sort(by: {(data1,data2) in
+            return data1.recordDate.timeIntervalSince1970<data2.recordDate.timeIntervalSince1970
+        })
+        for i in 0..<self.recordList.count{
+            self.recordList[i].id = i
+        }
     }
 }
 

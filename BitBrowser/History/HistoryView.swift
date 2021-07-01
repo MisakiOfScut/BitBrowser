@@ -16,6 +16,12 @@ struct HistoryView: View {
     var is_printed:Bool=true
     @Environment(\.presentationMode) private var presentationMode
     
+    func initialData(){
+        history.add(data: Record(recordDate: Date(), url: URL.init(string: "www.baidu.com")!, webName: "百度一下？"))
+        history.add(data: Record(recordDate: Date(), url: URL.init(string: "www.baidu.com")!, webName: "百度下？"))
+        
+    }
+    
     var body: some View {
         
         VStack {
@@ -26,7 +32,9 @@ struct HistoryView: View {
                     }
                     .padding(.leading)
                 Spacer()
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                Button(action: {
+                    self.initialData()
+                }, label: {
                     Text("清除历史记录")
 
                 })
@@ -34,41 +42,16 @@ struct HistoryView: View {
             ScrollView{
                 ForEach(0..<history.recordList.count){item in
                     if history.recordList[item].isRemoved == false
-                    {if item == 0 || history.dateString_date(id: item) != history.dateString_date(id: item-1) {
-                        SingleRecordView_Ahead(record: history.recordList[item],dateDate: history.dateString_date(id: item),dateTime: history.dateString_time(id: item))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 0, style: .continuous)
-                                    .stroke(Color.gray,lineWidth: 1)
-                            )
-                        HStack{
-                            SingleRecordView(record: history.recordList[item],dateDate: history.dateString_date(id: item),dateTime: history.dateString_time(id: item))
-                                
-                            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                                Image(systemName: "trash")
-                            })
-                            
-                        }
+                    {
+
+                            SingleRecordView(index:item)
+                                .environmentObject(self.history)
+
                         .overlay(
                             RoundedRectangle(cornerRadius: 0, style: .continuous)
                                 .stroke(Color.gray,lineWidth: 1)
                         )
 
-                    }
-                    else{
-                        
-                        HStack{
-                        SingleRecordView(record: history.recordList[item],dateDate: history.dateString_date(id: item),dateTime: history.dateString_time(id: item))
-                            
-                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                            Image(systemName: "trash")
-
-                        })
-                        }
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 0, style: .continuous)
-                                .stroke(Color.gray,lineWidth: 1)
-                        )
-                    }
                     
                     }
                 
@@ -80,34 +63,54 @@ struct HistoryView: View {
 
 
 struct SingleRecordView:View{
+    @EnvironmentObject var history:HistoryRecord
+    var index:Int = 0
     
-    var record:Record
-    var dateDate:String
-    var dateTime:String
     @State var dicide = false
     
         var body: some View{
+            if index == 0 || history.dateString_date(id: index) != history.dateString_date(id: index-1) {
+                SingleRecordView_Ahead(index:index)
+                    .environmentObject(self.history)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 0, style: .continuous)
+                            .stroke(Color.gray,lineWidth: 1)
+                    )
+            }
+            
             HStack{
                 VStack(alignment: .leading)
                 {
-                    Text(record.webName)
+                    Text(history.recordList[index].webName)
                         .font(.headline)
                         .fontWeight(.heavy)
-                    Text(record.url.path)
+                    Text(history.recordList[index].url.path)
                         .font(.subheadline)
                         .foregroundColor(.gray)
                 }
                 .padding(.leading)
                 Spacer()
                 VStack{
-                    Text(dateDate)
+                    Text(history.dateString_date(id: index))
                         .font(.subheadline)
                         .foregroundColor(.gray)
-                    Text(dateTime)
+                    Text(history.dateString_time(id: index))
                         .font(.subheadline)
                         .foregroundColor(.gray)
                 }
+                
+                Button(action: {
+                    dicide.toggle()
+                }, label: {
+                    Image(systemName: "trash")
+                })
             }
+            .alert(isPresented: $dicide, content: {
+                Alert(title: Text("系统提示"), message: Text("确定要删除该记录吗"), primaryButton: .default(Text("确定")){
+                    history.remove(id: self.index)
+                },
+                secondaryButton: .destructive(Text("取消")))
+            })
             .frame(height:50)
             .background(Color.white)
             .shadow(radius: 30,x: 0,y: 10 )
@@ -117,16 +120,15 @@ struct SingleRecordView:View{
 }
 
 struct SingleRecordView_Ahead:View{
-    
-    var record:Record
-    var dateDate:String
-    var dateTime:String
+    @EnvironmentObject var history:HistoryRecord
+    var index:Int = 0
+
     @State var decide = false
     
         var body: some View{
             HStack{
                 
-                Text(dateDate)
+                Text(history.dateString_time(id: index))
                     .font(.subheadline)
                     .foregroundColor(.black)
                 Spacer()
