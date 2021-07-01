@@ -12,7 +12,7 @@ struct t_UserUIView: View {
     @State private var username: String = ""
     @State private var password: String = ""
     let p = UserController()
-    let mp = BookmarkController()
+//    let mp = BookmarkController()
     
     var body: some View {
         Text("Hello, World!")
@@ -26,7 +26,7 @@ struct t_UserUIView: View {
             //p.sendMail(email: "724223086@qq.com")
             //p.verifyCode(email: "724223086@qq.com", vaildCode: "123456")
             print("press")
-            mp.getMarkList()
+            BookmarkController.bookmarkController.getMarkList()
         })
     }
 }

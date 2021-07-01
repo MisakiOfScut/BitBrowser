@@ -57,7 +57,7 @@ class UserController : ObservableObject {
                 }
             }else{
                 if error != nil{
-                    print(error)
+                    print(error as Any)
                 }else{
                     
                 }
@@ -80,7 +80,7 @@ class UserController : ObservableObject {
                 }
             }else{
                 if error != nil{
-                    print(error)
+                    print(error as Any)
                 }else{
                     
                 }
@@ -91,10 +91,25 @@ class UserController : ObservableObject {
     func verifyCode(email: String, vaildCode:String){
         UserService.verifyCode(email: email, vaildCode: vaildCode){(success: Bool, resp: GeneralResp?, error:Error?) in
             if success{
-                print(resp?.msg)
+                print(resp?.msg as Any)
             }else{
                 if error != nil{
-                    print(error)
+                    print(error as Any)
+                }else{
+                    
+                }
+            }
+        }
+    }
+    
+    func resetPasswd(username: String, password: String, email: String, vaildCode: String){
+        // encoded password
+        UserService.resetPasswd(username: username, password: password, email: email, vaildCode: vaildCode){ (success: Bool, resp: GeneralResp?, error:Error?) in
+            if success{
+                
+            }else{
+                if error != nil{
+                    print(error as Any)
                 }else{
                     
                 }

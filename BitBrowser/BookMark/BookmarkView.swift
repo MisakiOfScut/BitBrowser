@@ -12,7 +12,7 @@ struct BookmarkView: View {
     @State var searchContent: String = ""
     @Environment(\.presentationMode) private var presentationMode
     //初始化书签数据
-    @EnvironmentObject var bookmarkController: BookmarkController
+//    @EnvironmentObject var bookmarkController: BookmarkController
     
     //自定义跳转函数
     func goToPage(url: String) {
@@ -58,7 +58,7 @@ struct BookmarkView: View {
             //书签展示
             ScrollView(.vertical, showsIndicators: true) {
                 VStack {
-                    ForEach(self.bookmarkController.marklist) {item in
+                    ForEach(BookmarkController.bookmarkController.marklist) {item in
                         if !item.isRemove {
                             //书签跳转
                             Button(action:{
@@ -66,7 +66,7 @@ struct BookmarkView: View {
                                 self.goToPage(url: item.webUrl)
                             }){
                                 SingleBookmarkView(index: item.id)
-                                    .environmentObject(self.bookmarkController)
+//                                    .environmentObject(self.bookmarkController)
                             }
                         }
                     }
@@ -103,16 +103,16 @@ struct SingleBookmarkView: View {
                 }
                 .alert(isPresented: $removed, content: {
                     Alert(title: Text("确定取消收藏吗？"),  primaryButton: .default(Text("确定")){
-                        self.bookmarkController.remove(id: self.index)
+                        BookmarkController.bookmarkController.remove(id: self.index)
                       },
                       secondaryButton: .destructive(Text("取消")))
                 })
             VStack(alignment: .leading, spacing: 6.0) {
-                Text(self.bookmarkController.marklist[index].title)
+                Text(BookmarkController.bookmarkController.marklist[index].title)
                     .foregroundColor(.black)
                     .font(.headline)
                     .fontWeight(.heavy)
-                Text(self.bookmarkController.marklist[index].webUrl)
+                Text(BookmarkController.bookmarkController.marklist[index].webUrl)
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
