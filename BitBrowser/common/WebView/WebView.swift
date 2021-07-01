@@ -37,9 +37,9 @@ class NavigationDelegate: NSObject, WKNavigationDelegate {
         print(Date())
         
 //        self.isFavorite = !BookmarkController.bookmarkController.getIsRemove(url: (ContentView.web.webview.webview?.url)?.absoluteString ?? "default value")
-        print("webview 页面加载完毕后，isfav url")
-        print(self.isFavorite)
-        print((ContentView.web.webview.webview?.url)?.absoluteString ?? "default value")
+//        print("webview 页面加载完毕后，isfav url")
+//        print(self.isFavorite)
+//        print((ContentView.web.webview.webview?.url)?.absoluteString ?? "default value")
         
     }
     
@@ -80,6 +80,7 @@ struct WebView: UIViewRepresentable {
     var webview: WKWebView?
     var navigationDelegate = NavigationDelegate()
     @EnvironmentObject var bookmarkController: BookmarkController
+//    @EnvironmentObject var isfav:Isfav
     
     init(web: WKWebView?, req: URLRequest) {
         self.webview = WKWebView()
@@ -89,9 +90,9 @@ struct WebView: UIViewRepresentable {
     }
     
     //获得isFavorite的值
-    func getisFavorite() -> Bool{
-        return self.navigationDelegate.getisFavorite()
-    }
+//    func setisFavorite(url: String){
+//        isfav.setisfav(val: !self.bookmarkController.getIsRemove(url: url))
+//    }
     
     func makeUIView(context: Context) -> WKWebView  {
         return webview!
@@ -104,6 +105,8 @@ struct WebView: UIViewRepresentable {
     func load(_ urlString: String) {
         if let url = URL(string: urlString) {
             let request = URLRequest(url: url)
+            isfav.setisfav(url: urlString)
+//            self.setisFavorite(url: urlString)
             self.webview?.load(request)
         }
     }

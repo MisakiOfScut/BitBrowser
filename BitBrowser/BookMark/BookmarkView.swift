@@ -88,7 +88,7 @@ struct SingleBookmarkView: View {
 //    var title: String = "百度"
 //    var webUrl: String = "http://baidu.com"
     
-//    @EnvironmentObject var bookmarkController:BookmarkController
+    @EnvironmentObject var bookmarkController:BookmarkController
     var index: Int
     @State var removed: Bool = false
     

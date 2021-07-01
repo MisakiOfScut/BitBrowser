@@ -11,7 +11,7 @@ import Foundation
 class BookmarkController:ObservableObject{
     @Published var marklist:[Mark] = []
     static var bookmarkController:BookmarkController = BookmarkController()
-        
+
     private init() {
         self.getMarkList()
     }

@@ -16,6 +16,26 @@ import SwiftUI
 //        NotificationCenter.default.post(name: Notification.Name.init(rawValue: "isFavorite_change"), object: self, userInfo: ["isFavorite":isFavorite])
 //     }
 // }
+ class Isfav: ObservableObject {
+    @Published var isfav: Bool
+//    @EnvironmentObject var bookmarkController : BookmarkController
+    init() {
+        self.isfav = false
+    }
+    func toggle() {
+        self.isfav.toggle()
+    }
+    func getisfav() -> Bool{
+        return self.isfav
+    }
+    func setisfav(val: Bool) {
+        self.isfav = val
+    }
+    func setisfav(url: String){
+        self.isfav = BookmarkController.bookmarkController.getIsRemove(url: url)
+    }
+ }
+ var isfav = Isfav()
  
  class Web: ObservableObject {
 //    @Published var webview = WebView(web: nil, req: URLRequest(url: URL(string: "https://www.baidu.com")!))
@@ -37,13 +57,15 @@ struct ContentView: View {
     var url: String
 //    @ObservedObject var web: Web = Web(url: "http://www.bilibili.com")
     @State var showModal = false;
-    static var web: Web = Web()
+//    static var web: Web = Web()
+    let web: Web
     init(url: String) {
         self.url = url
-        ContentView.web = Web(url: url)
+        web = Web(url: url)
     }
 //    @State var isFavorite: Bool = false
 //    @ObservedObject var bookmarkController : BookmarkController = BookmarkController()
+//    @ObservedObject var isfav: Isfav = Isfav()
     
     
     var body: some View {
@@ -52,7 +74,7 @@ struct ContentView: View {
                 ZStack(alignment: .bottomTrailing) {
                     VStack(spacing: 0) {
                         SearchView()
-                        ContentView.web.webview
+                        self.web.webview
                             .frame(minHeight: 0, maxHeight: .infinity)
                     }
 //                    .edgesIgnoringSafeArea(.top)
@@ -64,7 +86,11 @@ struct ContentView: View {
                 }.navigationBarHidden(true)
             }
             .edgesIgnoringSafeArea(.all)
+//            .environmentObject(self.bookmarkController)
+            .environmentObject(self.web)
+//            .environmentObject(self.isfav)
             .onAppear(perform: {
+//                self.bookmarkController.getMarkList()
                 print("contentview content的高度")
                 print(UIScreen.main.nativeBounds.height)
                 print(UIScreen.main.bounds.height)

@@ -10,22 +10,23 @@ import SwiftUI
 struct BottomTabView: View {
     @State var showInfoModal = false
     @Binding var showModal: Bool
+    @EnvironmentObject var web: Web
     var body: some View {
         HStack(){
             Image("arrowLeft")
                 .onTapGesture {
-                    ContentView.web.webview.goBack()
+                    self.web.webview.goBack()
                 }
             Spacer()
             Image("arrowRight")
                 .onTapGesture {
-                    ContentView.web.webview.goForward()
+                    self.web.webview.goForward()
                 }
             Spacer()
             Image("home")
                 .scaleEffect(CGSize(width: 0.8, height: 0.8))
                 .onTapGesture {
-                    ContentView.web.webview.load("https://www.baidu.com")
+                    self.web.webview.load("https://www.baidu.com")
                 }
             Spacer()
             NavigationLink(
