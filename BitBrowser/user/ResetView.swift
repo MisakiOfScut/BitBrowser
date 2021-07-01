@@ -1,13 +1,14 @@
 //
-//  LoginView.swift
+//  ResetView.swift
 //  BitBrowser
 //
-//  Created by Aaron_Chan on 2021/6/9.
+//  Created by Aaron_Chan on 2021/7/1.
 //
+
+import Foundation
 import SwiftUI
 
-//页面数据：账号和密码
-struct SignInView: View {
+struct ResetView: View {
     @State var account:String = ""
     @State var password:String = ""
     @State var password_check:String = ""
@@ -115,10 +116,10 @@ struct SignInView: View {
                         .stroke(Color.gray,lineWidth: 2)
                 )
                 Button(action: {
-                    userController.register(username: account, password: password, email: email, vaildCode: verify)
+                    userController.resetPasswd(username: account, password: password, email: email, vaildCode: verify)
                 }){
                     HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing:nil){
-                        Text("注册")
+                        Text("重置")
                             .foregroundColor(.black)
                     }
                     .frame(width:150, height:40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -138,8 +139,8 @@ struct SignInView: View {
     
 }
     
-    struct SignInView_Previews: PreviewProvider {
+    struct ResetView_Previews: PreviewProvider {
         static var previews: some View {
-            SignInView()
+            ResetView()
         }
     }

@@ -10,7 +10,8 @@ import SwiftUI
 struct LoginView: View {
     @State var account:String = ""
     @State var password:String = ""
-    
+    @State var signInView_show = false
+    @State var resetView_show = false
     @State var showingAlert:Bool = false
     @State var showingSuccess:Bool = false
     @ObservedObject var userController = UserController()
@@ -89,17 +90,27 @@ struct LoginView: View {
                 HStack{
                     Text("还没有注册？")
                         .padding(.trailing)
-                    Button(action:{}){
+                    Button(action:{
+                        signInView_show.toggle()
+                    }){
                         Text("立即注册")
                     }
+                    .fullScreenCover(isPresented: $signInView_show, content: {
+                        SignInView()
+                    })
                 }
                 .padding(.bottom)
                 HStack{
                     Text("忘记密码？    ")
                         .padding(.trailing)
-                    Button(action:{}){
+                    Button(action:{
+                        resetView_show.toggle()
+                    }){
                         Text("找回密码")
                     }
+                    .fullScreenCover(isPresented: $resetView_show, content: {
+                        ResetView()
+                    })
                 }
                 Spacer()
             }
