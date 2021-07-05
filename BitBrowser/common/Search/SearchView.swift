@@ -11,9 +11,8 @@ struct SearchView: View {
     @State var inputUrl: String = ""
     @State var isFavorite: Bool = false
     @State var index: Int = 0
-//    @State var isFavorite = false
-//    let pub = NotificationCenter.default.publisher(for: Notification.Name.init(rawValue: "isFavorite_change"))
-//    @EnvironmentObject var bookmarkController:BookmarkController
+    @State var isfav2 = false
+    let pub = NotificationCenter.default.publisher(for: Notification.Name.init(rawValue: "get_isfav"))
     @EnvironmentObject var web:Web
 //    @EnvironmentObject var isfav:Isfav
 //    @State private var isthisfav = isfav.getisfav()
@@ -38,8 +37,8 @@ struct SearchView: View {
                 RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
                     .stroke(Color("Color_Login"),lineWidth: 2)
                 )
-//            Image(isfav.getisfav() ? "like_fill" : "like")
-            Image("like")
+            Image(self.isfav2 ? "like_fill" : "like")
+//            Image("like")
                 .onTapGesture {
                     if !isfav.getisfav() {
                         BookmarkController.bookmarkController.add(data: Mark(title: self.web.webview.webview?.title ?? "default value", webUrl:  (self.web.webview.webview?.url)?.absoluteString ?? "default value"))
@@ -49,7 +48,7 @@ struct SearchView: View {
                         BookmarkController.bookmarkController.remove(url: (self.web.webview.webview?.url)?.absoluteString ?? "default value")
                     }
 //                    data.toggle()
-                    isfav.toggle()
+                    isfav.setisfav(val: !self.isfav2)
 //                    self.isthisfav = isfav.getisfav()
                     print("searchview 点击完毕 marklist isfav")
                     print(BookmarkController.bookmarkController.marklist)
@@ -73,10 +72,9 @@ struct SearchView: View {
             
 //            self.isthisfav = isfav.getisfav()
         }
-//        .onReceive(pub) { output in
-//            isFavorite = data.isFavorite
-//            data.start()
-//        }
+        .onReceive(pub) { output in
+            isfav2 = isfav.isfav
+        }
     }
 }
 

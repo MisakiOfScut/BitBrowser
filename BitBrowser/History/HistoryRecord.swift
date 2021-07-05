@@ -63,12 +63,13 @@ class HistoryRecord:Mappable, ObservableObject{
     
     //新增收藏
     func add(data: Record) {
-        self.recordList.append(Record(recordDate: data.recordDate, url: data.url, webName: data.webName, isRemoved: data.isRemoved, id:self.count-self.deleted))//要将新增的放在准确的排序当中
+        self.recordList.append(Record(recordDate: data.recordDate, url: data.url, webName: data.webName, isRemoved: false, id:self.count-self.deleted))//要将新增的放在准确的排序当中
         var temp:Record
         temp = recordList[self.count-self.deleted]
         recordList[self.count-self.deleted] = recordList[self.count]
         recordList[self.count]=temp
         self.count += 1
+        print("111")
         self.store()
     }
     

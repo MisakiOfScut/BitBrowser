@@ -13,9 +13,17 @@ class UserController : ObservableObject {
     @Published var success:Bool = false
     @Published var e_fail:Bool = false
     @Published var e_success:Bool = false
+    @Published var is_login:Bool = false
+    @Published var name:String = "尚未登录"
     
     var msg:String = ""
     
+    func getName() -> String {
+        return self.name
+    }
+    func getIslogin() -> Bool {
+        return self.is_login
+    }
     
     func login(username: String, password: String){
         // encoded password
@@ -26,7 +34,13 @@ class UserController : ObservableObject {
                 if (resp?.success)!{
                 self.success = true
                     self.msg = (resp?.msg)!
-                    print("login success")}
+                    print("login success")
+                    self.name = username
+                    self.is_login = true
+                    print("name is_login")
+                    print(self.name)
+                    print(self.is_login)
+                }
                 else{
                     self.fail = true
                     self.msg = (resp?.msg)!

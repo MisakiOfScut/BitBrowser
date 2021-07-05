@@ -30,11 +30,17 @@ class NavigationDelegate: NSObject, WKNavigationDelegate {
 //        print(data.isFavorite)
 //    }
 //    页面跳转后，内容接受完毕调用
+    var history:HistoryRecord = HistoryRecord()
+    
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        if webView.url?.absoluteString != "about:blank"{
+        history.add(data: Record(recordDate: Date(), url: webView.url!, webName: webView.title!))
         print("webview基本信息")
         print(webView.title ?? "default value")
         print(webView.url)
         print(Date())
+            
+        }
         
 //        self.isFavorite = !BookmarkController.bookmarkController.getIsRemove(url: (ContentView.web.webview.webview?.url)?.absoluteString ?? "default value")
 //        print("webview 页面加载完毕后，isfav url")
@@ -42,6 +48,8 @@ class NavigationDelegate: NSObject, WKNavigationDelegate {
 //        print((ContentView.web.webview.webview?.url)?.absoluteString ?? "default value")
         
     }
+    
+
     
     //获得isFavorite的值
     func getisFavorite() -> Bool{

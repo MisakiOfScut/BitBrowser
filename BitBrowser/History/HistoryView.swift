@@ -22,6 +22,8 @@ struct HistoryView: View {
         
     }
     
+
+    
     var body: some View {
         
         VStack {
@@ -68,6 +70,15 @@ struct SingleRecordView:View{
     
     @State var dicide = false
     
+    //自定义跳转函数
+    func goToPage(url: String) {
+        if let window = UIApplication.shared.windows.first {
+            window.rootViewController = UIHostingController(rootView: ContentView(url: url))
+            window.makeKeyAndVisible()
+        }
+//        self.web.webview.load(url)
+    }
+    
         var body: some View{
             if index == 0 || history.dateString_date(id: index) != history.dateString_date(id: index-1) {
                 SingleRecordView_Ahead(index:index)
@@ -78,26 +89,34 @@ struct SingleRecordView:View{
                     )
             }
             
-            HStack{
-                VStack(alignment: .leading)
-                {
-                    Text(history.recordList[index].webName)
-                        .font(.headline)
-                        .fontWeight(.heavy)
-                    Text(history.recordList[index].url.path)
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
+            Button(action: {
+                self.goToPage(url:self.history.recordList[index].url.absoluteString)
+            }){
+                Group{
+                    HStack{
+                        VStack(alignment: .leading)
+                        {
+                            Text(history.recordList[index].webName)
+                                .font(.headline)
+                                .fontWeight(.heavy)
+                            Text(history.recordList[index].url.absoluteString)
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                        }
+                        .padding(.leading)
+                        Spacer()
+                        VStack{
+                            Text(history.dateString_date(id: index))
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                            Text(history.dateString_time(id: index))
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                        }
                 }
-                .padding(.leading)
-                Spacer()
-                VStack{
-                    Text(history.dateString_date(id: index))
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                    Text(history.dateString_time(id: index))
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                }
+            }
+            
+            
                 
                 Button(action: {
                     dicide.toggle()
@@ -128,7 +147,7 @@ struct SingleRecordView_Ahead:View{
         var body: some View{
             HStack{
                 
-                Text(history.dateString_time(id: index))
+                Text(history.dateString_date(id: index))
                     .font(.subheadline)
                     .foregroundColor(.black)
                 Spacer()

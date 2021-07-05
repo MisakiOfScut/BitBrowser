@@ -16,19 +16,31 @@ import SwiftUI
 //        NotificationCenter.default.post(name: Notification.Name.init(rawValue: "isFavorite_change"), object: self, userInfo: ["isFavorite":isFavorite])
 //     }
 // }
+ //判断是不是刘海屏
+func isiPhoneXScreen() -> Bool {
+    guard #available(iOS 11.0, *) else {
+        return false
+    }
+    return UIApplication.shared.windows[0].safeAreaInsets.bottom > 0
+}
+ func getInfooffset() -> Int {
+    if isiPhoneXScreen() {
+        return  224 + 34
+    } else {
+        return  224
+    }
+ }
  class Isfav: ObservableObject {
     @Published var isfav: Bool
 //    @EnvironmentObject var bookmarkController : BookmarkController
     init() {
         self.isfav = false
     }
-    func toggle() {
-        self.isfav.toggle()
-    }
     func getisfav() -> Bool{
         return self.isfav
     }
     func setisfav(val: Bool) {
+        NotificationCenter.default.post(name: Notification.Name.init(rawValue: "get_isfav"), object: self, userInfo: ["isfav": isfav])
         self.isfav = val
     }
     func setisfav(url: String){
@@ -36,6 +48,7 @@ import SwiftUI
     }
  }
  var isfav = Isfav()
+ 
  
  class Web: ObservableObject {
 //    @Published var webview = WebView(web: nil, req: URLRequest(url: URL(string: "https://www.baidu.com")!))
@@ -50,9 +63,9 @@ import SwiftUI
  }
 
 struct ContentView: View {
-//    @State var isFavorite = false
-//    let pub = NotificationCenter.default.publisher(for: Notification.Name.init(rawValue: "isFavorite_change"))
-    
+    @State var isfav2 = false
+    let pub = NotificationCenter.default.publisher(for: Notification.Name.init(rawValue: "get_isfav"))
+    @ObservedObject var userController = UserController()
 //    static var web:Web = Web(url: "https://www.baidu.com")
     var url: String
 //    @ObservedObject var web: Web = Web(url: "http://www.bilibili.com")
@@ -79,9 +92,11 @@ struct ContentView: View {
                     }
 //                    .edgesIgnoringSafeArea(.top)
                     InfoModalView()
-                        .offset(x: 0, y: showModal ? geometry.size.height - 224 : geometry.size.height)
+                        .offset(x: 0, y: showModal ? geometry.size.height - CGFloat(getInfooffset()) : geometry.size.height)
                         .animation(.linear)
+                        .environmentObject(self.userController)
                     BottomTabView(showModal: self.$showModal)
+                        .offset(x: 0, y: isiPhoneXScreen() ? 34 : 0)
 //                        .zIndex(1)
                 }.navigationBarHidden(true)
             }
@@ -89,6 +104,7 @@ struct ContentView: View {
 //            .environmentObject(self.bookmarkController)
             .environmentObject(self.web)
 //            .environmentObject(self.isfav)
+ //           .environmentObject(self.userController)
             .onAppear(perform: {
 //                self.bookmarkController.getMarkList()
                 print("contentview content的高度")

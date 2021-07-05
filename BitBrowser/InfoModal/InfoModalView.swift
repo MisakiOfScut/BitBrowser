@@ -9,13 +9,14 @@ import SwiftUI
 
 struct InfoModalView: View {
 //    @Binding var showModal: Bool
-    @State private var isLogin = true
-    @State private var userName = "vivian"
+//    @State private var isLogin = true
+//    @State private var userName = "vivian"
     @State private var showAlert = false
     @State private var showQuit = false
     @State private var isBookmark = false
     @State private var isHistory = false
     @State private var isLoginPage = false
+    @EnvironmentObject var userController:UserController
     
 //    func changeLoginState(){
 //        isLogin = !isLogin
@@ -34,30 +35,31 @@ struct InfoModalView: View {
                             .clipShape(Circle())
                             .overlay(Circle().stroke(Color.white, lineWidth: 2))
                             .shadow(radius: 3)
-                        Text(isLogin ? userName : "您尚未登录")
+                        Text(self.userController.name)
                             .padding(.leading, 6.0)
                         Spacer()
 //                        NavigationLink(
 //                            destination: LoginView()) {
-                            Text(isLogin ? "退出登录" : "登录/注册")
+                        Text(self.userController.is_login ? "退出登录" : "登录/注册")
                                 .foregroundColor(Color("System_Blue"))
                                 .onTapGesture {
                                     isLoginPage = true
                                 }
                                 .fullScreenCover(isPresented: $isLoginPage, content: {
                                     LoginView()
+                                        .environmentObject(userController)
                                 })
 //                        }
-                        .ignoresSafeArea(edges: .top)
+//                        .ignoresSafeArea(edges: .top)
                         .navigationBarHidden(true)
-                        .disabled(isLogin)
+                            .disabled(self.userController.is_login)
                         .onTapGesture {
                             showQuit = true
                         }
                         .alert(isPresented: $showQuit){
                             Alert(title: Text("确定退出吗"),
                                   primaryButton: .default(Text("确定")){
-                                    isLogin = false
+                                    self.userController.is_login = false
                                   },
                                   secondaryButton: .destructive(Text("取消")))
                         }
@@ -78,9 +80,9 @@ struct InfoModalView: View {
                             .fullScreenCover(isPresented: $isBookmark, content: {
                                 BookmarkView()
                             })
-                            .disabled(!isLogin)
+                            .disabled(!self.userController.is_login)
                             .onTapGesture {
-                                showAlert = isLogin ? false : true
+                                showAlert = self.userController.is_login ? false : true
                             }
                             .alert(isPresented: $showAlert){
                                 Alert(title: Text("请先登录"),
@@ -113,6 +115,11 @@ struct InfoModalView: View {
                 .background(Color("background1"))
                 .cornerRadius(10)
                 .ignoresSafeArea()
+                .onAppear(){
+                    print("infomodal中name is_iogin")
+                    print(self.userController.getName())
+                    print(self.userController.getIslogin())
+                }
                 Spacer()
             }
         }

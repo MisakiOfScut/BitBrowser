@@ -17,7 +17,8 @@ struct ResetView: View {
     
     @State var showingAlert:Bool = false
     @State var showingSuccess:Bool = false
-    @ObservedObject var userController = UserController()
+//    @ObservedObject var userController = UserController()
+    @EnvironmentObject var userController:UserController
     let dispatchQueue = DispatchQueue(label:"serial")
     let semaphore = DispatchSemaphore(value: 0)
     
