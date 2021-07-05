@@ -47,7 +47,7 @@ struct InfoModalView: View {
                                 }
                                 .fullScreenCover(isPresented: $isLoginPage, content: {
                                     LoginView()
-                                        .environmentObject(userController)
+                                        .environmentObject(self.userController)
                                 })
 //                        }
 //                        .ignoresSafeArea(edges: .top)
