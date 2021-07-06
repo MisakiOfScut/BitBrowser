@@ -70,7 +70,7 @@ struct LoginView: View {
                     Alert(title: Text("登陆失败"), message: Text(userController.msg), dismissButton: .default(Text("好的")))
                 })
                 Button(action: {
-                    userController.login(username: account, password: password)
+                    self.userController.login(username: account, password: password)
                 }){
                     HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing:nil){
                         Text("登录")
@@ -78,7 +78,7 @@ struct LoginView: View {
                     }
                     .alert(isPresented: $userController.success, content: {
                         Alert(title: Text("系统提示"), message: Text(userController.msg), dismissButton: .default(Text("好的")) {
-                            self.goToHome()
+                            self.presentationMode.wrappedValue.dismiss()
                         })
                     })
                     .frame(width:150, height:40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -98,6 +98,7 @@ struct LoginView: View {
                     }
                     .fullScreenCover(isPresented: $signInView_show, content: {
                         SignInView()
+                            .environmentObject(userController)
                     })
                 }
                 .padding(.bottom)
@@ -111,6 +112,7 @@ struct LoginView: View {
                     }
                     .fullScreenCover(isPresented: $resetView_show, content: {
                         ResetView()
+                            .environmentObject(userController)
                     })
                 }
                 Spacer()

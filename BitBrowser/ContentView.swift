@@ -90,6 +90,11 @@ struct ContentView: View {
                         self.web.webview
                             .frame(minHeight: 0, maxHeight: .infinity)
                     }
+                    .onReceive(userController.timer, perform: { time in
+                        if(self.userController.timeRemaining > 0){
+                            self.userController.timeRemaining -= 1
+                        }
+                    })
 //                    .edgesIgnoringSafeArea(.top)
                     InfoModalView()
                         .offset(x: 0, y: showModal ? geometry.size.height - CGFloat(getInfooffset()) : geometry.size.height)

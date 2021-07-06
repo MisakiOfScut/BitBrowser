@@ -16,7 +16,7 @@ struct InfoModalView: View {
     @State private var isBookmark = false
     @State private var isHistory = false
     @State private var isLoginPage = false
-    @EnvironmentObject var userController:UserController
+    @EnvironmentObject var userController: UserController
     
 //    func changeLoginState(){
 //        isLogin = !isLogin

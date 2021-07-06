@@ -15,6 +15,8 @@ class UserController : ObservableObject {
     @Published var e_success:Bool = false
     @Published var is_login:Bool = false
     @Published var name:String = "尚未登录"
+    @Published var timeRemaining = 0
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var msg:String = ""
     

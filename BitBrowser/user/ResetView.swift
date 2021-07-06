@@ -14,7 +14,7 @@ struct ResetView: View {
     @State var password_check:String = ""
     @State var email:String=""
     @State var verify:String=""
-    
+    @State var invalidPassword = false
     @State var showingAlert:Bool = false
     @State var showingSuccess:Bool = false
 //    @ObservedObject var userController = UserController()
@@ -33,7 +33,23 @@ struct ResetView: View {
         }
     }
     
+    func inputRegister(){
+        if(self.password_check != self.password){
+            invalidPassword = true
+            return
+        }
+        else{
+            userController.resetPasswd(username: self.account, password: self.password, email: self.email, vaildCode: self.verify)
+            return
+        }
+    }
     
+    func inputEmail(){
+        if(userController.timeRemaining <= 0){
+            userController.timeRemaining = 60
+            userController.sendMail(email: self.email)
+        }
+    }
     
     var body: some View {
         VStack {
@@ -57,7 +73,7 @@ struct ResetView: View {
                 )
                 .padding()
                 HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 8){
-                    TextField("  请输入你的密码", text: self.$password)
+                    SecureField("  请输入你的密码", text: self.$password)
                 }
                 .alert(isPresented: $userController.success, content: {
                     Alert(title: Text("注册成功"), message: Text(userController.msg), dismissButton: .default(Text("好的")) {
@@ -95,9 +111,9 @@ struct ResetView: View {
                     
                     VStack(alignment: .trailing, spacing: 8){
                         Button(action: {
-                            userController.sendMail(email: email)
+                            self.inputEmail()
                         }){
-                            Text("发送验证码")
+                            Text(userController.timeRemaining > 0 ? "等待\(userController.timeRemaining)":"发送验证码")
                         }
                     }
                 }
@@ -131,7 +147,9 @@ struct ResetView: View {
                 }
                 .padding(.bottom)
                 .padding(.top)
-                
+                .alert(isPresented: $invalidPassword, content: {
+                    Alert(title: Text("系统提示"), message: Text("两次输入密码不匹配"), dismissButton: .default(Text("好的")) {})
+                })
             
                 Spacer()
             }

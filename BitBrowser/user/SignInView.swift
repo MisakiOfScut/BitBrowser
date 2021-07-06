@@ -13,7 +13,7 @@ struct SignInView: View {
     @State var password_check:String = ""
     @State var email:String=""
     @State var verify:String=""
-    
+    @State var invalidPassword:Bool = false
     @State var showingAlert:Bool = false
     @State var showingSuccess:Bool = false
 //    @ObservedObject var userController = UserController()
@@ -32,7 +32,23 @@ struct SignInView: View {
         }
     }
     
+    func inputRegister(){
+        if(self.password_check != self.password){
+            invalidPassword = true
+            return
+        }
+        else{
+            userController.register(username: self.account, password: self.password, email: self.email, vaildCode: self.verify)
+            return
+        }
+    }
     
+    func inputEmail(){
+        if(userController.timeRemaining <= 0){
+            userController.timeRemaining = 60
+            userController.sendMail(email: self.email)
+        }
+    }
     
     var body: some View {
         VStack {
@@ -56,7 +72,7 @@ struct SignInView: View {
                 )
                 .padding()
                 HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 8){
-                    TextField("  请输入你的密码", text: self.$password)
+                    SecureField("  请输入你的密码", text: self.$password)
                 }
                 .alert(isPresented: $userController.success, content: {
                     Alert(title: Text("注册成功"), message: Text(userController.msg), dismissButton: .default(Text("好的")) {
@@ -94,9 +110,9 @@ struct SignInView: View {
                     
                     VStack(alignment: .trailing, spacing: 8){
                         Button(action: {
-                            userController.sendMail(email: email)
+                            inputEmail()
                         }){
-                            Text("发送验证码")
+                            Text(userController.timeRemaining > 0 ? "等待\(userController.timeRemaining)":"发送验证码")
                         }
                     }
                 }
@@ -116,7 +132,7 @@ struct SignInView: View {
                         .stroke(Color.gray,lineWidth: 2)
                 )
                 Button(action: {
-                    userController.register(username: account, password: password, email: email, vaildCode: verify)
+                    inputRegister()
                 }){
                     HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing:nil){
                         Text("注册")
@@ -130,7 +146,9 @@ struct SignInView: View {
                 }
                 .padding(.bottom)
                 .padding(.top)
-                
+                .alert(isPresented: $invalidPassword, content: {
+                    Alert(title: Text("系统提示"), message: Text("两次输入密码不匹配"), dismissButton: .default(Text("好的")) {})
+                })
             
                 Spacer()
             }
