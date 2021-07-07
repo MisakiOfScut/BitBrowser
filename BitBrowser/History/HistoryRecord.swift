@@ -11,6 +11,7 @@ import ObjectMapper
 
 class HistoryRecord:Mappable, ObservableObject{
     @Published var recordList:[Record] = []
+    static var historyRecord:HistoryRecord = HistoryRecord()
     var count = 0
     var deleted = 0
     

@@ -45,7 +45,7 @@ func isiPhoneXScreen() -> Bool {
         NotificationCenter.default.post(name: Notification.Name.init(rawValue: "get_isfav"), object: self, userInfo: ["isfav": isfav])
         self.isfav = val
     }
-    func setisfav(url: String){
+    func setisfav(url: URL){
         self.isfav = BookmarkController.bookmarkController.getIsRemove(url: url)
     }
  }

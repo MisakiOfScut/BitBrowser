@@ -11,6 +11,8 @@ struct BookmarkView: View {
     
     @State var searchContent: String = ""
     @Environment(\.presentationMode) private var presentationMode
+    @ObservedObject var bookmarkController = BookmarkController.bookmarkController
+    
     //初始化书签数据
 //    @EnvironmentObject var bookmarkController: BookmarkController
     
@@ -58,7 +60,7 @@ struct BookmarkView: View {
             //书签展示
             ScrollView(.vertical, showsIndicators: true) {
                 VStack {
-                    ForEach(BookmarkController.bookmarkController.marklist) {item in
+                    ForEach(bookmarkController.marklist) {item in
                         if !item.isRemove {
                             //书签跳转
                             Button(action:{
@@ -88,7 +90,7 @@ struct SingleBookmarkView: View {
 //    var title: String = "百度"
 //    var webUrl: String = "http://baidu.com"
     
-    @EnvironmentObject var bookmarkController:BookmarkController
+    @ObservedObject var bookmarkController = BookmarkController.bookmarkController
     var index: Int
     @State var removed: Bool = false
     

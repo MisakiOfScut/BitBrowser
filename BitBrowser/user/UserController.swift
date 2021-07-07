@@ -50,7 +50,7 @@ class UserController : ObservableObject {
     
     func login(username: String, password: String){
         // encoded password
-        
+        let bookmarkController = BookmarkController.bookmarkController
         UserService.login(username: username, password: password){ (success: Bool, resp: GeneralResp?, error: Error?) in
             if success{
                 //login success
@@ -61,6 +61,7 @@ class UserController : ObservableObject {
                     self.is_login = true
                     let dataStored = try! encoder.encode(userAuth(userId: (resp?.id)!, userName: username))
                     UserDefaults.standard.set(dataStored, forKey: "user_Auth")
+                    bookmarkController.getMarkList()
                 }
                 else{
                     self.fail = true

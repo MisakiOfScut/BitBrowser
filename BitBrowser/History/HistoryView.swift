@@ -11,7 +11,7 @@ import SwiftUI
 
 
 struct HistoryView: View {
-    @ObservedObject var history:HistoryRecord = HistoryRecord()
+    @ObservedObject var history:HistoryRecord = HistoryRecord.historyRecord
     var temp:String = ""
     var is_printed:Bool=true
     @State var isclear = false

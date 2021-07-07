@@ -18,6 +18,7 @@ enum UserApiService{
     case getFavourites(usr_id: String)
     case resetPasswd(username: String, password: String, email: String, vaildCode: String)
     case auth(usr_id: String)
+    case addFavourites(usr_id: String, favorArrayByJson: [[String : Any]])
 }
 
 struct UserApiConstant{
@@ -45,6 +46,8 @@ extension UserApiService: TargetType{
             return "/resetPasswd"
         case .auth:
             return "/auth"
+        case .addFavourites:
+            return "/addFavourites"
         }
         
     }
@@ -89,6 +92,11 @@ extension UserApiService: TargetType{
         case .auth(let usr_id):
             return [
                 "usr_id": usr_id
+            ]
+        case .addFavourites(let usr_id, let favorArrayByJson):
+            return [
+                "usr_id": usr_id,
+                "favourites": favorArrayByJson
             ]
         //default: return nil
         }

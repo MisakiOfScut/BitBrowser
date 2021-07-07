@@ -30,7 +30,7 @@ class NavigationDelegate: NSObject, WKNavigationDelegate {
 //        print(data.isFavorite)
 //    }
 //    页面跳转后，内容接受完毕调用
-    var history:HistoryRecord = HistoryRecord()
+    var history:HistoryRecord = HistoryRecord.historyRecord
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         if webView.url?.absoluteString != "about:blank"{
@@ -113,7 +113,7 @@ struct WebView: UIViewRepresentable {
     func load(_ urlString: String) {
         if let url = URL(string: urlString) {
             let request = URLRequest(url: url)
-            isfav.setisfav(url: urlString)
+            isfav.setisfav(url: url)
 //            self.setisFavorite(url: urlString)
             self.webview?.load(request)
         }

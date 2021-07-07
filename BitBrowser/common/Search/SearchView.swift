@@ -23,7 +23,9 @@ struct SearchView: View {
                 self.web.webview.load(inputUrl)
                 //这里能不能返回根据url判断这个页面是否被收藏
 //                self.isFavorite = self.web.webview.isRemove(url: inputUrl)
-                isfav.setisfav(val: !BookmarkController.bookmarkController.getIsRemove(url: (self.web.webview.webview?.url)?.absoluteString ?? "default value"))
+                isfav.setisfav(val: !BookmarkController.bookmarkController.getIsRemove(url: (self.web.webview.webview?.url)!))
+                print("------------")
+                print((self.web.webview.webview?.url)?.relativePath)
                 print("searchview输入网址后是否刷新 url marklist isfav")
                 print((self.web.webview.webview?.url)?.absoluteString ?? "default value")
                 print(BookmarkController.bookmarkController.marklist)
@@ -37,6 +39,7 @@ struct SearchView: View {
                 RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
                     .stroke(Color("Color_Login"),lineWidth: 2)
                 )
+            
             Image(self.isfav2 ? "like_fill" : "like")
 //            Image("like")
                 .onTapGesture {
@@ -66,7 +69,7 @@ struct SearchView: View {
         .padding(.horizontal)
         .onAppear() {
 //            self.isFavorite = self.web.webview.isRemove(url: inputUrl)
-            isfav.setisfav(val: !BookmarkController.bookmarkController.getIsRemove(url: (self.web.webview.webview?.url)?.absoluteString ?? "default value"))
+            isfav.setisfav(val: !BookmarkController.bookmarkController.getIsRemove(url: (self.web.webview.webview?.url)!))
             print("searchview出现 isfav")
             print(isFavorite)
             
