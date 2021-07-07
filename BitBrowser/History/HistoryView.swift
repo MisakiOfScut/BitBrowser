@@ -14,6 +14,7 @@ struct HistoryView: View {
     @ObservedObject var history:HistoryRecord = HistoryRecord()
     var temp:String = ""
     var is_printed:Bool=true
+    @State var isclear = false
     @Environment(\.presentationMode) private var presentationMode
     
     func initialData(){
@@ -33,13 +34,22 @@ struct HistoryView: View {
                         self.presentationMode.wrappedValue.dismiss()
                     }
                     .padding(.leading)
+                    .alert(isPresented: $isclear, content: {
+                        Alert(title: Text("系统提示"), message: Text("确定要删除所有记录吗"), primaryButton: .default(Text("确定")){
+                            history.clear()
+                        },
+                        secondaryButton: .destructive(Text("取消")))
+                    })
                 Spacer()
-                Button(action: {
-                    self.initialData()
-                }, label: {
-                    Text("清除历史记录")
-
-                })
+                Text("历史记录")
+                    .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                Spacer()
+                Button(action:{
+                    self.isclear.toggle()
+                }){
+                    Image(systemName: "trash")
+                }
+                .padding(.trailing)
             }
             ScrollView{
                 ForEach(0..<history.recordList.count){item in
@@ -99,6 +109,7 @@ struct SingleRecordView:View{
                             Text(history.recordList[index].webName)
                                 .font(.headline)
                                 .fontWeight(.heavy)
+                                .foregroundColor(.black)
                             Text(history.recordList[index].url.absoluteString)
                                 .font(.subheadline)
                                 .foregroundColor(.gray)

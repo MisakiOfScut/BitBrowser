@@ -22,6 +22,13 @@ struct InfoModalView: View {
 //        isLogin = !isLogin
 //    }
     
+    func quitLogin(){
+        self.userController.name = "尚未登录"
+        self.userController.is_login = false
+        self.userController.user_id = ""
+        UserDefaults.standard.removeObject(forKey: "user_Auth")
+    }
+    
     @Environment(\.presentationMode) private var presentationMode
     
     var body: some View {
@@ -59,7 +66,7 @@ struct InfoModalView: View {
                         .alert(isPresented: $showQuit){
                             Alert(title: Text("确定退出吗"),
                                   primaryButton: .default(Text("确定")){
-                                    self.userController.is_login = false
+                                    self.quitLogin()
                                   },
                                   secondaryButton: .destructive(Text("取消")))
                         }
@@ -116,9 +123,7 @@ struct InfoModalView: View {
                 .cornerRadius(10)
                 .ignoresSafeArea()
                 .onAppear(){
-                    print("infomodal中name is_iogin")
-                    print(self.userController.getName())
-                    print(self.userController.getIslogin())
+
                 }
                 Spacer()
             }

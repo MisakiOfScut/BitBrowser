@@ -30,6 +30,8 @@ func isiPhoneXScreen() -> Bool {
         return  224
     }
  }
+ 
+ 
  class Isfav: ObservableObject {
     @Published var isfav: Bool
 //    @EnvironmentObject var bookmarkController : BookmarkController

@@ -14,6 +14,7 @@ struct LoginView: View {
     @State var resetView_show = false
     @State var showingAlert:Bool = false
     @State var showingSuccess:Bool = false
+    
     //@ObservedObject var userController = UserController()
     @EnvironmentObject var userController:UserController
     let dispatchQueue = DispatchQueue(label:"serial")
@@ -49,7 +50,8 @@ struct LoginView: View {
                     .foregroundColor(Color("Color_Login"))
                 
                 HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 8){
-                    TextField("  请输入你的账号", text: self.$account)
+                    Text("  ")
+                    TextField("请输入你的账号", text: self.$account)
                 }
                 .frame(width:250,height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .overlay(
@@ -58,7 +60,8 @@ struct LoginView: View {
                 )
                 .padding()
                 HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 8){
-                    TextField("  请输入你的密码", text: self.$password)
+                    Text("  ")
+                    TextField("请输入你的密码", text: self.$password)
                 }
                 .frame(width:250,height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .overlay(

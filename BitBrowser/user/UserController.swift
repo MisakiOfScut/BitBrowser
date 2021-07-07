@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ObjectMapper
 
 class UserController : ObservableObject {
     
@@ -16,15 +17,39 @@ class UserController : ObservableObject {
     @Published var is_login:Bool = false
     @Published var name:String = "尚未登录"
     @Published var timeRemaining = 0
+    @Published var user_id = ""
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var msg:String = ""
     
-    func getName() -> String {
-        return self.name
+    init() {
+        if let dataStored = UserDefaults.standard.object(forKey: "user_Auth") as? Data{
+            let data = try! decoder.decode(userAuth.self, from: dataStored)
+            self.isAuthValid(id: data.userId, name: data.userName)
+        }else{
+            user_id = ""
+        }
     }
-    func getIslogin() -> Bool {
-        return self.is_login
+    
+    func isAuthValid(id:String, name:String){
+        UserService.isAuth(userId: id){ (success: Bool, resp: GeneralResp?, error: Error?) in
+            if success{
+                if(resp?.success)!{
+                    self.is_login = true
+                    self.name = name
+                    self.user_id = id
+                    self.is_login = true
+                }else{
+                    print("Is Auth failed...")
+                }
+            }else{
+                if error != nil{
+                    //login error
+                }else{
+                    //login failed
+                }
+            }
+        }
     }
     
     func login(username: String, password: String){
@@ -36,12 +61,10 @@ class UserController : ObservableObject {
                 if (resp?.success)!{
                 self.success = true
                     self.msg = (resp?.msg)!
-                    print("login success")
                     self.name = username
                     self.is_login = true
-                    print("name is_login")
-                    print(self.name)
-                    print(self.is_login)
+                    let dataStored = try! encoder.encode(userAuth(userId: (resp?.id)!, userName: username))
+                    UserDefaults.standard.set(dataStored, forKey: "user_Auth")
                 }
                 else{
                     self.fail = true
@@ -143,4 +166,9 @@ class UserController : ObservableObject {
         }
     }
     
+}
+
+struct userAuth:Decodable,Encodable {
+  var userId:String = ""
+  var userName:String = ""
 }

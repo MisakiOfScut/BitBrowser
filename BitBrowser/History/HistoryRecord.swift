@@ -15,7 +15,9 @@ class HistoryRecord:Mappable, ObservableObject{
     var deleted = 0
     
     func clear() {
-        UserDefaults.standard.removeObject(forKey: "markList")
+        for i in 0..<count{
+            
+        }
     }
     
     init(data: [Record]) {
@@ -69,7 +71,6 @@ class HistoryRecord:Mappable, ObservableObject{
         recordList[self.count-self.deleted] = recordList[self.count]
         recordList[self.count]=temp
         self.count += 1
-        print("111")
         self.store()
     }
     

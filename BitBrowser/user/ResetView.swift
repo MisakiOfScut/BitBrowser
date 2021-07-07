@@ -64,7 +64,8 @@ struct ResetView: View {
             VStack(alignment: .center, spacing: nil){
                  Spacer()
                 HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 8){
-                    TextField("  请输入你的账号", text: self.$account)
+                    Text("  ")
+                    TextField("请输入你的账号", text: self.$account)
                 }
                 .frame(width:340,height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .overlay(
@@ -73,7 +74,8 @@ struct ResetView: View {
                 )
                 .padding()
                 HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 8){
-                    SecureField("  请输入你的密码", text: self.$password)
+                    Text("  ")
+                    SecureField("请输入你的密码", text: self.$password)
                 }
                 .alert(isPresented: $userController.success, content: {
                     Alert(title: Text("注册成功"), message: Text(userController.msg), dismissButton: .default(Text("好的")) {
@@ -88,7 +90,8 @@ struct ResetView: View {
                 .padding()
 
                 HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 8){
-                    SecureField("  请再次输入你的密码", text: self.$password_check)
+                    Text("  ")
+                    SecureField("请再次输入你的密码", text: self.$password_check)
                 }
                 .frame(width:340,height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .overlay(
@@ -100,8 +103,9 @@ struct ResetView: View {
                 })
                 .padding()
                 HStack{
-                    VStack(alignment: .leading, spacing: 8){
-                        TextField("  请输入你的邮箱账号", text: self.$email)
+                    HStack{
+                        Text("  ")
+                        TextField("请输入你的邮箱账号", text: self.$email)
                     }
                     .frame(width:250,height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .overlay(
@@ -122,7 +126,8 @@ struct ResetView: View {
                 })
                 .padding(.bottom)
                 HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 8){
-                    TextField("  请输入验证码", text: self.$verify)
+                    Text("  ")
+                    TextField("请输入验证码", text: self.$verify)
                 }
                 .alert(isPresented: $userController.e_success, content: {
                     Alert(title: Text("系统提示"), message: Text(userController.msg), dismissButton: .default(Text("好的")) {})

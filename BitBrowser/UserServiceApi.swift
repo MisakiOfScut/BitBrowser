@@ -17,6 +17,7 @@ enum UserApiService{
     case verifyCode(email:String, validCode: String)
     case getFavourites(usr_id: String)
     case resetPasswd(username: String, password: String, email: String, vaildCode: String)
+    case auth(usr_id: String)
 }
 
 struct UserApiConstant{
@@ -42,6 +43,8 @@ extension UserApiService: TargetType{
             return "/getFavourites"
         case .resetPasswd:
             return "/resetPasswd"
+        case .auth:
+            return "/auth"
         }
         
     }
@@ -80,6 +83,10 @@ extension UserApiService: TargetType{
                 "validCode": validCode
             ]
         case .getFavourites(let usr_id):
+            return [
+                "usr_id": usr_id
+            ]
+        case .auth(let usr_id):
             return [
                 "usr_id": usr_id
             ]
