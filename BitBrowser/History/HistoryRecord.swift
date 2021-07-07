@@ -15,8 +15,10 @@ class HistoryRecord:Mappable, ObservableObject{
     var deleted = 0
     
     func clear() {
-        for i in 0..<count{
-            
+        UserDefaults.standard.removeObject(forKey: "recordList")
+        self.deleted = self.count
+        for i in 0..<self.count{
+            recordList[i].isRemoved = true
         }
     }
     

@@ -56,10 +56,10 @@ class NavigationDelegate: NSObject, WKNavigationDelegate {
         return self.isFavorite
     }
 //    若输入无效的url，会调用这个方法，返回自定义的404页面
-    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        print("fail to load =========")
-        webView.loadHTMLString(html, baseURL: nil)
-    }
+//    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+//        print("fail to load =========")
+//        webView.loadHTMLString(html, baseURL: nil)
+//    }
     
 //    webView发起请求之前调用
 //    allow后才会进行后面的代理方法

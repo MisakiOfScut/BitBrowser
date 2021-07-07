@@ -17,8 +17,8 @@ struct ResetView: View {
     @State var invalidPassword = false
     @State var showingAlert:Bool = false
     @State var showingSuccess:Bool = false
-//    @ObservedObject var userController = UserController()
-    @EnvironmentObject var userController:UserController
+    
+    @EnvironmentObject var signInController:SignInController
     let dispatchQueue = DispatchQueue(label:"serial")
     let semaphore = DispatchSemaphore(value: 0)
     
@@ -39,15 +39,15 @@ struct ResetView: View {
             return
         }
         else{
-            userController.resetPasswd(username: self.account, password: self.password, email: self.email, vaildCode: self.verify)
+            signInController.resetPasswd(username: self.account, password: self.password, email: self.email, vaildCode: self.verify)
             return
         }
     }
     
     func inputEmail(){
-        if(userController.timeRemaining <= 0){
-            userController.timeRemaining = 60
-            userController.sendMail(email: self.email)
+        if(signInController.timeRemaining <= 0){
+            signInController.timeRemaining = 60
+            signInController.sendMail(email: self.email)
         }
     }
     
@@ -77,8 +77,8 @@ struct ResetView: View {
                     Text("  ")
                     SecureField("请输入你的密码", text: self.$password)
                 }
-                .alert(isPresented: $userController.success, content: {
-                    Alert(title: Text("注册成功"), message: Text(userController.msg), dismissButton: .default(Text("好的")) {
+                .alert(isPresented: $signInController.success, content: {
+                    Alert(title: Text("注册成功"), message: Text(signInController.msg), dismissButton: .default(Text("好的")) {
                         self.presentationMode.wrappedValue.dismiss()
                     })
                 })
@@ -98,8 +98,8 @@ struct ResetView: View {
                     RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
                         .stroke(Color.gray,lineWidth: 2)
                 )
-                .alert(isPresented: $userController.fail, content: {
-                    Alert(title: Text("注册失败"), message: Text(userController.msg), dismissButton: .default(Text("好的")) {})
+                .alert(isPresented: $signInController.fail, content: {
+                    Alert(title: Text("注册失败"), message: Text(signInController.msg), dismissButton: .default(Text("好的")) {})
                 })
                 .padding()
                 HStack{
@@ -117,20 +117,20 @@ struct ResetView: View {
                         Button(action: {
                             self.inputEmail()
                         }){
-                            Text(userController.timeRemaining > 0 ? "等待\(userController.timeRemaining)":"发送验证码")
+                            Text(signInController.timeRemaining > 0 ? "等待\(signInController.timeRemaining)":"发送验证码")
                         }
                     }
                 }
-                .alert(isPresented: $userController.e_fail, content: {
-                    Alert(title: Text("发送失败"), message: Text(userController.msg), dismissButton: .default(Text("好的")) {})
+                .alert(isPresented: $signInController.e_fail, content: {
+                    Alert(title: Text("发送失败"), message: Text(signInController.msg), dismissButton: .default(Text("好的")) {})
                 })
                 .padding(.bottom)
                 HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 8){
                     Text("  ")
                     TextField("请输入验证码", text: self.$verify)
                 }
-                .alert(isPresented: $userController.e_success, content: {
-                    Alert(title: Text("系统提示"), message: Text(userController.msg), dismissButton: .default(Text("好的")) {})
+                .alert(isPresented: $signInController.e_success, content: {
+                    Alert(title: Text("系统提示"), message: Text(signInController.msg), dismissButton: .default(Text("好的")) {})
                 })
                 .frame(width:340,height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .overlay(
@@ -138,7 +138,7 @@ struct ResetView: View {
                         .stroke(Color.gray,lineWidth: 2)
                 )
                 Button(action: {
-                    userController.resetPasswd(username: account, password: password, email: email, vaildCode: verify)
+                    signInController.resetPasswd(username: account, password: password, email: email, vaildCode: verify)
                 }){
                     HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing:nil){
                         Text("重置")

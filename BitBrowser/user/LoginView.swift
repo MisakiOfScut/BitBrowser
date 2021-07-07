@@ -17,6 +17,7 @@ struct LoginView: View {
     
     //@ObservedObject var userController = UserController()
     @EnvironmentObject var userController:UserController
+    @EnvironmentObject var signInController:SignInController
     let dispatchQueue = DispatchQueue(label:"serial")
     let semaphore = DispatchSemaphore(value: 0)
     
@@ -59,9 +60,10 @@ struct LoginView: View {
                         .stroke(Color.gray,lineWidth: 2)
                 )
                 .padding()
+                
                 HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 8){
                     Text("  ")
-                    TextField("请输入你的密码", text: self.$password)
+                    SecureField("请输入你的密码", text: self.$password)
                 }
                 .frame(width:250,height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .overlay(
@@ -91,6 +93,7 @@ struct LoginView: View {
                     )
                 }
                 .padding(.bottom)
+                
                 HStack{
                     Text("还没有注册？")
                         .padding(.trailing)
@@ -101,10 +104,11 @@ struct LoginView: View {
                     }
                     .fullScreenCover(isPresented: $signInView_show, content: {
                         SignInView()
-                            .environmentObject(userController)
+                            .environmentObject(self.signInController)
                     })
                 }
                 .padding(.bottom)
+                
                 HStack{
                     Text("忘记密码？    ")
                         .padding(.trailing)
@@ -115,7 +119,7 @@ struct LoginView: View {
                     }
                     .fullScreenCover(isPresented: $resetView_show, content: {
                         ResetView()
-                            .environmentObject(userController)
+                            .environmentObject(self.signInController)
                     })
                 }
                 Spacer()

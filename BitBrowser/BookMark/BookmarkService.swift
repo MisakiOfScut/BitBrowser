@@ -10,7 +10,11 @@ import ObjectMapper
 
 class BookmarkService {
     static func getFavourtites(callBack: @escaping(Bool, Bookmark?, Error?)->Void){
-        let usr_id = "60bc7ff1b5bf6b007839269c" //后续从本地存储中获取
+        var usr_id:String = ""
+        if let dataStored = UserDefaults.standard.object(forKey: "user_Auth") as? Data {
+            let data = try! decoder.decode(userAuth.self, from: dataStored)
+            usr_id = data.userId
+        } //后续从本地存储中获取
         UserApiProvider.request(.getFavourites(usr_id: usr_id)){ result in
             switch result{
             case let .success(response):

@@ -66,6 +66,7 @@ class BookmarkController:ObservableObject{
         self.marklist[id].isRemove.toggle()
         store()
     }
+    
     func remove(url: String) {
         for i in 0..<(self.marklist.count) {
             if self.marklist[i].webUrl == url {

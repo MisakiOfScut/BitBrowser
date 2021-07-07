@@ -17,6 +17,7 @@ struct InfoModalView: View {
     @State private var isHistory = false
     @State private var isLoginPage = false
     @EnvironmentObject var userController: UserController
+    @EnvironmentObject var signInController: SignInController
     
 //    func changeLoginState(){
 //        isLogin = !isLogin
@@ -55,6 +56,7 @@ struct InfoModalView: View {
                                 .fullScreenCover(isPresented: $isLoginPage, content: {
                                     LoginView()
                                         .environmentObject(self.userController)
+                                        .environmentObject(self.signInController)
                                 })
 //                        }
 //                        .ignoresSafeArea(edges: .top)

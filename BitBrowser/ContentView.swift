@@ -68,6 +68,7 @@ struct ContentView: View {
     @State var isfav2 = false
     let pub = NotificationCenter.default.publisher(for: Notification.Name.init(rawValue: "get_isfav"))
     @ObservedObject var userController = UserController()
+    @ObservedObject var signInController = SignInController()
 //    static var web:Web = Web(url: "https://www.baidu.com")
     var url: String
 //    @ObservedObject var web: Web = Web(url: "http://www.bilibili.com")
@@ -92,9 +93,9 @@ struct ContentView: View {
                         self.web.webview
                             .frame(minHeight: 0, maxHeight: .infinity)
                     }
-                    .onReceive(userController.timer, perform: { time in
-                        if(self.userController.timeRemaining > 0){
-                            self.userController.timeRemaining -= 1
+                    .onReceive(signInController.timer, perform: { time in
+                        if(self.signInController.timeRemaining > 0){
+                            self.signInController.timeRemaining -= 1
                         }
                     })
 //                    .edgesIgnoringSafeArea(.top)
@@ -102,6 +103,7 @@ struct ContentView: View {
                         .offset(x: 0, y: showModal ? geometry.size.height - CGFloat(getInfooffset()) : geometry.size.height)
                         .animation(.linear)
                         .environmentObject(self.userController)
+                        .environmentObject(self.signInController)
                     BottomTabView(showModal: self.$showModal)
                         .offset(x: 0, y: isiPhoneXScreen() ? 34 : 0)
 //                        .zIndex(1)
