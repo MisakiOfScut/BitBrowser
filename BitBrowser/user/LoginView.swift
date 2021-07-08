@@ -16,8 +16,8 @@ struct LoginView: View {
     @State var showingSuccess:Bool = false
     
     //@ObservedObject var userController = UserController()
-    @EnvironmentObject var userController:UserController
-    @EnvironmentObject var signInController:SignInController
+    @ObservedObject var userController =  UserController.userController
+    @ObservedObject var signInController = SignInController.signInController
     let dispatchQueue = DispatchQueue(label:"serial")
     let semaphore = DispatchSemaphore(value: 0)
     
@@ -104,7 +104,6 @@ struct LoginView: View {
                     }
                     .fullScreenCover(isPresented: $signInView_show, content: {
                         SignInView()
-                            .environmentObject(self.signInController)
                     })
                 }
                 .padding(.bottom)
@@ -119,7 +118,6 @@ struct LoginView: View {
                     }
                     .fullScreenCover(isPresented: $resetView_show, content: {
                         ResetView()
-                            .environmentObject(self.signInController)
                     })
                 }
                 Spacer()

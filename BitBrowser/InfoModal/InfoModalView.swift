@@ -13,8 +13,8 @@ struct InfoModalView: View {
     @State private var isBookmark = false
     @State private var isHistory = false
     @State private var isLoginPage = false
-    @EnvironmentObject var userController: UserController
-    @EnvironmentObject var signInController: SignInController
+    @ObservedObject var userController =  UserController.userController
+    @ObservedObject var signInController = SignInController.signInController
     
     func quitLogin(){
         self.userController.name = "尚未登录"
@@ -46,8 +46,6 @@ struct InfoModalView: View {
                                 }
                                 .fullScreenCover(isPresented: $isLoginPage, content: {
                                     LoginView()
-                                        .environmentObject(self.userController)
-                                        .environmentObject(self.signInController)
                                 })
                         .navigationBarHidden(true)
                             .disabled(self.userController.is_login)

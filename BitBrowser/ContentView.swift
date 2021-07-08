@@ -57,8 +57,8 @@ func isiPhoneXScreen() -> Bool {
 struct ContentView: View {
     @State var isfav2 = false
     let pub = NotificationCenter.default.publisher(for: Notification.Name.init(rawValue: "get_isfav"))
-    @ObservedObject var userController = UserController()
-    @ObservedObject var signInController = SignInController()
+    @ObservedObject var userController = UserController.userController
+    @ObservedObject var signInController = SignInController.signInController
     var url: String
     @State var showModal = false;
     let web: Web
@@ -85,8 +85,6 @@ struct ContentView: View {
                     InfoModalView()
                         .offset(x: 0, y: showModal ? geometry.size.height - CGFloat(getInfooffset()) : geometry.size.height)
                         .animation(.linear)
-                        .environmentObject(self.userController)
-                        .environmentObject(self.signInController)
                     BottomTabView(showModal: self.$showModal)
                         .offset(x: 0, y: isiPhoneXScreen() ? 34 : 0)
                 }.navigationBarHidden(true)

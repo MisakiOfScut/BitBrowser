@@ -14,6 +14,7 @@ class SignInController : ObservableObject {
     @Published var e_success:Bool = false
     @Published var timeRemaining = 0
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    static var signInController = SignInController()
     
     var msg:String = ""
 

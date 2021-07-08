@@ -15,6 +15,7 @@ class UserController : ObservableObject {
     @Published var is_login:Bool = false
     @Published var name:String = "尚未登录"
     @Published var user_id = ""
+    static var userController = UserController()
     
     var msg:String = ""
     
