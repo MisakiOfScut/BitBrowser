@@ -14,15 +14,12 @@ struct SearchView: View {
     @State var isfav2 = false
     let pub = NotificationCenter.default.publisher(for: Notification.Name.init(rawValue: "get_isfav"))
     @EnvironmentObject var web:Web
-//    @EnvironmentObject var isfav:Isfav
-//    @State private var isthisfav = isfav.getisfav()
     var body: some View {
         HStack {
             TextField("请输入页面url", text: self.$inputUrl, onCommit: {
                 inputUrl = inputUrl.lowercased()
                 self.web.webview.load(inputUrl)
                 //这里能不能返回根据url判断这个页面是否被收藏
-//                self.isFavorite = self.web.webview.isRemove(url: inputUrl)
                 isfav.setisfav(val: !BookmarkController.bookmarkController.getIsRemove(url: (self.web.webview.webview?.url)!))
                 print("------------")
                 print((self.web.webview.webview?.url)?.relativePath)
@@ -30,8 +27,6 @@ struct SearchView: View {
                 print((self.web.webview.webview?.url)?.absoluteString ?? "default value")
                 print(BookmarkController.bookmarkController.marklist)
                 print(isFavorite)
-//                print(self.web.webview.getisFavorite())
-//                self.isthisfav = isfav.getisfav()
             })
                 .padding(5)
                 .padding(.leading, 5)
@@ -41,7 +36,6 @@ struct SearchView: View {
                 )
             
             Image(self.isfav2 ? "like_fill" : "like")
-//            Image("like")
                 .onTapGesture {
                     if !isfav.getisfav() {
                         BookmarkController.bookmarkController.add(data: Mark(title: self.web.webview.webview?.title ?? "default value", webUrl:  (self.web.webview.webview?.url)?.absoluteString ?? "default value"))
@@ -50,17 +44,11 @@ struct SearchView: View {
                         print((self.web.webview.webview?.url)?.absoluteString ?? "default value")
                         BookmarkController.bookmarkController.remove(url: (self.web.webview.webview?.url)?.absoluteString ?? "default value")
                     }
-//                    data.toggle()
                     isfav.setisfav(val: !self.isfav2)
-//                    self.isthisfav = isfav.getisfav()
                     print("searchview 点击完毕 marklist isfav")
                     print(BookmarkController.bookmarkController.marklist)
                     print(isfav.getisfav())
-//                    isFavorite = !isFavorite
                     
-//
-                    //清空数据
-//                    self.bookmarkController.clear()
                 }
                 .scaleEffect(0.8)
         }
@@ -68,12 +56,10 @@ struct SearchView: View {
         .padding(.vertical, 10)
         .padding(.horizontal)
         .onAppear() {
-//            self.isFavorite = self.web.webview.isRemove(url: inputUrl)
             isfav.setisfav(val: !BookmarkController.bookmarkController.getIsRemove(url: (self.web.webview.webview?.url)!))
             print("searchview出现 isfav")
             print(isFavorite)
             
-//            self.isthisfav = isfav.getisfav()
         }
         .onReceive(pub) { output in
             isfav2 = isfav.isfav

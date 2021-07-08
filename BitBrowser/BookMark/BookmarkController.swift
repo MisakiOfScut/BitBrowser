@@ -17,19 +17,6 @@ class BookmarkController:ObservableObject{
     }
     
     func getMarkList(){
-        //获取本地数据
- //       if let dataStored = UserDefaults.standard.object(forKey: "markList") as? Data {
- //           let data = try! decoder.decode([Mark].self, from: dataStored)
-            //注意这里id要重新按顺序排
- //           var id: Int = 0
- //           for item in data {
-  //              if !item.isRemove {
- //                   self.marklist.append(Mark(title: item.title, webUrl: item.webUrl, isRemove: item.isRemove, id: id))
- //                   id += 1
- //               }
- //           }
- //       }
-        //如果用户登录，上传到云端合并并拉下来更新marklist
         
         BookmarkService.getFavourtites(){ (success: Bool, data: Bookmark?, error:Error?) in
             if success{
@@ -53,8 +40,9 @@ class BookmarkController:ObservableObject{
     func getIsRemove(url: URL) -> Bool{
         print("remove")
         var isR:Bool = true //默认没有被收藏
+        print(url.absoluteString)
         for item in self.marklist {
-            if item.webUrl == url.absoluteString || URL.init(string: item.webUrl)?.relativeString == url.relativeString {
+            if item.webUrl == url.absoluteString || item.webUrl == String("https://" + url.absoluteString + "/") {
                 if item.isRemove == false { //marklist中可能有多个同样的url，直到找到isRemove为false的
                     isR = item.isRemove
                     break

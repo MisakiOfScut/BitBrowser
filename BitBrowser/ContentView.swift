@@ -8,14 +8,6 @@
 import SwiftUI
 
  /// 一个单例
-// var data = DataClass()
-// class DataClass : ObservableObject{
-//     @Published var isFavorite : Bool = false
-//     func toggle(){
-//        isFavorite = !isFavorite
-//        NotificationCenter.default.post(name: Notification.Name.init(rawValue: "isFavorite_change"), object: self, userInfo: ["isFavorite":isFavorite])
-//     }
-// }
  //判断是不是刘海屏
 func isiPhoneXScreen() -> Bool {
     guard #available(iOS 11.0, *) else {
@@ -34,7 +26,6 @@ func isiPhoneXScreen() -> Bool {
  
  class Isfav: ObservableObject {
     @Published var isfav: Bool
-//    @EnvironmentObject var bookmarkController : BookmarkController
     init() {
         self.isfav = false
     }
@@ -53,7 +44,6 @@ func isiPhoneXScreen() -> Bool {
  
  
  class Web: ObservableObject {
-//    @Published var webview = WebView(web: nil, req: URLRequest(url: URL(string: "https://www.baidu.com")!))
     @Published var webview: WebView
     
     init() {
@@ -69,19 +59,13 @@ struct ContentView: View {
     let pub = NotificationCenter.default.publisher(for: Notification.Name.init(rawValue: "get_isfav"))
     @ObservedObject var userController = UserController()
     @ObservedObject var signInController = SignInController()
-//    static var web:Web = Web(url: "https://www.baidu.com")
     var url: String
-//    @ObservedObject var web: Web = Web(url: "http://www.bilibili.com")
     @State var showModal = false;
-//    static var web: Web = Web()
     let web: Web
     init(url: String) {
         self.url = url
         web = Web(url: url)
     }
-//    @State var isFavorite: Bool = false
-//    @ObservedObject var bookmarkController : BookmarkController = BookmarkController()
-//    @ObservedObject var isfav: Isfav = Isfav()
     
     
     var body: some View {
@@ -98,7 +82,6 @@ struct ContentView: View {
                             self.signInController.timeRemaining -= 1
                         }
                     })
-//                    .edgesIgnoringSafeArea(.top)
                     InfoModalView()
                         .offset(x: 0, y: showModal ? geometry.size.height - CGFloat(getInfooffset()) : geometry.size.height)
                         .animation(.linear)
@@ -106,16 +89,11 @@ struct ContentView: View {
                         .environmentObject(self.signInController)
                     BottomTabView(showModal: self.$showModal)
                         .offset(x: 0, y: isiPhoneXScreen() ? 34 : 0)
-//                        .zIndex(1)
                 }.navigationBarHidden(true)
             }
             .edgesIgnoringSafeArea(.all)
-//            .environmentObject(self.bookmarkController)
             .environmentObject(self.web)
-//            .environmentObject(self.isfav)
- //           .environmentObject(self.userController)
             .onAppear(perform: {
-//                self.bookmarkController.getMarkList()
                 print("contentview content的高度")
                 print(UIScreen.main.nativeBounds.height)
                 print(UIScreen.main.bounds.height)

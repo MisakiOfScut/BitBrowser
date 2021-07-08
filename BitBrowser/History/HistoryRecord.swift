@@ -14,6 +14,7 @@ class HistoryRecord:Mappable, ObservableObject{
     static var historyRecord:HistoryRecord = HistoryRecord()
     var count = 0
     var deleted = 0
+    @Published var isvalid = true
     
     func clear() {
         UserDefaults.standard.removeObject(forKey: "recordList")
@@ -68,13 +69,16 @@ class HistoryRecord:Mappable, ObservableObject{
     
     //新增收藏
     func add(data: Record) {
-        self.recordList.append(Record(recordDate: data.recordDate, url: data.url, webName: data.webName, isRemoved: false, id:self.count-self.deleted))//要将新增的放在准确的排序当中
-        var temp:Record
-        temp = recordList[self.count-self.deleted]
-        recordList[self.count-self.deleted] = recordList[self.count]
-        recordList[self.count]=temp
-        self.count += 1
-        self.store()
+        if isvalid {
+            self.recordList.append(Record(recordDate: data.recordDate, url: data.url, webName: data.webName, isRemoved: false, id:self.count-self.deleted))//要将新增的放在准确的排序当中
+             var temp:Record
+            temp = recordList[self.count-self.deleted]
+            recordList[self.count-self.deleted] = recordList[self.count]
+            recordList[self.count]=temp
+            self.count += 1
+            self.store()
+            
+        }
     }
     
     func dateString_date(id:Int)-> String{

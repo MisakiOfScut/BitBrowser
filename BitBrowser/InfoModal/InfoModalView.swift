@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct InfoModalView: View {
-//    @Binding var showModal: Bool
-//    @State private var isLogin = true
-//    @State private var userName = "vivian"
     @State private var showAlert = false
     @State private var showQuit = false
     @State private var isBookmark = false
@@ -18,10 +15,6 @@ struct InfoModalView: View {
     @State private var isLoginPage = false
     @EnvironmentObject var userController: UserController
     @EnvironmentObject var signInController: SignInController
-    
-//    func changeLoginState(){
-//        isLogin = !isLogin
-//    }
     
     func quitLogin(){
         self.userController.name = "尚未登录"
@@ -46,8 +39,6 @@ struct InfoModalView: View {
                         Text(self.userController.name)
                             .padding(.leading, 6.0)
                         Spacer()
-//                        NavigationLink(
-//                            destination: LoginView()) {
                         Text(self.userController.is_login ? "退出登录" : "登录/注册")
                                 .foregroundColor(Color("System_Blue"))
                                 .onTapGesture {
@@ -58,8 +49,6 @@ struct InfoModalView: View {
                                         .environmentObject(self.userController)
                                         .environmentObject(self.signInController)
                                 })
-//                        }
-//                        .ignoresSafeArea(edges: .top)
                         .navigationBarHidden(true)
                             .disabled(self.userController.is_login)
                         .onTapGesture {
@@ -76,7 +65,6 @@ struct InfoModalView: View {
                     .padding([.top, .leading, .trailing], 14.0)
                     Divider().padding(.vertical, 10)
                     HStack {
-//                        NavigationLink(destination: BookmarkView()){
                             VStack {
                                 Image("favorite")
                                     .scaleEffect(CGSize(width: 1, height: 1))
@@ -97,9 +85,8 @@ struct InfoModalView: View {
                                 Alert(title: Text("请先登录"),
                                       dismissButton: .default(Text("OK")))
                             }
-//                        }
-                        
-//                        NavigationLink(destination: HistoryView()){
+
+
                             VStack {
                                 Image("history")
                                     .scaleEffect(CGSize(width: 1, height: 1))
@@ -112,15 +99,11 @@ struct InfoModalView: View {
                             .fullScreenCover(isPresented: $isHistory, content: {
                                 HistoryView()
                             })
-//                        }
                         Spacer()
                     }
-                    
-    //                .disabled(!isLogin)
+
                     .padding([.top, .leading, .bottom], 14.0)
                 }
-//                .frame(height: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-//                .frame(height: 180)
                 .background(Color("background1"))
                 .cornerRadius(10)
                 .ignoresSafeArea()
@@ -134,10 +117,7 @@ struct InfoModalView: View {
 }
 
 struct InfoModalView_Previews: PreviewProvider {
-//    @State var show = true
     static var previews: some View {
-//        Text("hello")
-//        InfoModalView(showModal: .constant(true))
         InfoModalView()
     }
 }

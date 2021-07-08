@@ -14,7 +14,6 @@ struct BookmarkView: View {
     @ObservedObject var bookmarkController = BookmarkController.bookmarkController
     
     //初始化书签数据
-//    @EnvironmentObject var bookmarkController: BookmarkController
     
     //自定义跳转函数
     func goToPage(url: String) {
@@ -86,9 +85,6 @@ struct BookmarkView: View {
 
 //单个书签
 struct SingleBookmarkView: View {
-//    @State var isRemove: Bool = false
-//    var title: String = "百度"
-//    var webUrl: String = "http://baidu.com"
     
     @ObservedObject var bookmarkController = BookmarkController.bookmarkController
     var index: Int
@@ -96,12 +92,10 @@ struct SingleBookmarkView: View {
     
     var body: some View {
         HStack {
-//            Image(self.bookmarkController.marklist[index].isRemove ? "like": "like_fill")
             Image("like_fill")
                 .padding(.leading)
                 .onTapGesture {
                     self.removed = !self.removed
-//                    self.bookmarkController.remove(id: self.index)
                 }
                 .alert(isPresented: $removed, content: {
                     Alert(title: Text("确定取消收藏吗？"),  primaryButton: .default(Text("确定")){

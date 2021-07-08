@@ -16,19 +16,8 @@ class NavigationDelegate: NSObject, WKNavigationDelegate {
             </body>
         </html>
     """
-//    var isFavorite: Bool = false
-//    @EnvironmentObject var web: Web
-//    @EnvironmentObject var bookmarkController:BookmarkController
     var isFavorite:Bool = false
     
-//    override init() {
-//        NotificationCenter.default.addObserver(NavigationDelegate.self, selector: #selector(Change), name: Notification.Name.init(rawValue: "isFavorite_change"), object: nil)
-//    }
-//    @objc func Change(){
-//        self.isFavorite = data.isFavorite
-//        print("change")
-//        print(data.isFavorite)
-//    }
 //    页面跳转后，内容接受完毕调用
     var history:HistoryRecord = HistoryRecord.historyRecord
     
@@ -42,11 +31,6 @@ class NavigationDelegate: NSObject, WKNavigationDelegate {
             
         }
         
-//        self.isFavorite = !BookmarkController.bookmarkController.getIsRemove(url: (ContentView.web.webview.webview?.url)?.absoluteString ?? "default value")
-//        print("webview 页面加载完毕后，isfav url")
-//        print(self.isFavorite)
-//        print((ContentView.web.webview.webview?.url)?.absoluteString ?? "default value")
-        
     }
     
 
@@ -55,11 +39,6 @@ class NavigationDelegate: NSObject, WKNavigationDelegate {
     func getisFavorite() -> Bool{
         return self.isFavorite
     }
-//    若输入无效的url，会调用这个方法，返回自定义的404页面
-//    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-//        print("fail to load =========")
-//        webView.loadHTMLString(html, baseURL: nil)
-//    }
     
 //    webView发起请求之前调用
 //    allow后才会进行后面的代理方法
@@ -97,10 +76,6 @@ struct WebView: UIViewRepresentable {
         webview?.allowsBackForwardNavigationGestures = true
     }
     
-    //获得isFavorite的值
-//    func setisFavorite(url: String){
-//        isfav.setisfav(val: !self.bookmarkController.getIsRemove(url: url))
-//    }
     
     func makeUIView(context: Context) -> WKWebView  {
         return webview!
@@ -114,7 +89,6 @@ struct WebView: UIViewRepresentable {
         if let url = URL(string: urlString) {
             let request = URLRequest(url: url)
             isfav.setisfav(url: url)
-//            self.setisFavorite(url: urlString)
             self.webview?.load(request)
         }
     }
@@ -126,10 +100,6 @@ struct WebView: UIViewRepresentable {
     func goForward(){
         webview?.goForward()
     }
-    //判断该url是否被收藏
-//    func isRemove(url: String) -> Bool{
-//        return self.bookmarkController.getIsRemove(url: url)
-//    }
     
 }
 
